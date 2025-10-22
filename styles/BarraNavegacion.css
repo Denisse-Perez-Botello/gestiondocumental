@@ -1,0 +1,134 @@
+/*
+ * =========================================================
+ * BARRA SUPERIOR (NAVBAR)
+ * =========================================================
+ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    flex-shrink: 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* AJUSTES DE ÍCONOS DE IMAGEN Y BÚSQUEDA */
+/* ---------------------------------------------------------------------- */
+
+/* Estilo Base para TODAS las imágenes de control (Menu, Notificación, Usuario) */
+.icon-control-img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    cursor: pointer;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+/* Agrupación Izquierda (Toggler y Búsqueda) */
+.header-left-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Barra de Búsqueda */
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 3px;
+    width: 150px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Estilos de Usuario y Notificaciones */
+/* ---------------------------------------------------------------------- */
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    margin-right: 15px;
+    color: #333;
+}
+
+/* Contenedores de Despliegue (Dropdown)*/
+.notification-dropdown-container, .profile-info-container {
+    position: relative;
+    cursor: pointer;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para el Menú Desplegable de Notificaciones */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    padding: 10px 0;
+}
+
+.dropdown-menu.visible {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-title {
+    font-weight: bold;
+    color: #444;
+    padding: 5px 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    white-space: normal;
+}
+
+.dropdown-item:hover {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.dropdown-item.view-all {
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+    border-top: 1px solid #eee;
+    margin-top: 5px;
+}
+
+/* Quitar subrayado de los enlaces*/
+a {
+    text-decoration: none !important;
+}

@@ -1,0 +1,205 @@
+/* ========================================================= */
+/* 1. SECCIÓN DE CONTENIDO (CONTENEDOR DEL BOX/CARD) */
+/* ========================================================= */
+
+.content-section {
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco para el contenido */
+    margin: 20px; /* Margen exterior (simula el grid-margin) */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Sombra sutil de 'card' */
+}
+
+.content-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Acciones de Gestión */
+.user-management-actions {
+    margin-bottom: 20px;
+}
+
+/* Botón Agregar Usuario */
+.btn-add-user {
+    background-color: #3587ab; 
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex; /* Para alinear el icono y el texto */
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-add-user:hover {
+    background-color: #12a0cc;
+}
+
+.btn-add-user i {
+    margin-right: 5px;
+}
+
+/* ========================================================= */
+/* 2. ESTILOS BASE DE LA TABLA */
+/* ========================================================= */
+
+.table-container {
+    overflow-x: auto; /* Permite desplazamiento si la tabla es demasiado ancha */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table thead {
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #ddd;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+table tr:hover {
+    background-color: #fafafa;
+}
+
+/* ========================================================= */
+/* 3. ESTILOS DE BOTONES DE ACCIÓN (EDITAR Y ESTADO) */
+/* ========================================================= */
+
+/* Botones de Acción en la Tabla (Base) */
+.btn-action {
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex; /* Para alinear icono y texto */
+    align-items: center;
+    font-size: 12px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn-action i {
+    /* El ícono de Font Awesome */
+    margin-right: 5px; 
+}
+
+/* Color: Botón Editar (Azul) */
+.btn-action.edit {
+    background-color: #498FAE;
+}
+
+.btn-action.edit:hover {
+    background-color: #12a0cc;
+}
+
+/* Color: Activo (Verde) - Usado dentro del dropdown */
+.btn-action.status-active {
+    background-color: #28a745;
+}
+
+.btn-action.status-active:hover {
+    background-color: #1e7e34;
+}
+
+/* Color: Inactivo (Rojo) - Usado dentro del dropdown */
+.btn-action.status-inactive {
+    background-color: #dc3545;
+}
+
+.btn-action.status-inactive:hover {
+    background-color: #bd2130;
+}
+
+
+/* ========================================================= */
+/* 4. ESTILOS PARA EL BOTÓN DESPLEGABLE DE ESTADO */
+/* ========================================================= */
+
+.dropdown-action {
+    /* Contenedor que permite posicionar el menú de forma absoluta */
+    position: relative;
+    display: inline-block;
+    margin-left: 5px; 
+}
+
+.dropdown-toggle-status {
+    /* Botón principal del desplegable (Gris) */
+    background-color: #6c757d; 
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: inline-flex; 
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.dropdown-toggle-status:hover {
+    background-color: #5a6268;
+}
+
+.dropdown-toggle-status i {
+    /* Icono de flecha (Chevron) */
+    margin-left: 5px;
+    font-size: 10px;
+    margin-right: 0; 
+}
+
+.dropdown-content {
+    /* Contenedor del menú: debe ser controlado por JS/React para ser visible */
+    display: none; /* Dejarlo 'none' y usar JS para cambiar a 'block' */
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 120px;
+    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+    z-index: 10; 
+    border-radius: 4px;
+    overflow: hidden;
+    right: 0; /* Se alinea a la derecha del botón toggle */
+    margin-top: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Botones dentro del Desplegable (Activar/Inactivar) */
+.dropdown-content button {
+    padding: 8px 10px;
+    text-decoration: none;
+    display: flex; 
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: white; 
+    border-radius: 0; /* Quita el borde redondeado para que se vean unidos */
+    margin-right: 0; 
+}
+
+.dropdown-content button i {
+    margin-right: 8px;
+}

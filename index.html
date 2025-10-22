@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oficialía de Partes - Dashboard</title>
+
+    <link rel="stylesheet" href="./styles/styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!--Menu lateral -->
+    <nav class="sidebar sidebar-off-canvas" id="sidebar">
+        <ul class="nav">
+
+            <li class="nav-item nav-category tlahuapan-item">
+                <div class="tlahuapan-logo-text">
+                    <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
+                    <span class="tlahuapan-text">TLAHUAPAN</span>
+                </div>
+            </li>
+
+            <li class="nav-item active" id="menu-usuarios">
+                <a class="nav-link" href="index.html" data-target="usuarios-content">
+                    <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Icono Usuarios" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Usuarios</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-dashboard">
+                <a class="nav-link" href="index.html" data-target="dashboard-content">
+                    <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Icono Dashboard" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-documentos">
+                <a class="nav-link" href="index.html" data-target="documentos-content">
+                    <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Documentos</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-gestionamiento">
+                <a class="nav-link" href="index.html" data-target="gestionamiento-content">
+                    <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Icono Gestionamiento" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Gestionamiento</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-organigrama">
+                <a class="nav-link" href="index.html" data-target="organigrama-content">
+                    <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Icono Organigrama" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Organigrama</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-dispersion">
+                <a class="nav-link" href="index.html" data-target="dispersion-content">
+                    <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Icono Dispersión" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Dispersión</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-leyarchivo">
+                <a class="nav-link" href="index.html" data-target="leyarchivo-content">
+                    <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Icono Ley de Archivo" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Ley de Archivo</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-clasificacion">
+                <a class="nav-link" href="index.html" data-target="clasificacion-content">
+                    <span class="icon-bg"><img src="../imagenes/clasificaciondocumentos.png" alt="Icono Clasificación" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Clasificación</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-cerrarsesion">
+                <a class="nav-link" href="index.html" data-target="cerrar sesion-content">
+                    <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Icono Cerrar sesion" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!--Fin de Menu lateral -->
+    
+ <!--Barra de Navegacion -->
+    <div class="main-content-wrapper">
+
+        <header class="navbar">
+            <div class="header-left-group">
+                <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
+                 <div class="search-bar">
+                <img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
+                <input type="text" placeholder="Search products">
+            </div>
+            </div>
+
+
+            <div class="user-info">
+                <div class="profile-info-container">
+                    <img src="../imagenes/usuario.png" alt="Usuario" class="icon-control-img">
+                    <span class="user-name">Oficialía de partes</span>
+                </div>
+                
+                <div class="notification-dropdown-container">
+                    <img src="../imagenes/notificacion.png" alt="Notificacion" id="notification-icon" class="icon-control-img notification-icon-img">
+                    
+                    <div class="dropdown-menu notification-menu">
+                        <p class="dropdown-title">Notificaciones recientes</p>
+                        <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
+                        <a href="#" class="dropdown-item view-all">Ver todas las notificaciones</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+<!--Fin Barra de Navegacion -->
+        
+        
+        <main class="content-area">
+            <!--Tabla Gestion Usuarios -->
+            <section class="content-section">
+                <h2 class="card-title">Gestión de Usuarios</h2>
+
+                <div class="user-management-actions">
+                    <button class="btn-add-user">
+                         Agregar Usuario
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Usuario</th>
+                                <th>Num. Trabajador</th>
+                                <th>Correo Electrónico</th>
+                                <th>Área</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jacob Pérez</td>
+                                <td>Jacob</td>
+                                <td>012</td>
+                                <td>usuario@ejemplo.com</td>
+                                <td>Archivo</td>
+                                <td>
+                                    <button class="btn-action edit" title="Editar Usuario">
+                                        Editar 
+                                    </button>
+                                    <div class="dropdown-action">
+                                        <button class="dropdown-toggle-status" title="Cambiar Estado">
+                                            Estado <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <button class="btn-action status-active"><i class="fas fa-check-circle"></i> Activar</button>
+                                            <button class="btn-action status-inactive"><i class="fas fa-times-circle"></i> Desactivar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Messy López</td>
+                                <td>Messsy</td>
+                                <td>003</td>
+                                <td>usuario@ejemplo.com</td>
+                                <td>Obras Públicas</td>
+                                <td>
+                                    <button class="btn-action edit" title="Editar Usuario">
+                                        Editar 
+                                    </button>
+                                    <div class="dropdown-action">
+                                        <button class="dropdown-toggle-status" title="Cambiar Estado">
+                                            Estado <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <button class="btn-action status-active"><i class="fas fa-check-circle"></i> Activar</button>
+                                            <button class="btn-action status-inactive"><i class="fas fa-times-circle"></i> Desactivar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>John Carreon</td>
+                                <td>John</td>
+                                <td>010</td>
+                                <td>usuario@ejemplo.com</td>
+                                <td>Turismo y Cultura</td>
+                                <td>
+                                    <button class="btn-action edit" title="Editar Usuario">
+                                        Editar 
+                                    </button>
+                                    <div class="dropdown-action">
+                                        <button class="dropdown-toggle-status" title="Cambiar Estado">
+                                            Estado <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <button class="btn-action status-active"><i class="fas fa-check-circle"></i> Activar</button>
+                                            <button class="btn-action status-inactive"><i class="fas fa-times-circle"></i> Desactivar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Peter Flores</td>
+                                <td>Peter</td>
+                                <td>018</td>
+                                <td>usuario@ejemplo.com</td>
+                                <td>Oficialía de Partes</td>
+                                <td>
+                                    <button class="btn-action edit" title="Editar Usuario">
+                                        Editar 
+                                    </button>
+                                    <div class="dropdown-action">
+                                        <button class="dropdown-toggle-status" title="Cambiar Estado">
+                                            Estado <i class="fas fa-chevron-down"></i>
+                                        </button>
+                                        <div class="dropdown-content">
+                                            <button class="btn-action status-active"><i class="fas fa-check-circle"></i> Activar</button>
+                                            <button class="btn-action status-inactive"><i class="fas fa-times-circle"></i> Desactivar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!--Fin Tabla Gestion Usuarios -->
+        </main>
+    </div>
+    <script src="script1.js"></script>
+</body>
+</html>

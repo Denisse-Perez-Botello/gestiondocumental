@@ -1,0 +1,241 @@
+/* ========================================================= */
+/* ESTILOS DEL LAYOUT (DISPOSICIÓN DE 2 COLUMNAS Y ALTO TOTAL) */
+/* ========================================================= */
+
+html, body {
+    height: 100%; /* Asegura que la altura sea el 100% de la ventana */
+    margin: 0;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: "Segoe UI", sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-layout {
+    display: flex;
+    gap: 20px;
+    align-items: stretch; /* Estira los hijos al mismo alto */
+    flex-grow: 1; /* Ocupa el alto restante del body */
+    width: 100%;
+}
+
+/* Estilo para la Tabla (Columna Izquierda: Aprox. 75%) */
+.main-layout > .table-component { /* Selectores más específicos para asegurar la prioridad */
+    flex: 3; /* Ocupa 3 partes (la mayor parte) del ancho disponible */
+    min-width: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo para el Formulario (Columna Derecha: Aprox. 25% y más delgado) */
+.main-layout > .form-component { /* Selectores más específicos para asegurar la prioridad */
+    flex: 1; /* Ocupa 1 parte (la menor parte) del ancho disponible */
+    min-width: 280px; /* Ancho mínimo más pequeño para hacerlo delgado */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive Design: Apilar en dispositivos pequeños */
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
+        flex-grow: unset;
+        min-height: auto;
+    }
+
+    .main-layout > .table-component,
+    .main-layout > .form-component {
+        flex: none;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .content-section, .card {
+        flex-grow: unset;
+    }
+}
+
+/* ------------------------------------------------------------------------- */
+/* ========================================================= */
+/* ESTILOS DEL CARD DE CONTENIDO (TABLE COMPONENT) */
+/* ========================================================= */
+
+.content-section {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    margin: 0;
+    flex-grow: 1; /* Ocupa el alto completo de su columna */
+    display: flex;
+    flex-direction: column;
+}
+
+.content-section h2, .card-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    flex-shrink: 0; /* Evita que el título se encoja */
+}
+
+.table-container {
+    overflow-x: auto;
+    flex-grow: 1; /* Ocupa el alto restante dentro del card */
+}
+/* Estilo para resaltar la fila seleccionada por el script */
+.table-container tbody .row-selected {
+    background-color: #e3d6c0; /* Un cafe claro para indicar selección */
+    font-weight: bold;
+    border-left: 5px solid #a17a4a; /* Un borde lateral de color primario */
+}
+
+
+/* ========================================================= */
+/* ESTILOS BASE DE LA TABLA */
+/* ========================================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table thead {
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #ddd;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+table tr:hover {
+    background-color: #fafafa;
+}
+
+
+/* ========================================================= */
+/* ESTILOS DEL FORMULARIO DE DISPERSIÓN (CARD COMPONENT) */
+/* ========================================================= */
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    flex-grow: 1; /* Ocupa el alto completo de su columna */
+    display: flex;
+    flex-direction: column;
+}
+
+.card h2 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+.file-upload-area {
+    height: 140px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.document-viewer {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc; /* Añadimos borde para definir el área */
+    border-radius: 4px;
+    background-color: #fcfcfc;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+/* ========================================================= */
+/* ESTILOS PARA EL GRUPO DE CHECKBOXES */
+/* ========================================================= */
+
+.checkbox-group {
+    border: 1px solid #ccc; /* Borde similar al de un input */
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #fff;
+    max-height: 120px; /* Altura máxima visible */
+    overflow-y: auto; /* Permite scroll si hay muchas opciones */
+}
+
+.checkbox-item {
+    display: block; /* Cada opción en su propia línea */
+    text-align: left;
+    margin: 5px 0;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-weight: normal; 
+}
+
+.checkbox-item:hover {
+    background-color: #f0f0f0;
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 8px; /* Espacio entre la casilla y el texto */
+    vertical-align: middle;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.btn-confirmar {
+    width: 100%;
+    background-color: #4a7da1;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    margin-top: auto; /* Mantiene el botón pegado al fondo del card */
+}
+
+.btn-confirmar:hover {
+    background-color: #3b6a8b;
+}

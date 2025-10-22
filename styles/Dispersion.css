@@ -1,0 +1,51 @@
+/* ========================================================= */
+/* 1. SECCIÓN DE CONTENIDO (CONTENEDOR DEL BOX/CARD) */
+/* ========================================================= */
+
+.content-section {
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco para el contenido */
+    margin: 20px; /* Margen exterior (simula el grid-margin) */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* Sombra sutil de 'card' */
+}
+
+.content-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+/* ========================================================= */
+/* 2. ESTILOS BASE DE LA TABLA */
+/* ========================================================= */
+
+.table-container {
+    overflow-x: auto; /* Permite desplazamiento si la tabla es demasiado ancha */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table thead {
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #ddd;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+table tr:hover {
+    background-color: #fafafa;
+}
