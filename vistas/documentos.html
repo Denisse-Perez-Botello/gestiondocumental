@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TLAHUAPAN — Gestión Documental</title>
+  <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+<body>
+  <!-- Barra de navegación-->
+  <header class="navbar">
+    <div class="header-left-group">
+      <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
+    </div>
+    <div class="">
+        <!-- Aqui iba la busqueda - search-bar-->
+    </div>
+    <div class="user-info">
+      <div class="profile-info-container">
+        <img src="../imagenes/usuario.png" alt="Usuario" class="icon-control-img">
+        <span class="user-name">Oficialía de partes</span>
+      </div>
+      <div class="notification-dropdown-container">
+        <img src="../imagenes/notificacion.png" alt="Notificacion" id="notification-icon" class="icon-control-img notification-icon-img">
+        <div class="dropdown-menu notification-menu">
+          <p class="dropdown-title">Notificaciones recientes</p>
+          <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
+          <a href="#" class="dropdown-item view-all">Ver todas las notificaciones</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Menu de opciones -->
+    <nav class="sidebar" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-category tlahuapan-item">
+          <div class="tlahuapan-logo-text">
+            <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
+            <span class="tlahuapan-text">TLAHUAPAN</span>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Icono Usuarios" class="sidebar-icon-img"></span>
+            <span class="menu-title">Usuarios</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Icono Dashboard" class="sidebar-icon-img"></span>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="#" data-target="gestion-documental">
+            <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
+            <span class="menu-title">Documentos</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-target="gestion-organizacional">
+            <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Icono Gestionamiento" class="sidebar-icon-img"></span>
+            <span class="menu-title">Gestionamiento</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-target="organigrama">
+            <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Icono Organigrama" class="sidebar-icon-img"></span>
+            <span class="menu-title">Organigrama</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Icono Dispersión" class="sidebar-icon-img"></span>
+            <span class="menu-title">Dispersión</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-target="ley-archivo">
+            <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Icono Ley de Archivo" class="sidebar-icon-img"></span>
+            <span class="menu-title">Ley de Archivo</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" data-target="clasificacion">
+            <span class="icon-bg"><img src="../imagenes/clasificaciondocumentos.png" alt="Icono Clasificación" class="sidebar-icon-img"></span>
+            <span class="menu-title">Clasificación</span>
+          </a>
+        </li>
+
+        <li class="nav-item cerrar-sesion">
+          <a class="nav-link" href="#" id="cerrarSesionLink">
+            <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Icono Cerrar sesion" class="sidebar-icon-img"></span>
+            <span class="menu-title">Cerrar sesión</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    
+    <main class="content">
+      <!-- Vista de gestión documental-->
+      <section id="gestion-documental" class="view active" aria-labelledby="tab-gestion-documental">
+        <div class="view-head">
+          <h1 id="tab-gestion-documental">Gestión documental</h1>
+          <div class="toolbar">
+            <button class="btn" data-modal-open="modalReportePDF">Generar reporte PDF</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head between">
+            <h2>Documentos</h2>
+            <div class="filter-row">
+              <input class="input" type="search" id="docSearch" placeholder="Buscar por título o descripción…" />
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="table" id="tablaDocumentos">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Título</th>
+                  <th>Descripción</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Acta constitutiva</td>
+                  <td>Documento oficial de la empresa</td>
+                  <td><span class="badge success">Aceptado</span></td>
+                  <td class="actions">
+                    <button class="btn xs" data-modal-open="modalVer">Ver</button>
+                    <button class="btn xs" data-modal-open="modalEstado">Cambiar estado</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Reporte 2024</td>
+                  <td>Resultados anuales</td>
+                  <td><span class="badge warn">No aceptado</span></td>
+                  <td class="actions">
+                    <button class="btn xs" data-modal-open="modalVer">Ver</button>
+                    <button class="btn xs" data-modal-open="modalEstado">Cambiar estado</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gestión Organizacional -->
+      <section id="gestion-organizacional" class="view" aria-labelledby="tab-gestion-organizacional">
+        <div class="view-head">
+          <h1 id="tab-gestion-organizacional">Gestión organizacional</h1>
+          <div class="toolbar">
+            <button class="btn" data-modal-open="modalAgregarArea">Agregar Área</button>
+            <button class="btn outline" data-modal-open="modalGuardarVersion">Guardar versión</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Estructura</h2></div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Área</th>
+                  <th>Nivel</th>
+                  <th>Área superior</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Presidencia municipal</td>
+                  <td>Primer nivel</td>
+                  <td>Presidencia municipal</td>
+                  <td class="actions">
+                    <button class="btn xs" data-modal-open="modalEditarOrganigrama">Editar</button>
+                    <button class="btn xs danger" data-modal-open="modalEliminarOrganigrama">Eliminar</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Contraloría</td>
+                  <td>Segundo nivel</td>
+                  <td>Presidencia municipal</td>
+                  <td class="actions">
+                    <button class="btn xs" data-modal-open="modalEditarOrganigrama">Editar</button>
+                    <button class="btn xs danger" data-modal-open="modalEliminarOrganigrama">Eliminar</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Secretaría del Ayuntamiento</td>
+                  <td>Segundo nivel</td>
+                  <td>Presidencia municipal</td>
+                  <td class="actions">
+                    <button class="btn xs" data-modal-open="modalEditarOrganigrama">Editar</button>
+                    <button class="btn xs danger" data-modal-open="modalEliminarOrganigrama">Eliminar</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Dirección de Registro Civil</td>
+                  <td>Tercer nivel</td>
+                  <td>Secretaria del ayuntamiento</td>
+                  <td class="actions">
+                    <button class="btn xs" data-modal-open="modalEditarOrganigrama">Editar</button>
+                    <button class="btn xs danger" data-modal-open="modalEliminarOrganigrama">Eliminar</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Organigrama y versiones  -->
+      <section id="organigrama" class="view" aria-labelledby="tab-organigrama">
+        <div class="grid two">
+          <div class="card">
+            <div class="card-head between">
+              <h2>Organigrama vigente</h2>
+              <div class="toolbar">
+                <button class="btn outline" data-modal-open="modalEditarOrganigrama">Editar organigrama</button>
+                <button class="btn" data-modal-open="modalGuardarOrganigrama">Guardar cambios</button>
+              </div>
+            </div>
+            <div class="org-chart">
+              <div class="org-node root">Presidencia
+                <div class="org-children">
+                  <div class="org-node">Contraloría</div>
+                  <div class="org-node">Secretaría del Ayuntamiento</div>
+                  <div class="org-node">Obras Públicas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head between">
+              <h2>Versiones de organigrama</h2>
+              <div class="toolbar">
+                <button class="btn outline" data-modal-open="modalInsertarOrganigrama">Agregar Organigrama</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de actualización</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Organigrama 2023</td>
+                    <td>20-10-2023</td>
+                    <td class="actions"><button class="btn xs" data-modal-open="modalVerVersion">Ver</button></td>
+                  </tr>
+                  <tr>
+                    <td>Organigrama 2023-2024</td>
+                    <td>15-09-2024</td>
+                    <td class="actions"><button class="btn xs" data-modal-open="modalVerVersion">Ver</button></td>
+                  </tr>
+                  <tr>
+                    <td>Organigrama 2024-2025</td>
+                    <td>15-12-2024</td>
+                    <td class="actions"><button class="btn xs" data-modal-open="modalVerVersion">Ver</button></td>
+                  </tr>
+                  <tr>
+                    <td>Organigrama 2024-2025 V2</td>
+                    <td>15-09-2025</td>
+                    <td class="actions"><button class="btn xs" data-modal-open="modalVerVersion">Ver</button></td>
+                  </tr>
+                  <tr>
+                    <td>Organigrama 2025</td>
+                    <td>15-10-2025</td>
+                    <td class="actions"><button class="btn xs" data-modal-open="modalVerVersion">Ver</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modulo de Ley de archivo -->
+      <section id="ley-archivo" class="view" aria-labelledby="tab-ley-archivo">
+        <div class="view-head"><h1 id="tab-ley-archivo">Ley de Archivo</h1></div>
+
+        <div class="grid two">
+          <div class="card">
+            <div class="card-head"><h2>Lista de clasificación</h2></div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Título / Ubicación</th>
+                    <th>Clasificación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>001</td>
+                    <td>
+                      <div class="title-sub">
+                        <strong>Acta constitutiva</strong>
+                        <small>Estantería A</small>
+                      </div>
+                    </td>
+                    <td><div class="chips"><span class="chip">Presidencia • S-GOB-01 • GOB-2023-001 • S</span></div></td>
+                    <td><span class="badge success">Vigente</span></td>
+                    <td class="actions">
+                      <button class="btn xs outline">Etiquetas</button>
+                      <button class="btn xs">Cambiar estado</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>002</td>
+                    <td>
+                      <div class="title-sub">
+                        <strong>Permiso construcción</strong>
+                        <small>Archivador RH</small>
+                      </div>
+                    </td>
+                    <td><div class="chips"><span class="chip">Recursos Humanos • S-RH-01 • RH-2020-045 • C</span></div></td>
+                    <td><span class="badge success">Vigente</span></td>
+                    <td class="actions">
+                      <button class="btn xs outline">Etiquetas</button>
+                      <button class="btn xs">Cambiar estado</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-foot">
+              <div class="stats">
+                <div class="stat"><div class="stat-value">1,248</div><div class="stat-label">Documentos actuales</div></div>
+                <div class="stat"><div class="stat-value">50</div><div class="stat-label">Próximo a mover</div></div>
+                <div class="stat"><div class="stat-value">10-09-2025</div><div class="stat-label">Respaldo reciente</div></div>
+              </div>
+              <button class="btn" data-modal-open="modalCrearZip">Crear Respaldo ZIP</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seccion clasificacion de documentos -->
+      <section id="clasificacion" class="view" aria-labelledby="tab-clasificacion">
+        <div class="view-head"><h1 id="tab-clasificacion">Nueva Clasificación</h1></div>
+
+        <form class="card grid two form-grid" id="formClasificacion">
+          <label class="field"><span>Área administrativa</span><input class="input" type="text" required /></label>
+          <label class="field"><span>Serie/Expediente</span><input class="input" type="text" required /></label>
+          <label class="field"><span>Función (S/C)</span><input class="input" type="text" placeholder="S (Sustantiva) / C (Común)" required /></label>
+          <label class="field"><span>Descripción</span><input class="input" type="text" /></label>
+          <label class="field"><span>Año apertura</span><input class="input" type="number" min="1900" max="2100" required /></label>
+          <label class="field"><span>Código asignado</span><input class="input" type="text" required /></label>
+          <label class="field switch"><input type="checkbox" id="confidencial" /><span>Confidencial</span></label>
+          <div class="form-actions"><button class="btn" type="submit">Aplicar clasificación</button></div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modales -->
+  <div class="modal" id="modalVer" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Visualización del documento</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body">
+        <h4>Acta constitutiva</h4>
+        <p>Long body text - Minant…</p>
+      </div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Cerrar</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalEditar" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Editar documento</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body">
+        <form class="grid two">
+          <label class="field"><span>Título</span><input class="input" type="text" value="Acta constitutiva" /></label>
+          <label class="field"><span>Estado</span><select class="input"><option>Aceptado</option><option>No aceptado</option></select></label>
+          <label class="field wide"><span>Descripción</span><textarea class="input" rows="4">Documento oficial de la empresa</textarea></label>
+        </form>
+      </div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Guardar cambios</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalEstado" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Cambiar estado del documento</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body"><div class="radio-list"><label><input type="radio" name="estadoDoc" checked /> Aceptado</label><label><input type="radio" name="estadoDoc" /> No aceptado</label></div></div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Actualizar estado</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalReporte" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Generar reporte de documentos</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body"><p>El reporte se generará en formato PDF con la lista de documentos registrados.</p></div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Descargar Reporte</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalReportePDF" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Generar reporte PDF</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body"><p>Tu reporte en PDF está listo para descargar.</p></div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Descargar PDF</button></footer>
+    </div>
+  </div>
+  
+  <div class="modal" id="modalAgregarArea" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Editar organigrama</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body">
+        <div class="grid two">
+          <label class="field"><span>Nombre del área</span><input class="input" type="text" placeholder="Escribe el nombre…" /></label>
+          <label class="field"><span>Nivel</span>
+            <select class="input"><option>Primer nivel</option><option>Segundo nivel</option><option>Tercer nivel</option></select>
+          </label>
+          <label class="field"><span>Área superior</span>
+          <select class="input"><option>Presidencia</option><option>Secretaria del ayuntamiento</option><option>Dirección de registro civil</option><option>Tercer nivel</option></select>
+         </label>
+            </div>
+      </div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Guardar cambios</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalEditarOrganigrama" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Editar organigrama</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body">
+        <div class="grid two">
+          <label class="field"><span>Nombre del área</span><input class="input" type="text" placeholder="Escribe el nombre…" /></label>
+          <label class="field"><span>Nivel</span>
+            <select class="input"><option>Primer nivel</option><option>Segundo nivel</option><option>Tercer nivel</option></select>
+          </label>
+          <label class="field"><span>Área superior</span>
+          <select class="input"><option>Presidencia</option><option>Secretaria del ayuntamiento</option><option>Dirección de registro civil</option><option>Tercer nivel</option></select>
+         </label>
+            </div>
+      </div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Guardar cambios</button></footer>
+    </div>
+
+  <div class="modal" id="modalEliminarOrganigrama" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>¿Está seguro de eliminarlo?</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body"><p>No podrás revertir esto.</p></div>
+      <footer class="modal-foot between"><button class="btn ghost" data-modal-close>Cancelar</button><button class="btn danger" data-modal-close>Ok</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalGuardarOrganigrama" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Guardar versión de organigrama</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body"><label class="field"><span>Nombre de la versión</span><input class="input" type="text" placeholder="Ej. Organigrama 2025" /></label></div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Guardar</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalInsertarOrganigrama" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Agregar Organigrama</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body">
+        <div class="grid two">
+          <label class="field"><span>Nivel</span>
+            <select class="input"><option>Área superior</option><option>Primer nivel</option><option>Segundo nivel</option><option>Tercer nivel</option></select>
+          </label>
+          <label class="field"><span>Nombre del área</span><input class="input" type="text" placeholder="Escribe el nombre…" /></label>
+        </div>
+      </div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Insertar</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalVerVersion" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Organigrama 2023</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body">
+        <div class="org-chart mini">
+          <div class="org-node root">Presidencia
+            <div class="org-children">
+              <div class="org-node">Contraloría</div>
+              <div class="org-node">Secretaría del Ayuntamiento</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Cerrar</button></footer>
+    </div>
+  </div>
+
+  <div class="modal" id="modalCrearZip" aria-hidden="true">
+    <div class="modal-card">
+      <header class="modal-head"><h3>Crear Respaldo ZIP</h3><button class="icon-btn" data-modal-close>&times;</button></header>
+      <div class="modal-body"><p>Se generará un ZIP con los documentos seleccionados.</p></div>
+      <footer class="modal-foot"><button class="btn" data-modal-close>Crear</button></footer>
+    </div>
+  </div>
+  <script src="./script/script.js"></script>
+</body>
+</html>
