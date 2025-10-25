@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TLAHUAPAN — Gestión Documental</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <ul class="nav">
+            <li class="nav-item nav-category tlahuapan-item">
+                <div class="tlahuapan-logo-text">
+                    <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
+                    <span class="tlahuapan-text">TLAHUAPAN</span>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="Usuarios.html">
+                    <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Usuarios"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Usuarios</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="Dashboard.html">
+                    <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Dashboard"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="documentos.html">
+                    <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Documentos"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Documentos</span>
+                </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="gestionamiento.html">
+                    <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Gestión"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Gestionamiento</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="organigrama.html">
+                    <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Organigrama"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Organigrama</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="Dispersion.html">
+                    <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Dispersión"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Dispersión</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="leyarchivo.html">
+                    <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Ley de Archivo"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Ley de Archivo</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="clasificacion.html">
+                    <span class="icon-bg"><img src="../imagenes/clasificaciondocumentos.png" alt="Clasificación"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Clasificación</span>
+                </a>
+            </li>
+
+            <li class="nav-item cerrar-sesion">
+                <a class="nav-link" href="index.html" id="cerrarSesionLink">
+                    <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Cerrar sesión"
+                            class="sidebar-icon-img"></span>
+                    <span class="menu-title">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="main-content-wrapper">
+        <!-- Barra superior -->
+        <header class="navbar">
+            <div class="header-left-group">
+                <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
+            </div>
+            <div class="user-info">
+                <div class="profile-info-container">
+                    <img src="../imagenes/usuario.png" alt="Usuario" class="icon-control-img">
+                    <span class="user-name">Oficialía de partes</span>
+                </div>
+                <div class="notification-dropdown-container">
+                    <img src="../imagenes/notificacion.png" alt="Notificación" id="notification-icon"
+                        class="icon-control-img notification-icon-img">
+                    <div class="dropdown-menu notification-menu">
+                        <p class="dropdown-title">Notificaciones recientes</p>
+                        <a href="#" class="dropdown-item">Tienes 1 nuevo documento de
+                            Presidencia.</a>
+                        <a href="#" class="dropdown-item view-all">Ver todas las
+                            notificaciones</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Área de contenido -->
+        <main class="content-area">
+            <section id="gestion-organizacional" class="content-section content-view">
+                <h2>Gestión Organizacional</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Área</th>
+                                <th>Nivel</th>
+                                <th>Área superior</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Presidencia municipal</td>
+                                <td>Primer nivel</td>
+                                <td>Presidencia municipal</td>
+                                <td>
+                                    <button class="btn-action edit"
+                                        data-modal-open="modalEditarOrganigrama">Editar</button>
+                                    <button class="btn-action status-inactive"
+                                        data-modal-open="modalEliminarOrganigrama">Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Contraloría</td>
+                                <td>Segundo nivel</td>
+                                <td>Presidencia municipal</td>
+                                <td>
+                                    <button class="btn-action edit"
+                                        data-modal-open="modalEditarOrganigrama">Editar</button>
+                                    <button class="btn-action status-inactive"
+                                        data-modal-open="modalEliminarOrganigrama">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="organigrama-actions">
+                    <button class="btn-action edit" data-modal-open="modalGuardarOrganigrama">Guardar versión</button>
+                    <button class="btn-action edit" data-modal-open="modalInsertarOrganigrama">Insertar nueva
+                        área</button>
+                </div>
+            </section>
+            <!-- MODALES -->
+            <div class="modal" id="modalAgregarArea" aria-hidden="true">
+                <div class="modal-card">
+                    <header class="modal-head">
+                        <h3>Editar organigrama</h3><button class="icon-btn" data-modal-close>&times;</button>
+                    </header>
+                    <div class="modal-body">
+                        <div class="grid two">
+                            <label class="field"><span>Nombre del área</span><input class="input" type="text"
+                                    placeholder="Escribe el nombre…" /></label>
+                            <label class="field"><span>Nivel</span>
+                                <select class="input">
+                                    <option>Primer
+                                        nivel</option>
+                                    <option>Segundo nivel</option>
+                                    <option>Tercer
+                                        nivel</option>
+                                </select>
+                            </label>
+                            <label class="field"><span>Área superior</span>
+                                <select class="input">
+                                    <option>Presidencia</option>
+                                    <option>Secretaria
+                                        del ayuntamiento</option>
+                                    <option>Dirección de registro
+                                        civil</option>
+                                    <option>Tercer nivel</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <footer class="modal-foot"><button class="btn" data-modal-close>Guardar cambios</button></footer>
+                </div>
+            </div>
+
+            <!-- Modal editar organigrama -->
+            <div class="modal" id="modalEditarOrganigrama" aria-hidden="true">
+                <div class="modal-card">
+                    <header class="modal-head">
+                        <h3>Editar organigrama</h3>
+                        <button class="icon-btn" data-modal-close>&times;</button>
+                    </header>
+                    <div class="modal-body">
+                        <div class="grid two">
+                            <label class="field"><span>Nombre del área</span>
+                                <input class="input" type="text" placeholder="Escribe el nombre…" />
+                            </label>
+                            <label class="field"><span>Nivel</span>
+                                <select class="input">
+                                    <option>Primer nivel</option>
+                                    <option>Segundo nivel</option>
+                                    <option>Tercer nivel</option>
+                                </select>
+                            </label>
+                            <label class="field"><span>Área superior</span>
+                                <select class="input">
+                                    <option>Presidencia</option>
+                                    <option>Secretaria del ayuntamiento</option>
+                                    <option>Dirección de registro civil</option>
+                                    <option>TContraloria</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <footer class="modal-foot">
+                        <button class="btn" data-modal-close>Guardar cambios</button>
+                    </footer>
+                </div>
+            </div>
+
+            <!-- Modal eliminar organigrama -->
+            <div class="modal" id="modalEliminarOrganigrama" aria-hidden="true">
+                <div class="modal-card">
+                    <header class="modal-head">
+                        <h3>¿Está seguro de eliminarlo?</h3>
+                        <button class="icon-btn" data-modal-close>&times;</button>
+                    </header>
+                    <div class="modal-body">
+                        <p>No podrás revertir esto.</p>
+                    </div>
+                    <footer class="modal-foot between">
+                        <button class="btn ghost" data-modal-close>Cancelar</button>
+                        <button class="btn danger" data-modal-close>Ok</button>
+                    </footer>
+                </div>
+            </div>
+
+            <!-- Modal guardar versión -->
+            <div class="modal" id="modalGuardarOrganigrama" aria-hidden="true">
+                <div class="modal-card">
+                    <header class="modal-head">
+                        <h3>Guardar versión de organigrama</h3>
+                        <button class="icon-btn" data-modal-close>&times;</button>
+                    </header>
+                    <div class="modal-body">
+                        <label class="field">
+                            <span>Nombre de la versión</span>
+                            <input class="input" type="text" placeholder="Ej. Organigrama 2025" />
+                        </label>
+                        <label class="field">
+                            <span>Fecha de creación</span>
+                            <input class="input" type="date" />
+                        </label>
+                    </div>
+                    <footer class="modal-foot">
+                        <button class="btn" data-modal-close>Guardar</button>
+                    </footer>
+                </div>
+            </div>
+
+            <!-- Modal insertar nueva área -->
+            <div class="modal" id="modalInsertarOrganigrama" aria-hidden="true">
+                <div class="modal-card">
+                    <header class="modal-head">
+                        <h3>Agregar Organigrama</h3>
+                        <button class="icon-btn" data-modal-close>&times;</button>
+                    </header>
+
+                    <div class="modal-body">
+                        <div class="grid two">
+                            <label class="field"><span>Nombre del área</span>
+                                <input class="input" type="text" placeholder="Escribe el nombre…" />
+                            </label>
+                            <label class="field"><span>Nivel</span>
+                                <select class="input">
+                                    <option>Primer nivel</option>
+                                    <option>Segundo nivel</option>
+                                    <option>Tercer nivel</option>
+                                </select>
+                            </label>
+                            <label class="field"><span>Área superior</span>
+                                <select class="input">
+                                    <option>Presidencia municipal</option>
+                                    <option>Secretaria del ayuntamiento</option>
+                                    <option>Dirección de registro civil</option>
+                                    <option>Contraloria</option>
+                                </select>
+                            </label>
+
+                        </div>
+                    </div>
+                    <footer class="modal-foot">
+                        <button class="btn" data-modal-close>Insertar</button>
+                    </footer>
+                </div>
+            </div>
+        </main>
+    </div>
+    </main>
+    </div>
+    <!-- Script -->
+    <script src="../script1.js"></script>
+</body>
+</html>
