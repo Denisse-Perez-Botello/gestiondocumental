@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TLAHUAPAN — Gestión Documental</title>
+  <link rel="stylesheet" href="../styles/styles.css" />
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item nav-category tlahuapan-item">
+        <div class="tlahuapan-logo-text">
+          <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
+          <span class="tlahuapan-text">TLAHUAPAN</span>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="Usuarios.html">
+          <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Usuarios" class="sidebar-icon-img"></span>
+          <span class="menu-title">Usuarios</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="Dashboard.html">
+          <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Dashboard" class="sidebar-icon-img"></span>
+          <span class="menu-title">Dashboard</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="documentos.html">
+          <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Documentos" class="sidebar-icon-img"></span>
+          <span class="menu-title">Documentos</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="gestionamiento.html">
+          <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Gestión"
+              class="sidebar-icon-img"></span>
+          <span class="menu-title">Gestionamiento</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="organigrama.html">
+          <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Organigrama"
+              class="sidebar-icon-img"></span>
+          <span class="menu-title">Organigrama</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="Dispersion.html">
+          <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Dispersión"
+              class="sidebar-icon-img"></span>
+          <span class="menu-title">Dispersión</span>
+        </a>
+      </li>
+
+      <li class="nav-item active">
+        <a class="nav-link" href="leyarchivo.html">
+          <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Ley de Archivo"
+              class="sidebar-icon-img"></span>
+          <span class="menu-title">Ley de Archivo</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="clasificacion.html">
+          <span class="icon-bg"><img src="../imagenes/clasificaciondocumentos.png" alt="Clasificación"
+              class="sidebar-icon-img"></span>
+          <span class="menu-title">Clasificación</span>
+        </a>
+      </li>
+
+      <li class="nav-item cerrar-sesion">
+        <a class="nav-link" href="index.html" id="cerrarSesionLink">
+          <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Cerrar sesión"
+              class="sidebar-icon-img"></span>
+          <span class="menu-title">Cerrar sesión</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Contenedor principal -->
+  <div class="main-content-wrapper">
+    <!-- Barra superior -->
+    <header class="navbar">
+      <div class="header-left-group">
+        <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
+      </div>
+      <div class="user-info">
+        <div class="profile-info-container">
+          <img src="../imagenes/usuario.png" alt="Usuario" class="icon-control-img">
+          <span class="user-name">Oficialía de partes</span>
+        </div>
+        <div class="notification-dropdown-container">
+          <img src="../imagenes/notificacion.png" alt="Notificación" id="notification-icon"
+            class="icon-control-img notification-icon-img">
+          <div class="dropdown-menu notification-menu">
+            <p class="dropdown-title">Notificaciones recientes</p>
+            <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
+            <a href="#" class="dropdown-item view-all">Ver todas las notificaciones</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Área de contenido -->
+    <main class="content-area">
+      <!-- Ley de Archivo -->
+      <section id="ley-archivo" class="content-section content-view">
+        <h2>Ley de Archivo</h2>
+        <div class="user-management-actions">
+          <button class="btn-add-user" data-modal-open="modalRespaldo">
+            Generar respaldo ZIP
+          </button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Área</th>
+                <th>Ubicación</th>
+                <th>Clasificación</th>
+                <th>Etapa archivística</th>
+                <th>Valor documental</th>
+                <th>Tiempo de retención (años)</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>001</td>
+                <td>Acta constitutiva</td>
+                <td>Presidencia</td>
+                <td>Estantería A</td>
+                <td>GOB-2023-001</td>
+                <td>
+                  <select class="input select-etapa">
+                    <option>Trámite</option>
+                    <option>Concentración</option>
+                    <option>Histórico</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="input">
+                    <option>Administrativo</option>
+                    <option>Legal</option>
+                    <option>Fiscal</option>
+                    <option>Histórico</option>
+                  </select>
+                </td>
+                <td><input type="number" class="input" min="1" max="50" value="5"></td>
+                <td><span class="badge success">Activo</span></td>
+                <td>
+                  <button class="btn-action edit" data-modal-open="modalVer">Ver</button>
+                  <button class="btn-action" data-modal-open="modalEstado">Cambiar</button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>002</td>
+                <td>Permiso de construcción</td>
+                <td>Obras Públicas</td>
+                <td>Archivador B</td>
+                <td>OBP-2022-034</td>
+                <td>
+                  <select class="input select-etapa">
+                    <option>Trámite</option>
+                    <option selected>Concentración</option>
+                    <option>Histórico</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="input">
+                    <option>Administrativo</option>
+                    <option>Legal</option>
+                    <option selected>Fiscal</option>
+                    <option>Histórico</option>
+                  </select>
+                </td>
+                <td><input type="number" class="input" min="1" max="50" value="10"></td>
+                <td><span class="badge warn">Conservación</span></td>
+                <td>
+                  <button class="btn-action edit" data-modal-open="modalVer">Ver</button>
+                  <button class="btn-action" data-modal-open="modalEstado">Cambiar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Modal ver documento -->
+      <div class="modal" id="modalVer" aria-hidden="true">
+        <div class="modal-card">
+          <header class="modal-head">
+            <h3>Visualización del documento</h3>
+            <button class="icon-btn" data-modal-close>&times;</button>
+          </header>
+          <div class="modal-body">
+            <h4 id="tituloDocumento">Acta constitutiva</h4>
+            <iframe id="vistaDocumento" src="../documentos/Reticula ISC.pdf" width="100%" height="500px"
+              style="border:none; border-radius:8px;"></iframe>
+          </div>
+          <footer class="modal-foot"><button class="btn" data-modal-close>Cerrar</button></footer>
+        </div>
+      </div>
+
+      <!-- Modal cambiar estado -->
+      <div class="modal" id="modalEstado" aria-hidden="true">
+        <div class="modal-card">
+          <header class="modal-head">
+            <h3>Cambiar estado del documento</h3>
+            <button class="icon-btn" data-modal-close>&times;</button>
+          </header>
+          <div class="modal-body">
+            <div class="radio-list">
+              <label><input type="radio" name="estadoDoc" checked /> Activo</label>
+              <label><input type="radio" name="estadoDoc" /> En conservación</label>
+              <label><input type="radio" name="estadoDoc" /> Histórico</label>
+              <label><input type="radio" name="estadoDoc" /> Depurado</label>
+            </div>
+          </div>
+          <footer class="modal-foot"><button class="btn" data-modal-close>Actualizar estado</button></footer>
+        </div>
+      </div>
+
+      <!-- Modal generar respaldo -->
+      <div class="modal" id="modalRespaldo" aria-hidden="true">
+        <div class="modal-card">
+          <header class="modal-head">
+            <h3>Generar respaldo ZIP</h3>
+            <button class="icon-btn" data-modal-close>&times;</button>
+          </header>
+          <div class="modal-body">
+            <p>Seleccione el tipo de respaldo que desea generar:</p>
+            <select class="input">
+              <option>Respaldo total</option>
+              <option>Solo documentos activos</option>
+              <option>Solo históricos</option>
+            </select>
+            <p class="mt-2">El respaldo incluirá los documentos seleccionados en formato comprimido ZIP.</p>
+          </div>
+          <footer class="modal-foot"><button class="btn" data-modal-close>Generar respaldo</button></footer>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../script1.js"></script>
+</body>
+
+</html>
