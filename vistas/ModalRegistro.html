@@ -1,0 +1,49 @@
+<link rel="stylesheet" href="/styles/iniciosesion.css">
+<div class="modal" id="modalRegistro" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title-registro">
+        
+        <header class="modal-head">
+            <h3 id="modal-title-usuario">Registro</h3>
+            <button class="icon-btn close-red" data-modal-close aria-label="Cerrar">X</button>
+        </header>
+
+        <div class="modal-body">
+            <form id="form-insertar-usuario">
+                <label class="field">
+                    <input class="input" type="text" placeholder="Nombre" required />
+                </label>
+
+                <label class="field">
+                    <input class="input" type="text" placeholder="Usuario" required />
+                </label>
+
+                <label class="field">
+                    <input class="input" type="text" placeholder="Número de trabajador" />
+                </label>
+
+                <label class="field">
+                    <input class="input" type="email" placeholder="Correo electrónico" required />
+                </label>
+
+                <label class="field">
+                    <input class="input" type="password" placeholder="Contraseña" required />
+                </label>
+                <label class="field">
+                        <select class="input">
+                            <option value="" disabled selected>Rol</option>
+                            <option>Administrador</option>
+                            <option>Editor</option>
+                            <option>Visualizador</option>
+                        </select>
+                    </label>
+
+            </form>
+        </div>
+
+        <footer class="modal-foot">
+            <button class="btn btn-primary" type="submit" form="form-insertar-usuario">Aceptar</button>
+            <button class="btn btn-secondary" data-modal-close>Cancelar</button>
+        </footer>
+    </div>
+</div>
+<script src="/script/iniciosesion.js"></script>

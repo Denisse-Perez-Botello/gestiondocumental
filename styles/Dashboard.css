@@ -1,6 +1,6 @@
 /*
  * =========================================================
- * ESTILOS GLOBALES Y LAYOUT PRINCIPAL (BASE DE PÁGINA)
+ * ESTILOS GLOBALES Y LAYOUT PRINCIPAL (MANTENIDOS)
  * =========================================================
  */
 html, body {
@@ -20,7 +20,7 @@ body {
     min-height: 100vh;
 }
 
-/* 2. BARRA LATERAL (SIDEBAR) */
+/* 2. BARRA LATERAL (SIDEBAR) (MANTENIDOS) */
 .sidebar {
     min-height: 100vh;
     background: #C2B998; /* Color de fondo mantenido */
@@ -31,7 +31,7 @@ body {
     flex-shrink: 0; /* 🔸 CLAVE: Evita que el sidebar se encoja */
 }
 
-/* 3. CONTENEDOR PRINCIPAL (TODO lo que va a la DERECHA del Sidebar) */
+/* 3. CONTENEDOR PRINCIPAL (TODO lo que va a la DERECHA del Sidebar) (MANTENIDOS) */
 .main-content-wrapper {
     /* 🔸 CLAVE: Ocupa todo el espacio restante (el ancho deseado para Navbar/Contenido) */
     flex-grow: 1; 
@@ -39,13 +39,13 @@ body {
     /* Apila el Navbar y el Content-Area verticalmente */
     display: flex;
     flex-direction: column; 
-    overflow-y: auto;  /*Permite scroll en el contenido si es largo */
+    overflow-y: auto; /* Permite scroll en el contenido si es largo */
     min-height: 100vh;
 }
 
 
 /* ---------------------------------------------------------------------- */
-/* AJUSTES DE ÍCONOS DE IMAGEN Y BÚSQUEDA (Mantenidos) */
+/* AJUSTES DE ÍCONOS DE IMAGEN Y BÚSQUEDA (MANTENIDOS) */
 /* ---------------------------------------------------------------------- */
 
 /* Estilo Base para TODAS las imágenes de control (Menu, Notificación, Usuario) */
@@ -61,8 +61,7 @@ body {
 
 /*
  * =========================================================
- * BARRA SUPERIOR (NAVBAR)
- * 🔸 ESTE COMPONENTE AHORA SOLO ABARCA EL ANCHO DE .main-content-wrapper
+ * BARRA SUPERIOR (NAVBAR) (MANTENIDOS)
  * =========================================================
  */
 
@@ -73,8 +72,6 @@ body {
     padding: 10px 20px;
     background-color: #fff;
     border-bottom: 1px solid #ddd;
-    /* Ya no necesita ancho 100% explícito, se ajusta automáticamente 
-       al 100% del contenedor padre (.main-content-wrapper) */
     flex-shrink: 0; 
 }
 
@@ -175,28 +172,35 @@ body {
 }
 /* Quitar subrayado de los enlaces (General) */
 a {
-  text-decoration: none !important;
+    text-decoration: none !important;
 }
+
+
+/*
+ * =========================================================
+ * ESTILOS DE LA BARRA LATERAL (SIDEBAR) (MANTENIDOS)
+ * =========================================================
+ */
 
 /* Contenedor flex para logo + texto (TLAHUAPAN) */
 .tlahuapan-item .tlahuapan-logo-text {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 /* Tamaño del logo */
 .tlahuapan-logo {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
 }
 
 /* Texto a la derecha */
 .tlahuapan-text {
-  font-weight: bold;
-  font-size: 1.3rem;
-  color: #394757;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #394757;
 }
 
 /* Listado de navegación */
@@ -306,9 +310,12 @@ a {
 .sidebar .nav .nav-item.cerrar-sesion {
     margin-top: auto;
 }
-/* =========================================================
-   SIDEBAR COLAPSADO (.sidebar.collapsed)
-   ========================================================= */
+
+/*
+ * =========================================================
+ * SIDEBAR COLAPSADO (.sidebar.collapsed) (MANTENIDOS)
+ * =========================================================
+ */
 
 /* 1. Reducir el ancho y quitar padding base */
 .sidebar.collapsed {
@@ -363,8 +370,6 @@ a {
 
 /* Contenedor que alberga el contenido principal (a la derecha del sidebar) */
 .content-area {
-    /* Ya no necesita 'flex-grow: 1' aquí porque su padre, 
-       .main-content-wrapper, ya lo define verticalmente */
     flex-grow: 1;
     padding: 0; 
     overflow-y: auto; 
@@ -372,15 +377,16 @@ a {
     flex-direction: column; /* Apila las vistas de contenido */
 }
 
+/* Contenedor principal de la vista, se ajusta para el dashboard */
 .content-section {
-    flex-grow: 1; /* Esto asegura que la card de la tabla ocupe el espacio */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background-color: #fff;
-    margin: 20px; 
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    background-color: #f4f7f6; /* Fondo del área de contenido, no de la card */
+    margin: 0; /* Quitamos el margen general de la sección para controlarlo por el .dashboard-container */
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .content-section h2 {
@@ -389,192 +395,223 @@ a {
     color: #333;
 }
 
-/* Acciones de Gestión */
-.user-management-actions {
+
+/*
+ * =========================================================
+ * ESTILOS DE DASHBOARD: GRÁFICAS (CONTENIDO PRINCIPAL)
+ * =========================================================
+ */
+
+/* Contenedor principal: usa Flexbox para colocar las tarjetas lado a lado */
+.dashboard-container {
+    display: flex;
+    gap: 20px; 
+    padding: 20px; /* Se agrega padding aquí para separar del borde del main-content-wrapper */
+    /* CLAVE DEL CAMBIO: Ocupa todo el ancho disponible */
+    width: 100%; 
+    max-width: none; /* Asegura que se extienda */
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general para las tarjetas */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    /* CLAVE: Altura mínima para asegurar una buena presentación, PERO se adaptará. */
+    min-height: 550px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CLAVE: La tarjeta de círculos es más angosta (1 parte) */
+.circulos-card {
+    flex: 1; 
+}
+
+/* CLAVE: La tarjeta de barras es más ancha (2 partes) */
+.barras-card {
+    flex: 2; 
+}
+
+.card h2 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
     margin-bottom: 20px;
-}
-
-/* Botón Agregar Usuario */
-.btn-add-user {
-    background-color: #3587ab; 
-    color: white;
-    border: none;
-    padding: 8px 15px;
+    color: #333;
+    font-size: 1.2em;
     text-align: center;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
 }
 
-.btn-add-user:hover {
-    background-color: #12a0cc;
-}
+/* ------------------------------------ */
+/* 2. ESTILOS DE CÍRCULOS DE PROGRESO (CARD 1) */
+/* ------------------------------------ */
 
-.btn-add-user i {
-    margin-right: 5px;
-}
-
-/* ESTILOS DE TABLA Y BOTONES DE ACCIÓN */
-.table-container {
-    flex-grow: 1;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-table thead {
-    background-color: #f0f0f0;
-    border-bottom: 2px solid #ddd;
-}
-
-table th, table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-}
-
-table th {
-    color: #555;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-table tr:hover {
-    background-color: #fafafa;
-}
-
-/* Botones de Acción en la Tabla (Base) */
-.btn-action {
-    border: none;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    font-size: 12px;
-    margin-right: 5px;
-    cursor: pointer;
-    border-radius: 4px;
-    color: white;
-    transition: background-color 0.3s;
-}
-
-.btn-action i {
-    margin-right: 5px; 
-}
-
-/* Color: Botón Editar (Azul) */
-.btn-action.edit {
-    background-color: #498FAE;
-}
-
-.btn-action.edit:hover {
-    background-color: #12a0cc;
-}
-
-/* Color: Activo (Verde) */
-.btn-action.status-active {
-    background-color: #28a745;
-    margin-right: 0;
-}
-
-.btn-action.status-active:hover {
-    background-color: #1e7e34;
-}
-
-/* Color: Inactivo (Rojo) */
-.btn-action.status-inactive {
-    background-color: #dc3545;
-    margin-right: 0;
-}
-
-.btn-action.status-inactive:hover {
-    background-color: #bd2130;
-}
-
-/* Estilos para el Dropdown de Estado */
-.dropdown-action {
-    position: relative;
-    display: inline-block;
-    margin-left: 5px; 
-}
-
-.dropdown-toggle-status {
-    background-color: #6c757d; 
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    display: inline-flex; 
-    align-items: center;
-    transition: background-color 0.3s;
-}
-
-.dropdown-toggle-status:hover {
-    background-color: #5a6268;
-}
-
-.dropdown-toggle-status i {
-    margin-left: 5px;
-    font-size: 10px;
-    margin-right: 0; 
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 120px;
-    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
-    z-index: 10; 
-    border-radius: 4px;
-    overflow: hidden;
-    right: 0;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-}
-
-.dropdown-content button {
-    padding: 8px 10px;
-    text-decoration: none;
+.indicadores-contenedor {
     display: flex; 
-    align-items: center;
-    width: 100%;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
-    color: white; 
-    border-radius: 0;
-    margin-right: 0; 
+    flex-direction: column; /* Cambiamos a columna para aprovechar el espacio vertical de esta card angosta */
+    justify-content: center;
+    align-items: center; 
+    padding: 10px 0;
+    gap: 25px; /* Más espacio vertical entre los círculos */
+    height: 100%; /* Ocupa la altura del card (si se define min-height) */
 }
 
-.dropdown-content button i {
-    margin-right: 8px;
+.indicador {
+    text-align: center;
+    width: 100%; /* Ocupa el ancho del card */
+    flex-shrink: 0;
 }
 
-/* =========================================================
- Maneja la lógica de "vistas" al hacer clic
-   en las opciones del menú lateral.
-   ========================================================= */
+.titulo-indicador {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9em;
+}
 
-/* 1. Oculta todas las secciones de contenido por defecto 
-.content-area .content-view {
-    display: none;
-}*/
-
-/* 2. Muestra solo la sección de contenido que tiene la clase 'active' */
-.content-area .content-view.active {
-    display: block;
+/* Contenedor principal del gráfico circular */
+.circulo-progreso {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
     
+    background: #e0e0e0; 
+    margin: 0 auto 15px; 
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circulo-progreso .valor {
+    /* Círculo interior blanco (el hueco) */
+    position: absolute;
+    z-index: 2; 
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: white;
+    
+    /* Estilo del número centrado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* --- LÓGICA CONIC-GRADIENT (Simulación del progreso) --- */
+
+/* Círculo 1: 85% (306 grados) - Verde */
+.progreso-85 {
+    background: conic-gradient(#4CAF50 0deg, #4CAF50 306deg, #e0e0e0 306deg);
+}
+
+/* Círculo 2: 50% (180 grados) - Amarillo */
+.progreso-50 {
+    background: conic-gradient(#FFC107 0deg, #FFC107 180deg, #e0e0e0 180deg);
+}
+
+/* Círculo 3: 15% (54 grados) - Rojo */
+.progreso-15 {
+    background: conic-gradient(#F44336 0deg, #F44336 54deg, #e0e0e0 54deg);
+}
+
+
+/* ------------------------------------ */
+/* 3. ESTILOS DE GRÁFICA DE BARRAS (CARD 2) */
+/* ------------------------------------ */
+
+.grafica-correspondencia {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.subtitulo-grafica {
+    font-size: 0.9em;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.grafico-contenedor {
+    display: flex;
+    height: 350px; 
+    border-left: 1px solid #ccc; 
+    border-bottom: 1px solid #ccc; 
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.eje-y-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.8em;
+    color: #999;
+    padding-right: 10px;
+    height: 100%; 
+}
+.eje-y-labels div:first-child {
+    padding-top: 0; 
+}
+
+.barras-contenedor {
+    display: flex;
+    align-items: flex-end; 
+    justify-content: space-around; 
+    width: 100%;
+    position: relative;
+    padding: 0 10px; 
+}
+
+.barra-area {
+    display: flex;
+    flex-direction: column;
+    width: 60px; 
+    margin: 0 15px; 
+    position: relative;
+    justify-content: flex-end;
+}
+
+.segmento {
+    width: 100%;
+}
+
+.etiqueta-area {
+    position: absolute;
+    bottom: -25px; 
+    width: 100px; 
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8em;
+    color: #333;
+    text-align: center;
+    white-space: nowrap; 
+}
+
+/* Colores de Segmentos y Leyenda */
+.segmento.green, .leyenda-color.green { background-color: #4CAF50; }
+.segmento.yellow, .leyenda-color.yellow { background-color: #FFC107; }
+.segmento.red, .leyenda-color.red { background-color: #F44336; }
+
+.leyenda {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin-top: 25px;
+    font-size: 0.85em;
+}
+.leyenda-color {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 5px;
+    vertical-align: middle;
 }

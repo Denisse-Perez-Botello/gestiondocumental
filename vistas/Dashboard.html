@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oficialía de Partes - Dashboard</title>
+    <title>Dashboard Correspondencia</title>
 
-   <link rel="stylesheet" href="/styles/Dispersion.css">
+    <link rel="stylesheet" href="/styles/Dashboard.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -29,14 +29,14 @@
                 </a>
             </li>
 
-            <li class="nav-item" id="menu-dashboard">
+            <li class="nav-item active" id="menu-dashboard">
                 <a class="nav-link" href="Dashboard.html" >
                     <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Icono Dashboard" class="sidebar-icon-img"></span>
                     <span class="menu-title">Dashboard</span>
                 </a>
             </li>
 
-            <li class="nav-item" id="menu-documentos">
+            <li class="nav-item" id="menu-documentos" >
                 <a class="nav-link" href="documentos.html" >
                     <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
                     <span class="menu-title">Documentos</span>
@@ -57,7 +57,7 @@
                 </a>
             </li>
 
-            <li class="nav-item active" id="menu-dispersion">
+            <li class="nav-item" id="menu-dispersion">
                 <a class="nav-link" href="Dispersion.html" >
                     <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Icono Dispersión" class="sidebar-icon-img"></span>
                     <span class="menu-title">Dispersión</span>
@@ -104,7 +104,7 @@
             <div class="user-info">
                 <div class="profile-info-container">
                     <img src="../imagenes/usuario.png" alt="Usuario" class="icon-control-img">
-                    <span class="user-name">Oficialía de partes</span>
+                    <span class="user-name">Presidencia</span>
                 </div>
                 
                 <div class="notification-dropdown-container">
@@ -121,112 +121,91 @@
 <!--Fin Barra de Navegacion -->
         
         
-        <main class="content-area">
-          <div class="main-layout">
+        <!--Dashboard-->
+        <div class="dashboard-container">
+        
+        <div class="card circulos-card">
+            <h2>Indicadores de Desempeño</h2>
+            <div class="indicadores-contenedor">
                 
-                <div class="content-section table-component">
-                    <h2 class="card-title">Correspondencia</h2>
-
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Tipo de Documento</th>
-                                    <th>Fecha de Recepción</th>
-                                    <th>Fecha de respuesta</th>
-                                    <th>Estatus</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Notificación de trabajos.pdf</td>
-                                    <td>20-09-2025</td>
-                                    <td>21-09-2025</td>
-                                    <td>Aprobado</td>
-                                </tr>
-                                <tr>
-                                    <td>Solicitud de Viáticos.jpg</td>
-                                    <td>20-09-2025</td>
-                                    <td>22-09-2025 </td>
-                                    <td>Rechazado</td>
-                                </tr>
-                                <tr>
-                                    <td>Solicitud de uso de espacio público.pdf</td>
-                                    <td>22-09-2025</td>
-                                    <td>25-09-2025</td>
-                                    <td>Aprobado</td>
-                                </tr>
-                                <tr>
-                                    <td>Informe de servicios públicos.pdf</td>
-                                    <td>25-09-2025</td>
-                                    <td>29-09-2025</td>
-                                    <td>Vencido</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="indicador">
+                    <div class="circulo-progreso progreso-85" data-porcentaje="85">
+                        <span class="valor">85%</span>
                     </div>
+                    <p class="titulo-indicador">Documentos EN TIEMPO</p>
                 </div>
-                <div class="card form-component">
-                    <h2>Notificación de Trabajos sobre el<br>Derecho de Vía</h2>
-
-                    <div class="file-upload-area" id="fileArea">
-                        <iframe id="fileViewer" class="document-viewer" srcdoc="<p class='initial-message'>Selecciona un documento de la tabla para previsualizarlo aquí.</p>"></iframe>
+                
+                <div class="indicador">
+                    <div class="circulo-progreso progreso-50" data-porcentaje="50">
+                        <span class="valor">50%</span>
+                    </div>
+                    <p class="titulo-indicador">ATENCIÓN PRÓXIMO A VENCER</p>
+                </div>
+                
+                <div class="indicador">
+                    <div class="circulo-progreso progreso-15" data-porcentaje="15">
+                        <span class="valor">15%</span>
+                    </div>
+                    <p class="titulo-indicador">URGENTE! VENCIDOS</p>
+                </div>
+                </div>
+        </div>
+        
+        <div class="card barras-card">
+            <h2>Correspondencia de Casos</h2>
+            
+            <div class="grafica-correspondencia">
+                <p class="subtitulo-grafica">Documentos por Área y Estado</p>
+                
+                <div class="grafico-contenedor">
+                    <div class="eje-y-labels">
+                        <div>300</div>
+                        <div>60</div>
+                        <div>30</div>
+                        <div>0</div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="asunto">Asunto:</label>
-                        <textarea id="asunto" rows="2" placeholder="Escribe el asunto..."></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fechalimite">Fecha límite</label>
-                        <input type="text" id="fechalimite" placeholder="Fecha límite" /> 
-                    </div>
-
-                    <div class="form-group">
-                        <label>Área de Destino</label>
+                    <div class="barras-contenedor">
                         
-                        <div id="area-checkboxes" class="checkbox-group">
-                            
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="area" value="Presidencia"> Presidencia
-                            </label>
-                            
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="area" value="Secretaría Técnica"> Secretaría Técnica
-                            </label>
-                            
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="area" value="Jurídico"> Jurídico
-                            </label>
-                            
-                            <label class="checkbox-item">
-                                <input type="checkbox" name="area" value="Oficialía de Partes"> Ley de Archivo
-                            </label>
-                            
+                        <div class="barra-area">
+                            <div class="segmento green" style="height: 50px;"></div> 
+                            <div class="segmento yellow" style="height: 20px;"></div>
+                            <div class="segmento red" style="height: 10px;"></div>
+                            <span class="etiqueta-area">Presidencia</span>
                         </div>
-                    </div>
+                        
+                        <div class="barra-area">
+                            <div class="segmento green" style="height: 40px;"></div>
+                            <div class="segmento yellow" style="height: 35px;"></div>
+                            <div class="segmento red" style="height: 15px;"></div>
+                            <span class="etiqueta-area">Contabilidad Técnica</span>
+                        </div>
 
-                    <button class="btn-confirmar">Confirmar Dispersión</button>
+                        <div class="barra-area">
+                            <div class="segmento green" style="height: 55px;"></div>
+                            <div class="segmento yellow" style="height: 25px;"></div>
+                            <div class="segmento red" style="height: 20px;"></div>
+                            <span class="etiqueta-area">Recursos Humanos</span>
+                        </div>
+
+                        <div class="barra-area">
+                            <div class="segmento green" style="height: 30px;"></div>
+                            <div class="segmento yellow" style="height: 60px;"></div>
+                            <div class="segmento red" style="height: 70px;"></div>
+                            <span class="etiqueta-area">Obras Públicas</span>
+                        </div>
+                        </div>
                 </div>
-                </div>
-           
-        </main>
-    </div>
-  <!--Alerta Modal cuando el documento fue dispersado -->  
-   <!-- <div class="custom-modal-backdrop" id="customAlertModal">
-        <div class="card card-inverse-info">
-            <div class="card-body">
-                <p class="mb-4" id="alertMessageContent">Documento dispersado con éxito.</p>
                 
-                <div class="button-group">
-                    <button class="btn btn-info" id="alertOkButton">Ok</button>
+                <div class="leyenda">
+                    <div class="leyenda-item"><span class="leyenda-color green"></span> Cerrado</div>
+                    <div class="leyenda-item"><span class="leyenda-color yellow"></span> En Proceso</div>
+                    <div class="leyenda-item"><span class="leyenda-color red"></span> Pendiente</div>
                 </div>
-                
             </div>
         </div>
-    </div>--> 
-    <!--Fin de Alerta Modal -->
-    <script src="/script/Dispersion.js"></script>
-</body>
+    </div> 
+    </div>
+     <script src="/script/Dashboard.js"></script>
+    </body>
 </html>

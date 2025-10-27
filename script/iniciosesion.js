@@ -1,58 +1,124 @@
 // Variables globales
-let rhIP = null;
+/*let rhIP = null;
 
-// Simulación de storage
 const STORAGE_KEY = 'rh_server_ip';
 
-// Funciones de persistencia
 function loadStoredIp() {
-    // return '192.168.1.100'; // Descomenta para simular IP guardada
+    // return '192.168.1.100'; // Descomentar para simular IP guardada
     return localStorage.getItem(STORAGE_KEY);
 }
 
 function saveIpToStorage(ip) {
     localStorage.setItem(STORAGE_KEY, ip);
     console.log(`[PERSISTENCIA] IP de RH guardada: ${ip}`);
+}*/
+
+// =================================================================
+//  FUNCIONES MODAL DE CLAVE 
+// =================================================================
+
+function abrirModalRegistro() {
+    console.log('Abriendo Modal de Registro...');
+  
+    const modal = document.getElementById('modalRegistro'); 
+    if (modal) {
+        // El CSS usa la clase 'is-open' para mostrar el modal (display: flex)
+        modal.classList.add('is-open'); 
+        modal.setAttribute('aria-hidden', 'false');
+    }
 }
 
-// Funciones del modal de clave
-function abrirModalClave() {
-    console.log('Función abrirModalClave ejecutada'); // Debug
-    const modal = document.getElementById('modalClave');
+function cerrarModalRegistro() {
+    console.log('Cerrando Modal de Registro...');
+    const modal = document.getElementById('modalRegistro');
     if (modal) {
-        modal.style.display = 'flex';
-        const claveInput = document.getElementById('claveInput');
-        if (claveInput) {
-            claveInput.focus();
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+        // Limpiar mensajes al cerrar
+        const mensaje = document.getElementById("mensajeClave");
+        if (mensaje) {
+            mensaje.style.display = "none";
+            mensaje.textContent = "";
         }
-        console.log('Modal de clave mostrado'); // Debug
+    }
+
+
+
+// =================================================================
+// FUNCIONES MODAL DE CLAVE 
+// =================================================================
+
+const CLAVE_ESPECIAL = "clave123"; // Clave temporal
+
+function abrirModalClave() {
+    console.log('Función abrirModalClave ejecutada');
+    const modal = document.getElementById("modalClave");
+    if (modal) {
+        modal.style.display = "flex";
+        const claveInput = document.getElementById("claveInput");
+        if (claveInput) claveInput.focus();
+
+        // Limpiar mensajes y valor al abrir
+        const mensaje = document.getElementById("mensajeClave");
+        if (mensaje) {
+            mensaje.style.display = "none";
+            mensaje.textContent = "";
+        }
+        console.log('Modal de clave mostrado');
     } else {
         console.error('No se encontró el elemento modalClave');
     }
 }
 
 function cerrarModalClave() {
-    console.log('Cerrando modal de clave'); // Debug
-    const modal = document.getElementById('modalClave');
+    console.log('Cerrando modal de clave');
+    const modal = document.getElementById("modalClave");
     if (modal) {
-        modal.style.display = 'none';
-        const claveInput = document.getElementById('claveInput');
-        if (claveInput) {
-            claveInput.value = '';
+        modal.style.display = "none";
+        const claveInput = document.getElementById("claveInput");
+        if (claveInput) claveInput.value = "";
+
+        // Limpiar mensajes al cerrar
+        const mensaje = document.getElementById("mensajeClave");
+        if (mensaje) {
+            mensaje.style.display = "none";
+            mensaje.textContent = "";
         }
     }
 }
 
 function confirmarClave() {
-    const clave = document.getElementById('claveInput').value;
-    if (clave.trim() !== '') {
-        console.log('Clave introducida:', clave);
-        alert('¡Clave especial verificada!');
-        cerrarModalClave();
+    const clave = document.getElementById("claveInput").value.trim();
+    const mensaje = document.getElementById("mensajeClave");
+
+    if (clave === "") {
+        mensaje.textContent = "⚠️ Por favor, introduce una clave.";
+        mensaje.style.color = "orange";
+        mensaje.style.display = "block";
+        return;
+    }
+
+    if (clave === CLAVE_ESPECIAL) {
+        mensaje.textContent = "Clave verificada correctamente. Abriendo registro...";
+        mensaje.style.color = "green";
+        mensaje.style.display = "block";
+
+        setTimeout(() => {
+            // Ocultar el Modal de Clave
+            cerrarModalClave(); 
+            
+            // Abre el modal de registro
+            abrirModalRegistro(); 
+        }, 1000); // Espera 1 segundo para mostrar el mensaje de éxito
     } else {
-        alert('Por favor, introduce una clave.');
+        mensaje.textContent = "Clave incorrecta. Intenta nuevamente.";
+        mensaje.style.color = "red";
+        mensaje.style.display = "block";
+        document.getElementById("claveInput").value = ""; 
     }
 }
+
 
 // Funciones del modal de IP
 function guardarIP() {
@@ -83,20 +149,20 @@ function handleSubmit(e) {
 
 // Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM cargado'); // Debug
+    console.log('DOM cargado'); 
     
-    // Verificar si el modal de clave existe
+    // Verificacion si el modal de clave existe
     const modalClave = document.getElementById('modalClave');
-    console.log('Modal clave encontrado:', modalClave); // Debug
+    console.log('Modal clave encontrado:', modalClave); 
     
-    // Agregar event listener al logo
+    // Event listener al logo de tlahuapan
     const logoButton = document.querySelector('.logo-button');
     if (logoButton) {
         logoButton.addEventListener('click', function() {
-            console.log('Logo clickeado'); // Debug
+            console.log('Logo clickeado'); 
             abrirModalClave();
         });
-        console.log('Event listener agregado al logo'); // Debug
+        console.log('Event listener agregado al logo'); 
     } else {
         console.error('No se encontró el elemento logo-button');
     }
@@ -113,18 +179,58 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Event listener para el formulario
+   
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', handleSubmit);
     }
 });
 
-// Cerrar modales al hacer clic fuera
+// Cerrar modales 
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('modal-overlay')) {
         if (e.target.id === 'modalClave') {
             cerrarModalClave();
         }
     }
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM cargado'); 
+    
+    // Lógica de modalClave, logoButton, IP, loginForm
+    
+    /* ========================================================= */
+    /*MANEJO DEL ENVÍO DEL FORMULARIO DE REGISTRO */
+    /* ========================================================= */
+    
+ 
+    const formRegistro = document.getElementById('form-insertar-usuario');
+
+    if (formRegistro) {
+        formRegistro.addEventListener('submit', (event) => {
+        
+            event.preventDefault(); 
+            
+            console.log('Datos de registro enviados. Redirigiendo...');
+
+        
+            cerrarModalRegistro();
+           //.......................................................................................................... 
+            //Redirigir al usuario a la página de Usuarios.html
+            window.location.href = "../vistas/Usuarios.html"; 
+        });
+    }
+
+
+    // Cerrar modales 
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('modal-overlay')) {
+            if (e.target.id === 'modalClave') {
+                cerrarModalClave();
+            }
+        }
+    });
 });
