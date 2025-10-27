@@ -1,0 +1,985 @@
+/*
+ * =========================================================
+ * ESTILOS GLOBALES Y LAYOUT PRINCIPAL (BASE DE PÁGINA)
+ * =========================================================
+ */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. LAYOUT PRINCIPAL: BODY */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+
+    /* 🔸 CLAVE: Flexbox para alinear Sidebar y Contenido Principal */
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 2. BARRA LATERAL (SIDEBAR) */
+.sidebar {
+    min-height: 100vh;
+    background: #C2B998;
+    /* Color de fondo mantenido */
+    padding: 0;
+    width: 270px;
+    /* Ancho fijo del Sidebar */
+    z-index: 11;
+    transition: width 0.25s ease, background 0.25s ease;
+    flex-shrink: 0;
+    /* 🔸 CLAVE: Evita que el sidebar se encoja */
+}
+
+/* 3. CONTENEDOR PRINCIPAL (TODO lo que va a la DERECHA del Sidebar) */
+.main-content-wrapper {
+    /* 🔸 CLAVE: Ocupa todo el espacio restante (el ancho deseado para Navbar/Contenido) */
+    flex-grow: 1;
+
+    /* Apila el Navbar y el Content-Area verticalmente */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    /*Permite scroll en el contenido si es largo */
+    min-height: 100vh;
+}
+
+
+/* ---------------------------------------------------------------------- */
+/* AJUSTES DE ÍCONOS DE IMAGEN Y BÚSQUEDA (Mantenidos) */
+/* ---------------------------------------------------------------------- */
+
+/* Estilo Base para TODAS las imágenes de control (Menu, Notificación, Usuario) */
+.icon-control-img {
+    width: 20px;
+    /* Tamaño base más pequeño (MANTENIDO) */
+    height: 20px;
+    object-fit: contain;
+    cursor: pointer;
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+
+/*
+ * =========================================================
+ * BARRA SUPERIOR (NAVBAR)
+ * 🔸 ESTE COMPONENTE AHORA SOLO ABARCA EL ANCHO DE .main-content-wrapper
+ * =========================================================
+ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+<<<<<<< HEAD:styles/Usuarios.css
+    flex-shrink: 0; 
+=======
+    /* Ya no necesita ancho 100% explícito, se ajusta automáticamente 
+       al 100% del contenedor padre (.main-content-wrapper) */
+    flex-shrink: 0;
+>>>>>>> 7e75d8ff9beb982d6ac8c69523556195ee99fdf8:styles/styles.css
+}
+
+/* Barra de Búsqueda */
+.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+}
+
+.header-left-group {
+    display: flex;
+    /* Activa Flexbox */
+    align-items: center;
+    /* Alineación vertical centrada */
+    gap: 15px;
+    /* Agrega un pequeño espacio entre el menú y la búsqueda */
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 3px;
+    width: 150px;
+}
+
+/* Estilos de Usuario y Notificaciones */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    margin-right: 15px;
+    color: #333;
+}
+
+/* Contenedores de Despliegue */
+.notification-dropdown-container,
+.profile-info-container {
+    position: relative;
+    cursor: pointer;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para el Menú Desplegable de Notificaciones */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    padding: 10px 0;
+}
+
+.dropdown-menu.visible {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-title {
+    font-weight: bold;
+    color: #444;
+    padding: 5px 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    white-space: normal;
+}
+
+.dropdown-item:hover {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.dropdown-item.view-all {
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+    border-top: 1px solid #eee;
+    margin-top: 5px;
+}
+
+/* Quitar subrayado de los enlaces (General) */
+a {
+    text-decoration: none !important;
+}
+
+/* Contenedor flex para logo + texto (TLAHUAPAN) */
+.tlahuapan-item .tlahuapan-logo-text {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Tamaño del logo */
+.tlahuapan-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+/* Texto a la derecha */
+.tlahuapan-text {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #394757;
+}
+
+/* Listado de navegación */
+.sidebar .nav {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin-bottom: 60px;
+    list-style-type: none !important;
+    padding-left: 0;
+    margin: 0;
+}
+
+.sidebar .nav .nav-item {
+    padding: 0 2.375rem;
+    transition-duration: 0.25s;
+    transition-property: background;
+    position: relative;
+}
+
+/* Estilo para el título "TLAHUAPAN" (nav-category) */
+.sidebar .nav .nav-item.nav-category {
+    color: #394757;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 16px;
+    margin: 25px 0px 10px 0px;
+    font-family: "nunito-bold", sans-serif;
+    gap: 12px;
+    padding-left: 1rem;
+}
+
+.sidebar .nav .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: normal;
+    height: auto;
+    padding: 0.625rem 0 0.625rem 0;
+    color: #424748;
+    transition-duration: 0.45s;
+    transition-property: color;
+    text-overflow: ellipsis;
+    text-decoration: none !important;
+}
+
+.sidebar .nav .nav-item .nav-link .icon-bg {
+    margin-right: 0.875rem;
+    background: rgba(194, 244, 219, 0.12);
+    height: 32px;
+    width: 32px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    text-align: center;
+}
+
+/* Estilo para la imagen del ícono*/
+.sidebar .nav .nav-item .nav-link .icon-bg .sidebar-icon-img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.sidebar .nav .nav-item .nav-link .menu-title {
+    color: inherit;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 2.5;
+}
+
+/* Estado Activo */
+.sidebar .nav .nav-item.active {
+    background: transparent;
+}
+
+.sidebar .nav .nav-item.active>.nav-link:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .5rem;
+    bottom: 0;
+    background: #9F6E38;
+    height: 24px;
+    width: 4px;
+}
+
+.sidebar .nav .nav-item.active>.nav-link .menu-title {
+    color: #9F6E38;
+    font-family: "nunito-medium", sans-serif;
+}
+
+.sidebar .nav .nav-item.active>.nav-link i {
+    color: #9F6E38;
+}
+
+/* Hover */
+.sidebar .nav .nav-item:hover {
+    background: #AEA481;
+}
+
+.sidebar .nav:not(.sub-menu)>.nav-item:hover:not(.nav-category):not(.nav-profile)>.nav-link {
+    color: #9F6E38;
+}
+
+/* Estilo para "Cerrar sesión" */
+.sidebar .nav .nav-item.cerrar-sesion {
+    margin-top: auto;
+}
+
+/* =========================================================
+    SIDEBAR COLAPSADO (.sidebar.collapsed)
+    ========================================================= */
+
+/* 1. Reducir el ancho y quitar padding base */
+.sidebar.collapsed {
+    width: 80px;
+    /* Ancho reducido fijo para solo mostrar íconos */
+    /* Asegura una transición suave al colapsar/expandir */
+    transition: width 0.25s ease, background 0.25s ease;
+}
+
+/* 2. Ocultar todos los elementos de texto */
+.sidebar.collapsed .menu-title,
+.sidebar.collapsed .tlahuapan-text,
+.sidebar.collapsed .menu-arrow {
+    display: none !important;
+    /* Usar !important si hay conflicto */
+    width: 0;
+    /* Aseguramos que no ocupe ancho */
+    overflow: hidden;
+}
+
+/* 3. Ajustar el logo y el texto de TLAHUAPAN para centrar solo el logo */
+.sidebar.collapsed .tlahuapan-item {
+    padding: 0;
+    /* Ajusta el padding superior/inferior del logo/título */
+}
+
+.sidebar.collapsed .tlahuapan-item .tlahuapan-logo-text {
+    justify-content: center;
+    /* Centra horizontalmente el logo dentro del ancho de 80px */
+    padding: 10px 0;
+    /* Reducimos el padding, centramos verticalmente */
+}
+
+.sidebar.collapsed .tlahuapan-logo {
+    width: 40px;
+    /* Tamaño del logo reducido */
+    height: 40px;
+}
+
+/* 4. Ajustar los elementos de navegación para centrar los íconos */
+.sidebar.collapsed .nav-item {
+    padding: 0;
+    /* Quita el padding horizontal grande para usar todo el ancho de 80px */
+}
+
+.sidebar.collapsed .nav-item .nav-link {
+    justify-content: center;
+    /* Centra el ícono dentro de los 80px */
+    padding: 0.625rem 0;
+    /* Ajusta el padding vertical */
+    width: 100%;
+    /* Asegura que tome el 100% de los 80px */
+}
+
+/* 5. Quitar el margen derecho del contenedor del ícono */
+.sidebar.collapsed .nav-item .nav-link .icon-bg {
+    margin-right: 0;
+    /* Elimina el espacio que separaba el ícono del texto oculto */
+}
+
+/* ---------------------------------------------------------------------- */
+/* CONTENIDO PRINCIPAL (DEBAJO DEL NAVBAR) */
+/* ---------------------------------------------------------------------- */
+
+/* Contenedor que alberga el contenido principal (a la derecha del sidebar) */
+.content-area {
+    flex-grow: 1;
+    padding: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    /* Apila las vistas de contenido */
+}
+
+.content-section {
+    flex-grow: 1;
+    /* Esto asegura que la card de la tabla ocupe el espacio */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.content-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Acciones de Gestión */
+.user-management-actions {
+    margin-bottom: 20px;
+}
+
+/* Botón Agregar Usuario */
+.btn-add-user {
+    background-color: #3587ab;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-add-user:hover {
+    background-color: #12a0cc;
+}
+
+.btn-add-user i {
+    margin-right: 5px;
+}
+
+/* ESTILOS DE TABLA Y BOTONES DE ACCIÓN */
+.table-container {
+    flex-grow: 1;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table thead {
+    background-color: #f0f0f0;
+    border-bottom: 2px solid #ddd;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    color: #555;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+table tr:hover {
+    background-color: #fafafa;
+}
+
+/* Botones de Acción en la Tabla (Base) */
+.btn-action {
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    margin-right: 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn-action i {
+    margin-right: 5px;
+}
+
+/* Color: Botón Editar (Azul) */
+.btn-action.edit {
+    background-color: #498FAE;
+}
+
+.btn-action.edit:hover {
+    background-color: #12a0cc;
+}
+
+/* Color: Activo (Verde) */
+.btn-action.status-active {
+    background-color: #28a745;
+    margin-right: 0;
+}
+
+.btn-action.status-active:hover {
+    background-color: #1e7e34;
+}
+
+/* Color: Inactivo (Rojo) */
+.btn-action.status-inactive {
+    background-color: #dc3545;
+    margin-right: 0;
+}
+
+.btn-action.status-inactive:hover {
+    background-color: #bd2130;
+}
+
+/* Estilos para el Dropdown de Estado */
+.dropdown-action {
+    position: relative;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.dropdown-toggle-status {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.dropdown-toggle-status:hover {
+    background-color: #5a6268;
+}
+
+.dropdown-toggle-status i {
+    margin-left: 5px;
+    font-size: 10px;
+    margin-right: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 120px;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    border-radius: 4px;
+    overflow: hidden;
+    right: 0;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+}
+
+.dropdown-content button {
+    padding: 8px 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: white;
+    border-radius: 0;
+    margin-right: 0;
+}
+
+.dropdown-content button i {
+    margin-right: 8px;
+}
+
+/* =========================================================
+    Maneja la lógica de "vistas" al hacer clic
+    en las opciones del menú lateral.
+    ========================================================= */
+
+/* 1. Oculta todas las secciones de contenido por defecto 
+.content-area .content-view {
+    display: none;
+}*/
+
+/* 2. Muestra solo la sección de contenido que tiene la clase 'active' */
+.content-area .content-view.active {
+    display: block;
+<<<<<<< HEAD:styles/Usuarios.css
+    
+}
+
+
+
+/*
+ * =========================================================
+ * 📌 INICIO DEL CSS PARA MODALES (Reusable Components)
+ * =========================================================
+ */
+
+/* 1. Contenedor principal del modal (El fondo oscuro) */
+.modal {
+    /* Ocultar el modal de la vista por defecto (¡Ajuste crucial!) */
+    display: none !important; 
+
+    /* Propiedades para cubrir toda la ventana y quedar encima de todo */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Estilos del fondo (semitransparente) */
+    background-color: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    overflow-y: auto; /* Permite desplazamiento si el contenido es muy largo */
+}
+
+/* 2. Regla clave: Mostrar el modal cuando el JS le añade la clase 'is-open' */
+.modal.is-open {
+    display: flex !important; /* Muestra el modal */
+    justify-content: center;
+    align-items: center; 
+}
+
+/* 3. La tarjeta/caja central del modal (.modal-card) */
+.modal-card {
+    background-color: #fff;
+    margin: 0; /* Se centra con flex */
+    border-radius: 4px; 
+    width: 90%; 
+    max-width: 380px; /* Tamaño similar al de la imagen */
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    animation: aparecer 0.25s ease-out; /* Animación opcional */
+    padding: 0; 
+}
+
+/* 4. Encabezado del Modal */
+.modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px; 
+    border-bottom: 1px solid #ddd;
+}
+
+.modal-head h3 {
+    font-size: 16px; 
+    font-weight: 500;
+    margin: 0;
+    font-family: "nunito-bold", sans-serif; 
+    color: #4a7da1;
+    font-weight: bold;
+}
+
+/* 5. Botón de Cierre "X" Rojo */
+.icon-btn.close-red {
+    background-color: #d32f2f; /* Rojo */
+    border-radius: 0; /* Cuadrado */
+    padding: 0;
+    width: 35px; 
+    height: 35px; 
+    line-height: 35px;
+    color: white; /* 'X' blanca */
+    font-size: 18px;
+    /* Posiciona en la esquina */
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-color: #d32f2f;
+}
+
+.icon-btn.close-red:hover {
+    background-color: #f44336;
+}
+
+/* 6. Cuerpo del Modal (Formulario) */
+.modal-body {
+    padding: 10px 15px 15px; 
+}
+
+/* Campos de Formulario */
+.field {
+    display: block;
+    margin-bottom: 10px; 
+}
+
+/* Ocultamos la etiqueta SPAN si existe */
+.field span {
+    display: none; 
+}
+
+/* Estilos de los inputs/selects */
+.input,
+.modal-card input[type="text"], 
+.modal-card input[type="email"], 
+.modal-card input[type="password"], 
+.modal-card select { 
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px; 
+    font-size: 14px;
+    box-sizing: border-box; 
+}
+
+
+/* 7. Pie de Modal */
+.modal-foot {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end; /* Alinear a la derecha */
+    gap: 8px; /* Espacio entre botones */
+}
+
+/* 8. Estilos de Botones de pie de modal */
+.btn {
+    padding: 6px 14px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid transparent; 
+}
+
+/* Botón Aceptar (Primary - Azul/Cyan) */
+.btn-primary {
+    background-color: #4a7da1; 
+    color: #fff;
+    border-color: #4a7da1;
+}
+
+.btn-primary:hover {
+    background-color: #3b6a8b;
+}
+
+/* Botón Cancelar (Secondary - Gris) */
+.btn-secondary {
+    background-color: #f7f7f7; 
+    color: #333;
+    border-color: #ccc;
+}
+
+.btn-secondary:hover {
+    background-color: #e6e6e6;
+}
+
+/*
+ * =========================================================
+ * 📌 FIN DEL CSS PARA MODALES
+ * =========================================================
+ */
+=======
+
+}
+/* Modales M*/
+.modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.32);
+    padding:1rem;
+    z-index:999
+}
+.modal.show{
+    display:flex
+}
+.modal-card{
+    width:min(720px,96vw);
+    background:#fff;
+    border-radius:18px;
+    border:1px solid #e6e9f0;
+    display:flex;
+    flex-direction:column;
+    max-height:90vh;
+    box-shadow:0 2px 8px rgba(0,0,0,.08)
+}
+.modal-head{
+    display: flex;
+  justify-content: space-between; /* separa el título y la X */
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e6e9f0;
+  position: relative;
+}
+.modal-foot{
+    padding:.9rem 1rem;
+    border-bottom:0;
+    border-top:1px solid #e6e9f0;
+    display:flex;
+    gap:.5rem;
+    justify-content:flex-end
+}
+.modal-head h3{
+    margin:0
+}
+.modal-body{
+    padding:1rem;
+    overflow:auto
+}
+.icon-btn{
+    background:transparent;
+    border:0;
+    font-size:1.6rem;
+    line-height:1;
+    cursor:pointer
+}
+.modal-foot.between{
+    justify-content:space-between
+}
+.btn,
+.btn-action,
+.btn-add-user {
+  background-color: #498FAE;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 15px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Botones dentro de modales M*/
+.btn:hover,
+.btn-action:hover,
+.btn-add-user:hover {
+  background-color: #3a7997;
+}
+
+.btn.ghost {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn.ghost:hover {
+  background-color: #bbb;
+}
+
+.btn.danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.btn.danger:hover {
+  background-color: #b02a37;
+}
+.organigrama-actions {
+  text-align: center;
+  margin-top: 15px;
+}
+.organigrama-actions .btn-action {
+  background-color: #498FAE;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+.organigrama-actions .btn-action:hover {
+  background-color: #3a7997;
+  transform: translateY(-2px);
+}
+.modal-head .icon-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.modal-head .icon-btn:hover {
+  color: #9F6E38; 
+}
+
+/* formulario */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px 24px;
+  align-items: start;
+  margin-top: 15px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.input,
+.field input,
+.field select,
+.field textarea {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.input:focus,
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #498FAE;
+  box-shadow: 0 0 4px rgba(73, 143, 174, 0.4);
+}
+
+.field.switch {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+.form-actions {
+  grid-column: 1 / -1; 
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.form-actions .btn-add-user {
+  background-color: #498FAE;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.form-actions .btn-add-user:hover {
+  background-color: #3a7997;
+  transform: translateY(-2px);
+}
+
+
+>>>>>>> 7e75d8ff9beb982d6ac8c69523556195ee99fdf8:styles/styles.css

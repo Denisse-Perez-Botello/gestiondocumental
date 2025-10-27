@@ -1,0 +1,27 @@
+<!-- Modal de Clave -->
+<!--<link rel="stylesheet" type="text/css" href="../styles/iniciosesion.css">-->
+
+<div id="modalClave" class="modal-overlay" style="display: flex;">
+  <div class="modal-content">
+    <h2>Ingresa la Clave Especial</h2>
+
+    <!-- 🔹 Usa la clase correcta -->
+    <input 
+      type="password" 
+      id="claveInput" 
+      class="modal-input" 
+      placeholder="Escribe la clave" 
+    />
+
+    <!-- 🔹 Mensaje de error -->
+    <p id="mensajeClave" class="mensaje-error"></p>
+
+    <!-- 🔹 Botones con las clases que tu CSS sí reconoce -->
+    <div class="modal-buttons">
+      <button class="modal-btn confirmar" onclick="confirmarClave()">Confirmar</button>
+      <button class="modal-btn cancelar" onclick="cerrarModalClave()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<script src="/script/ModalClave.js"></script>
