@@ -610,7 +610,7 @@ table tr:hover {
     display: block;
 
 }
-/* Modales */
+/* Modales M*/
 .modal{
     position:fixed;
     inset:0;
@@ -634,11 +634,16 @@ table tr:hover {
     max-height:90vh;
     box-shadow:0 2px 8px rgba(0,0,0,.08)
 }
-.modal-head,.modal-foot{
-    padding:.9rem 1rem;
-    border-bottom:1px solid #e6e9f0
+.modal-head{
+    display: flex;
+  justify-content: space-between; /* separa el título y la X */
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e6e9f0;
+  position: relative;
 }
 .modal-foot{
+    padding:.9rem 1rem;
     border-bottom:0;
     border-top:1px solid #e6e9f0;
     display:flex;
@@ -724,7 +729,20 @@ table tr:hover {
   background-color: #3a7997;
   transform: translateY(-2px);
 }
-
+.modal-head .icon-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #444;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.modal-head .icon-btn:hover {
+  color: #9F6E38; 
+}
 
 /* formulario */
 .form-grid {
