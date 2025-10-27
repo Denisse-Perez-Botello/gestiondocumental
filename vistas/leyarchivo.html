@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-
+  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -107,10 +107,8 @@
             class="icon-control-img notification-icon-img">
           <div class="dropdown-menu notification-menu">
             <p class="dropdown-title">Notificaciones recientes</p>
-            <a href="#" class="dropdown-item">Tienes 1 nuevo documento de
-              Presidencia.</a>
-            <a href="#" class="dropdown-item view-all">Ver todas las
-              notificaciones</a>
+            <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
+            <a href="#" class="dropdown-item view-all">Ver todas las notificaciones</a>
           </div>
         </div>
       </div>
@@ -126,14 +124,19 @@
             Generar respaldo ZIP
           </button>
         </div>
+
         <div class="table-container">
           <table>
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Título</th>
+                <th>Área</th>
                 <th>Ubicación</th>
                 <th>Clasificación</th>
+                <th>Etapa archivística</th>
+                <th>Valor documental</th>
+                <th>Tiempo de retención (años)</th>
                 <th>Estado</th>
                 <th>Acciones</th>
               </tr>
@@ -142,36 +145,55 @@
               <tr>
                 <td>001</td>
                 <td>Acta constitutiva</td>
+                <td>Presidencia</td>
                 <td>Estantería A</td>
+                <td>GOB-2023-001</td>
                 <td>
-                  <select class="input select-clasificacion">
-                    <option value="">Selecciona clasificación</option>
-                    <option value="Presidencia">Presidencia • GOB-2023-001</option>
-                    <option value="Recursos Humanos">Recursos Humanos • RH-2020-045</option>
-                    <option value="Finanzas">Finanzas • FIN-2022-012</option>
-                    <option value="Educación">Educación • EDU-2021-099</option>
+                  <select class="input select-etapa">
+                    <option>Trámite</option>
+                    <option>Concentración</option>
+                    <option>Histórico</option>
                   </select>
                 </td>
-                <td><span class="badge success">Vigente</span></td>
+                <td>
+                  <select class="input">
+                    <option>Administrativo</option>
+                    <option>Legal</option>
+                    <option>Fiscal</option>
+                    <option>Histórico</option>
+                  </select>
+                </td>
+                <td><input type="number" class="input" min="1" max="50" value="5"></td>
+                <td><span class="badge success">Activo</span></td>
                 <td>
                   <button class="btn-action edit" data-modal-open="modalVer">Ver</button>
                   <button class="btn-action" data-modal-open="modalEstado">Cambiar</button>
                 </td>
               </tr>
+
               <tr>
                 <td>002</td>
-                <td>Permiso construcción</td>
-                <td>Archivador RH</td>
+                <td>Permiso de construcción</td>
+                <td>Obras Públicas</td>
+                <td>Archivador B</td>
+                <td>OBP-2022-034</td>
                 <td>
-                  <select class="input select-clasificacion">
-                    <option value="">Selecciona clasificación</option>
-                    <option value="Presidencia">Presidencia • GOB-2023-001</option>
-                    <option value="Recursos Humanos">Recursos Humanos • RH-2020-045</option>
-                    <option value="Finanzas">Finanzas • FIN-2022-012</option>
-                    <option value="Educación">Educación • EDU-2021-099</option>
+                  <select class="input select-etapa">
+                    <option>Trámite</option>
+                    <option selected>Concentración</option>
+                    <option>Histórico</option>
                   </select>
                 </td>
-                <td><span class="badge success">Vigente</span></td>
+                <td>
+                  <select class="input">
+                    <option>Administrativo</option>
+                    <option>Legal</option>
+                    <option selected>Fiscal</option>
+                    <option>Histórico</option>
+                  </select>
+                </td>
+                <td><input type="number" class="input" min="1" max="50" value="10"></td>
+                <td><span class="badge warn">Conservación</span></td>
                 <td>
                   <button class="btn-action edit" data-modal-open="modalVer">Ver</button>
                   <button class="btn-action" data-modal-open="modalEstado">Cambiar</button>
@@ -182,55 +204,64 @@
         </div>
       </section>
 
-      <!-- Modale para ver documento -->
+      <!-- Modal ver documento -->
       <div class="modal" id="modalVer" aria-hidden="true">
         <div class="modal-card">
           <header class="modal-head">
-            <h3>Visualización del
-              documento</h3><button class="icon-btn" data-modal-close>&times;</button>
+            <h3>Visualización del documento</h3>
+            <button class="icon-btn" data-modal-close>&times;</button>
           </header>
           <div class="modal-body">
             <h4 id="tituloDocumento">Acta constitutiva</h4>
             <iframe id="vistaDocumento" src="../documentos/Reticula ISC.pdf" width="100%" height="500px"
-              style="border:none; border-radius:8px;">
-            </iframe>
+              style="border:none; border-radius:8px;"></iframe>
           </div>
           <footer class="modal-foot"><button class="btn" data-modal-close>Cerrar</button></footer>
         </div>
       </div>
-      <!-- Modal generar reporte -->
-      <div class="modal" id="modalRespaldo" aria-hidden="true">
-        <div class="modal-card">
-          <header class="modal-head">
-            <h3>Generar respaldo ZIP</h3><button class="icon-btn" data-modal-close>&times;</button>
-          </header>
-          <div class="modal-body">
-            <p>Tu respaldo en ZIP está listo para
-              descargar.</p>
-          </div>
-          <footer class="modal-foot"><button class="btn" data-modal-close>Descargar ZIP</button></footer>
-        </div>
-      </div>
 
-      <!-- Modales para cambiar estado -->
+      <!-- Modal cambiar estado -->
       <div class="modal" id="modalEstado" aria-hidden="true">
         <div class="modal-card">
           <header class="modal-head">
-            <h3>Cambiar estado del
-              documento</h3><button class="icon-btn" data-modal-close>&times;</button>
+            <h3>Cambiar estado del documento</h3>
+            <button class="icon-btn" data-modal-close>&times;</button>
           </header>
           <div class="modal-body">
-            <div class="radio-list"><label><input type="radio" name="estadoDoc" checked />
-                Vigente</label>
-              <label><input type="radio" name="estadoDoc" />
-                Finalizado</label>
+            <div class="radio-list">
+              <label><input type="radio" name="estadoDoc" checked /> Activo</label>
+              <label><input type="radio" name="estadoDoc" /> En conservación</label>
+              <label><input type="radio" name="estadoDoc" /> Histórico</label>
+              <label><input type="radio" name="estadoDoc" /> Depurado</label>
             </div>
           </div>
           <footer class="modal-foot"><button class="btn" data-modal-close>Actualizar estado</button></footer>
         </div>
       </div>
-      <!-- Script -->
-      <script src="../script1.js"></script>
+
+      <!-- Modal generar respaldo -->
+      <div class="modal" id="modalRespaldo" aria-hidden="true">
+        <div class="modal-card">
+          <header class="modal-head">
+            <h3>Generar respaldo ZIP</h3>
+            <button class="icon-btn" data-modal-close>&times;</button>
+          </header>
+          <div class="modal-body">
+            <p>Seleccione el tipo de respaldo que desea generar:</p>
+            <select class="input">
+              <option>Respaldo total</option>
+              <option>Solo documentos activos</option>
+              <option>Solo históricos</option>
+            </select>
+            <p class="mt-2">El respaldo incluirá los documentos seleccionados en formato comprimido ZIP.</p>
+          </div>
+          <footer class="modal-foot"><button class="btn" data-modal-close>Generar respaldo</button></footer>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../script1.js"></script>
 </body>
 
 </html>
