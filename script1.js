@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Variables globales
 let rhIP = null;
 
@@ -129,7 +128,7 @@ document.addEventListener('click', function(e) {
         }
     }
 });
-=======
+
 document.addEventListener("DOMContentLoaded", () => {
   /* ========================================================= */
   /* 1. FUNCIONALIDAD PRINCIPAL: NAVEGACIÓN LATERAL (VISTAS) */
@@ -278,4 +277,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
->>>>>>> 7e75d8ff9beb982d6ac8c69523556195ee99fdf8
+
