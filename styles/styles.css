@@ -1,15 +1,3 @@
-/*
- * =========================================================
- * ESTILOS GLOBALES Y LAYOUT PRINCIPAL (BASE DE PÁGINA)
- * =========================================================
- */
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 /* 1. LAYOUT PRINCIPAL: BODY */
 body {
     margin: 0;
@@ -610,125 +598,45 @@ table tr:hover {
     display: block;
 
 }
-/* Modales M*/
-.modal{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    background:rgba(0,0,0,.32);
-    padding:1rem;
-    z-index:999
+
+/* =========================================================
+   MODALES
+   ========================================================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, .32);
+  padding: 1rem;
+  z-index: 999;
 }
-.modal.show{
-    display:flex
+
+.modal.show {
+  display: flex;
 }
-.modal-card{
-    width:min(720px,96vw);
-    background:#fff;
-    border-radius:18px;
-    border:1px solid #e6e9f0;
-    display:flex;
-    flex-direction:column;
-    max-height:90vh;
-    box-shadow:0 2px 8px rgba(0,0,0,.08)
+
+.modal-card {
+  width: min(720px, 96vw);
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid #e6e9f0;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
 }
-.modal-head{
-    display: flex;
-  justify-content: space-between; /* separa el título y la X */
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
   border-bottom: 1px solid #e6e9f0;
   position: relative;
 }
-.modal-foot{
-    padding:.9rem 1rem;
-    border-bottom:0;
-    border-top:1px solid #e6e9f0;
-    display:flex;
-    gap:.5rem;
-    justify-content:flex-end
-}
-.modal-head h3{
-    margin:0
-}
-.modal-body{
-    padding:1rem;
-    overflow:auto
-}
-.icon-btn{
-    background:transparent;
-    border:0;
-    font-size:1.6rem;
-    line-height:1;
-    cursor:pointer
-}
-.modal-foot.between{
-    justify-content:space-between
-}
-.btn,
-.btn-action,
-.btn-add-user {
-  background-color: #498FAE;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 15px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
 
-/* Botones dentro de modales M*/
-.btn:hover,
-.btn-action:hover,
-.btn-add-user:hover {
-  background-color: #3a7997;
-}
-
-.btn.ghost {
-  background-color: #ccc;
-  color: #333;
-}
-
-.btn.ghost:hover {
-  background-color: #bbb;
-}
-
-.btn.danger {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-.btn.danger:hover {
-  background-color: #b02a37;
-}
-.organigrama-actions {
-  text-align: center;
-  margin-top: 15px;
-}
-.organigrama-actions .btn-action {
-  background-color: #498FAE;
-  color: #fff;
-  font-size: 13px;
-  padding: 6px 12px;
-  border: none;
-  border-radius: 6px;
-  margin: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-}
-.organigrama-actions .btn-action:hover {
-  background-color: #3a7997;
-  transform: translateY(-2px);
-}
 .modal-head .icon-btn {
   position: absolute;
   top: 0.6rem;
@@ -740,11 +648,29 @@ table tr:hover {
   cursor: pointer;
   transition: color 0.3s ease;
 }
+
 .modal-head .icon-btn:hover {
-  color: #9F6E38; 
+  color: #9F6E38;
 }
 
-/* formulario */
+.modal-body {
+  padding: 1rem;
+  overflow: auto;
+}
+
+.modal-foot {
+  padding: .9rem 1rem;
+  border-top: 1px solid #e6e9f0;
+  display: flex;
+  gap: .5rem;
+  justify-content: flex-end;
+}
+
+.modal-foot.between {
+  justify-content: space-between;
+}
+
+/* FORMULARIOS EN MODALES*/
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -788,8 +714,9 @@ table tr:hover {
   align-items: center;
   gap: 8px;
 }
+
 .form-actions {
-  grid-column: 1 / -1; 
+  grid-column: 1 / -1;
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -812,4 +739,158 @@ table tr:hover {
   transform: translateY(-2px);
 }
 
+/* ORGANIGRAMA*/
+.organigrama-contenedor {
+  overflow: auto;
+  width: 100%;
+  min-height: 400px;
+  padding: 20px;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
 
+.organigrama {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  min-width: max-content;
+}
+
+.organigrama ul {
+  padding-top: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.organigrama li {
+  list-style: none;
+  text-align: center;
+  position: relative;
+  padding: 12px 3px 0 3px;
+}
+
+.organigrama li::before,
+.organigrama li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 2px solid #498FAE;
+  width: 50%;
+  height: 14px;
+}
+
+.organigrama li::after {
+  right: auto;
+  left: 50%;
+  border-left: 2px solid #498FAE;
+}
+
+.organigrama li:only-child::after,
+.organigrama li:only-child::before {
+  display: none;
+}
+
+.organigrama li:first-child::before,
+.organigrama li:last-child::after {
+  border: 0 none;
+}
+
+.organigrama .nodo {
+  display: inline-block;
+  background: #fff;
+  border: 2px solid #498FAE;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  min-width: 140px;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+}
+
+.organigrama .nodo:hover {
+  background: #498FAE;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.organigrama ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 2px solid #498FAE;
+  height: 14px;
+}
+
+/* BOTONES */
+.btn, .btn-action, .btn-add-user {
+  background-color: #498FAE;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 15px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover, .btn-action:hover, .btn-add-user:hover {
+  background-color: #3a7997;
+}
+
+/* Botón gris - cancelar o regresar */
+.btn.ghost {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn.ghost:hover {
+  background-color: #bbb;
+}
+
+/* ESTADOS Y DETALLES VISUALES */
+.status-circle {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.status-circle.green { background-color: #28a745; }
+.status-circle.yellow { background-color: #ffc107; }
+.status-circle.red { background-color: #dc3545; }
+
+td:nth-child(4) {
+  display: table-cell;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: left;
+}
+
+td:nth-child(4) .tiempo-texto {
+  display: inline-block;
+  margin-right: 8px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+td:nth-child(4) .status-circle {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+body, table, button, input, select, textarea {
+  font-family: Arial, sans-serif !important;
+  font-size: 14px;
+  color: #333;
+}
