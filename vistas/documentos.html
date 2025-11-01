@@ -1,220 +1,254 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TLAHUAPAN — Gestión Documental</title>
-  <link rel="stylesheet" href="../styles/styles.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TLAHUAPAN — Gestión Documental</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+  </head>
 
-<body>
-  <!-- Sidebar -->
-  <nav class="sidebar" id="sidebar">
-    <ul class="nav">
-      <li class="nav-item nav-category tlahuapan-item">
-        <div class="tlahuapan-logo-text">
-          <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
-          <span class="tlahuapan-text">TLAHUAPAN</span>
+  <body>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-category tlahuapan-item">
+          <div class="tlahuapan-logo-text">
+            <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
+            <span class="tlahuapan-text">TLAHUAPAN</span>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="Usuarios.html">
+            <span class="icon-bg"><img src="../imagenes/usuarios.png"
+                alt="Usuarios" class="sidebar-icon-img"></span>
+            <span class="menu-title">Usuarios</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="Dashboard.html">
+            <span class="icon-bg"><img src="../imagenes/dashboard.png"
+                alt="Dashboard" class="sidebar-icon-img"></span>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="documentos.html">
+            <span class="icon-bg"><img src="../imagenes/documentos.png"
+                alt="Documentos" class="sidebar-icon-img"></span>
+            <span class="menu-title">Documentos</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="organigrama.html">
+            <span class="icon-bg"><img src="../imagenes/organigrama.png"
+                alt="Organigrama"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Organigrama</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="Dispersion.html">
+            <span class="icon-bg"><img src="../imagenes/enviodocumentos.png"
+                alt="Dispersión"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Dispersión</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="leyarchivo.html">
+            <span class="icon-bg"><img src="../imagenes/leyarchivo.png"
+                alt="Ley de Archivo"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Ley de Archivo</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="clasificacion.html">
+            <span class="icon-bg"><img
+                src="../imagenes/clasificaciondocumentos.png"
+                alt="Clasificación"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Clasificación</span>
+          </a>
+        </li>
+
+        <li class="nav-item cerrar-sesion">
+          <a class="nav-link" href="../index.html" id="cerrarSesionLink">
+            <span class="icon-bg"><img src="../imagenes/cerrarsesion.png"
+                alt="Cerrar sesión"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Cerrar sesión</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="main-content-wrapper">
+      <header class="navbar">
+        <div class="header-left-group">
+          <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler"
+            class="icon-control-img">
         </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Usuarios.html">
-          <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Usuarios" class="sidebar-icon-img"></span>
-          <span class="menu-title">Usuarios</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Dashboard.html">
-          <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Dashboard" class="sidebar-icon-img"></span>
-          <span class="menu-title">Dashboard</span>
-        </a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="documentos.html">
-          <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Documentos" class="sidebar-icon-img"></span>
-          <span class="menu-title">Documentos</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="gestionamiento.html">
-          <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Gestión"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Gestionamiento</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="organigrama.html">
-          <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Organigrama"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Organigrama</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Dispersion.html">
-          <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Dispersión"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Dispersión</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="leyarchivo.html">
-          <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Ley de Archivo"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Ley de Archivo</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="clasificacion.html">
-          <span class="icon-bg"><img src="../imagenes/clasificaciondocumentos.png" alt="Clasificación"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Clasificación</span>
-        </a>
-      </li>
-
-      <li class="nav-item cerrar-sesion">
-        <a class="nav-link" href="index.html" id="cerrarSesionLink">
-          <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Cerrar sesión"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Cerrar sesión</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Contenedor principal -->
-  <div class="main-content-wrapper">
-    <!-- Barra superior -->
-    <header class="navbar">
-      <div class="header-left-group">
-        <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
-      </div>
-      <div class="user-info">
-        <div class="profile-info-container">
-          <img src="../imagenes/usuario.png" alt="Usuario" class="icon-control-img">
-          <span class="user-name">Oficialía de partes</span>
-        </div>
-        <div class="notification-dropdown-container">
-          <img src="../imagenes/notificacion.png" alt="Notificación" id="notification-icon"
-            class="icon-control-img notification-icon-img">
-          <div class="dropdown-menu notification-menu">
-            <p class="dropdown-title">Notificaciones recientes</p>
-            <a href="#" class="dropdown-item">Tienes 1 nuevo documento de
-              Presidencia.</a>
-            <a href="#" class="dropdown-item view-all">Ver todas las
-              notificaciones</a>
+        <div class="user-info">
+          <div class="profile-info-container">
+            <img src="../imagenes/usuario.png" alt="Usuario"
+              class="icon-control-img">
+            <span class="user-name">Usuario</span>
+          </div>
+          <div class="notification-dropdown-container">
+            <img src="../imagenes/notificacion.png" alt="Notificación"
+              id="notification-icon"
+              class="icon-control-img notification-icon-img">
+            <span class="notification-badge" data-count="3">3</span>
+            <div class="dropdown-menu notification-menu">
+              <p class="dropdown-title">Notificaciones recientes</p>
+              <a href="#" class="dropdown-item">Tienes 1 nuevo documento de
+                Presidencia.</a>
+              <a href="#" class="dropdown-item view-all">Ver todas las
+                notificaciones</a>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- Área de contenido -->
-    <main class="content-area">
+      <main class="content-area">
+        <!-- Gestión Documental -->
+        <section id="gestion-documental"
+          class="content-section content-view active">
+          <h2>Gestión Documental</h2>
 
-      <!-- Gestión Documental -->
-      <section id="gestion-documental" class="content-section content-view active">
-        <h2>Gestión Documental</h2>
-        <div class="user-management-actions">
-          <button class="btn-add-user" data-modal-open="modalReportePDF">
-            Generar reporte PDF
-          </button>
-        </div>
+          <div class="table-container">
+            <table id="tablaDocumentos">
+              <thead>
+                <tr>
+                  <th>Núm. Oficio</th>
+                  <th>Título</th>
+                  <th>Estado</th>
+                  <th>Tiempo de respuesta</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-fecha-limite="2025-11-10">
+                  <td>OF-2025-001</td>
+                  <td>Acta constitutiva</td>
+                  <td><span class="badge success">Recibido</span></td>
+                  <td><span class="tiempo-texto"></span> <span
+                      class="status-circle"></span></td>
+                  <td>
+                    <button class="btn-action edit"
+                      data-modal-open="modalVer">Ver</button>
+                    <button class="btn-action btn-blue"
+                      data-modal-open="modalEstado">Estado</button>
+                    <button class="btn-action btn-gray"
+                      data-modal-open="modalRespuesta">Respuesta</button>
+                  </td>
+                </tr>
+                <tr data-fecha-limite="2025-11-03">
+                  <td>OF-2025-002</td>
+                  <td>Reporte 2024</td>
+                  <td><span class="badge warn">Recibido</span></td>
+                  <td><span class="tiempo-texto"></span> <span
+                      class="status-circle"></span></td>
 
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Título</th>
-                <th>Descripción</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Acta constitutiva</td>
-                <td>Documento oficial de la empresa</td>
-                <td><span class="badge success">Aceptado</span></td>
-                <td>
-                  <button class="btn-action edit" data-modal-open="modalVer">Ver</button>
-                  <button class="btn-action status-inactive" data-modal-open="modalEstado">Cambiar estado</button>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Reporte 2024</td>
-                <td>Resultados anuales</td>
-                <td><span class="badge warn">No aceptado</span></td>
-                <td>
-                  <button class="btn-action edit" data-modal-open="modalVer">Ver</button>
-                  <button class="btn-action status-inactive" data-modal-open="modalEstado">Cambiar estado</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- Modales -->
-      <div class="modal" id="modalVer" aria-hidden="true">
-        <div class="modal-card">
-          <header class="modal-head">
-            <h3>Visualización del
-              documento</h3><button class="icon-btn" data-modal-close>&times;</button>
-          </header>
-          <div class="modal-body">
-            <h4 id="tituloDocumento">Acta constitutiva</h4>
-            <iframe id="vistaDocumento" src="../documentos/Reticula ISC.pdf" width="100%" height="500px"
-              style="border:none; border-radius:8px;">
-            </iframe>
+                  <td>
+                    <button class="btn-action edit"
+                      data-modal-open="modalVer">Ver</button>
+                    <button class="btn-action btn-blue"
+                      data-modal-open="modalEstado">Estado</button>
+                    <button class="btn-action btn-gray"
+                      data-modal-open="modalRespuesta">Respuesta</button>
+                  </td>
+                </tr>
+                <tr data-fecha-limite="2025-10-25">
+                  <td>OF-2025-003</td>
+                  <td>Oficio de Presidencia</td>
+                  <td><span class="badge warn">Pendiente</span></td>
+                  <td><span class="tiempo-texto"></span> <span
+                      class="status-circle"></span></td>
+                  <td>
+                    <button class="btn-action edit"
+                      data-modal-open="modalVer">Ver</button>
+                    <button class="btn-action btn-blue"
+                      data-modal-open="modalEstado">Estado</button>
+                    <button class="btn-action btn-gray"
+                      data-modal-open="modalRespuesta">Respuesta</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <footer class="modal-foot"><button class="btn" data-modal-close>Cerrar</button></footer>
-        </div>
-      </div>
 
-      <!-- Modal cambiar estado -->
-      <div class="modal" id="modalEstado" aria-hidden="true">
-        <div class="modal-card">
-          <header class="modal-head">
-            <h3>Cambiar estado del
-              documento</h3><button class="icon-btn" data-modal-close>&times;</button>
-          </header>
-          <div class="modal-body">
-            <div class="radio-list"><label><input type="radio" name="estadoDoc" checked />
-                Aceptado</label><label><input type="radio" name="estadoDoc" />
-                No aceptado</label></div>
-          </div>
-          <footer class="modal-foot"><button class="btn" data-modal-close>Actualizar estado</button></footer>
-        </div>
-      </div>
+        </section>
 
-      <!-- Modal generar reporte -->
-      <div class="modal" id="modalReportePDF" aria-hidden="true">
-        <div class="modal-card">
-          <header class="modal-head">
-            <h3>Generar reporte PDF</h3><button class="icon-btn" data-modal-close>&times;</button>
-          </header>
-          <div class="modal-body">
-            <p>Tu reporte en PDF está listo para
-              descargar.</p>
+        <!-- 🟦 Modal cambiar estado -->
+        <div class="modal" id="modalEstado" aria-hidden="true">
+          <div class="modal-card">
+            <header class="modal-head">
+              <h3>Cambiar estado del documento</h3>
+              <button class="icon-btn" data-modal-close>&times;</button>
+            </header>
+            <div class="modal-body">
+              <div class="radio-list">
+                <label><input type="radio" name="estadoDoc" value="Recibido"
+                    checked /> Recibido</label>
+                <label><input type="radio" name="estadoDoc" value="Devuelto" />
+                  Devolver documento</label>
+              </div>
+            </div>
+            <footer class="modal-foot">
+              <button class="btn" data-modal-close>Actualizar estado</button>
+            </footer>
           </div>
-          <footer class="modal-foot"><button class="btn" data-modal-close>Descargar PDF</button></footer>
         </div>
-      </div>
-    </main>
-  </div>
-  
-  <!-- Script -->
-  <script src="../script1.js">
-  </script>
-</body>
-</html>
+
+        <!-- Modal entregar respuesta -->
+        <div class="modal" id="modalRespuesta" aria-hidden="true">
+          <div class="modal-card">
+            <header class="modal-head">
+              <h3>Entregar respuesta</h3>
+              <button class="icon-btn" data-modal-close>&times;</button>
+            </header>
+            <div class="modal-body">
+              <label for="comentario">Comentario (opcional):</label>
+              <textarea id="comentario" rows="3"
+                placeholder="Agrega un comentario..."></textarea>
+              <p>Fecha de envío: <strong id="fechaEnvio"></strong></p>
+            </div>
+            <footer class="modal-foot">
+              <button class="btn" id="btnEnviarRespuesta">Enviar</button>
+              <button class="btn ghost" data-modal-close>Cancelar</button>
+            </footer>
+          </div>
+        </div>
+
+        <!-- Modal Ver Documento -->
+        <div class="modal" id="modalVer" aria-hidden="true">
+          <div class="modal-card">
+            <header class="modal-head">
+              <h3>Visualización del documento</h3>
+              <button class="icon-btn" data-modal-close>&times;</button>
+            </header>
+            <div class="modal-body">
+              <iframe id="vistaDocumento" src="../documentos/Reticula ISC.pdf"
+                width="100%" height="500px"
+                style="border:none; border-radius:8px;"></iframe>
+            </div>
+            <footer class="modal-foot">
+              <button class="btn" data-modal-close>Cerrar</button>
+            </footer>
+          </div>
+        </div>
+
+        <!-- Script -->
+        <script src="../script1.js"></script>
+      </body>
+    </html>
