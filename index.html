@@ -7,99 +7,10 @@
     <link rel="stylesheet" type="text/css" href="styles/iniciosesion.css">
 </head>
 <body>
-<<<<<<< HEAD
-    <!--Menu lateral -->
-    <nav class="sidebar sidebar-off-canvas" id="sidebar">
-        <ul class="nav">
-
-            <li class="nav-item nav-category tlahuapan-item">
-                <div class="tlahuapan-logo-text">
-                    <img src="./imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
-                    <span class="tlahuapan-text">TLAHUAPAN</span>
-                </div>
-            </li>
-
-            <li class="nav-item active" id="menu-usuarios">
-                <a class="nav-link" href="index.html" data-target="usuarios-content">
-                    <span class="icon-bg"><img src="./imagenes/usuarios.png" alt="Icono Usuarios" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Usuarios</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-dashboard">
-                <a class="nav-link" href="index.html" data-target="dashboard-content">
-                    <span class="icon-bg"><img src="./imagenes/dashboard.png" alt="Icono Dashboard" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Dashboard</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-documentos">
-                <a class="nav-link" href="index.html" data-target="documentos-content">
-                    <span class="icon-bg"><img src="./imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Documentos</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-gestionamiento">
-                <a class="nav-link" href="index.html" data-target="gestionamiento-content">
-                    <span class="icon-bg"><img src="./imagenes/gestionorganizacional.png" alt="Icono Gestionamiento" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Gestionamiento</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-organigrama">
-                <a class="nav-link" href="index.html" data-target="organigrama-content">
-                    <span class="icon-bg"><img src="./imagenes/organigrama.png" alt="Icono Organigrama" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Organigrama</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-dispersion">
-                <a class="nav-link" href="index.html" data-target="dispersion-content">
-                    <span class="icon-bg"><img src="./imagenes/enviodocumentos.png" alt="Icono Dispersión" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Dispersión</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-leyarchivo">
-                <a class="nav-link" href="index.html" data-target="leyarchivo-content">
-                    <span class="icon-bg"><img src="./imagenes/leyarchivo.png" alt="Icono Ley de Archivo" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Ley de Archivo</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-clasificacion">
-                <a class="nav-link" href="index.html" data-target="clasificacion-content">
-                    <span class="icon-bg"><img src="./imagenes/clasificaciondocumentos.png" alt="Icono Clasificación" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Clasificación</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-cerrarsesion">
-                <a class="nav-link" href="index.html" data-target="cerrar sesion-content">
-                    <span class="icon-bg"><img src="./imagenes/cerrarsesion.png" alt="Icono Cerrar sesion" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Cerrar sesión</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!--Fin de Menu lateral -->
-    
- <!--Barra de Navegacion -->
-    <div class="main-content-wrapper">
-
-        <header class="navbar">
-            <div class="header-left-group">
-                <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
-                 <div class="search-bar">
-                <img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
-                <input type="text" placeholder="Search products">
-=======
     <div class="login-principal">
         <div class="login-card">
             <div class="logo-button" id="logoButton">
-                <img src="../imagenes/logo tlahuapan.png" alt="Logo Tlahuapan" class="logo">
->>>>>>> 99c5936d4aaeea43fe6eccf6ec88897340493d7c
+                <img src="imagenes/logo tlahuapan.png" alt="Logo Tlahuapan" class="logo">
             </div>
             
             <form id="loginForm">
@@ -146,20 +57,17 @@
 </div>
     <!-- Modal de IP -->
     <div id="modalIP" class="modal-overlay" style="display: none;">
-    <div class="modal-content">
-        <h3>Configuración del Servidor</h3>
-        <p>Introduce la IP del servidor de Recursos Humanos.</p>
-        <div class="campo-reutilizable">
-            <input class="input-reutilizable" type="text" id="ipInput" placeholder="Ej: 192.168.1.1">
-        </div>
-        
-        <div class="modal-buttons">
-            <button onclick="guardarIP()" class="modal-btn confirmar">Guardar IP</button>
-            
-            <button class="modal-btn cancelar" onclick="document.getElementById('modalIP').style.display='none'">Cancelar</button>
+        <div class="modal-content">
+            <h3>Configuración del Servidor</h3>
+            <p>Introduce la IP del servidor de Recursos Humanos.</p>
+            <div class="campo-reutilizable">
+                <input class="input-reutilizable" type="text" id="ipInput" placeholder="Ej: 192.168.1.1">
+            </div>
+            <div class="modal-actions">
+                <button onclick="guardarIP()" class="btn-primary">Guardar IP</button>
+            </div>
         </div>
     </div>
-</div>
     
      <!-- Modal de Registro -->
     <div class="modal" id="modalRegistro" aria-hidden="true"> 

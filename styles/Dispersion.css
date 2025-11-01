@@ -3,35 +3,34 @@
  * ESTILOS GLOBALES Y LAYOUT PRINCIPAL (BASE DE DASHBOARD)
  * =========================================================
 
-/* 1. LAYOUT PRINCIPAL: BODY */
+/* LAYOUT PRINCIPAL*/
 body {
+    font-family: Arial, sans-serif; 
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", Arial, sans-serif; /* Combinamos fuentes */
-    background-color: #f4f7f6; /* Fondo del Dashboard */
-    
-    /* 🔸 CLAVE: Flexbox para alinear Sidebar y Contenido Principal LADO A LADO */
+    background-color: #f4f7f6;
     display: flex; 
     min-height: 100vh; /* Asegura que la altura cubra toda la ventana */
 }
 
-/* 2. BARRA LATERAL (SIDEBAR) */
+/* BARRA LATERAL (SIDEBAR) */
 .sidebar {
     min-height: 100vh;
     background: #C2B998;
     padding: 0;
     width: 270px;
+     min-width: 270px;
     z-index: 11;
-    transition: width 0.25s ease, background 0.25s ease;
-    flex-shrink: 0; /* 🔸 CLAVE: Evita que el sidebar se encoja */
+    transition: width 0.25s ease, 0.25s ease;
+    flex-shrink: 0; /*Evita que el sidebar se encoja */
 }
 
-/* 3. CONTENEDOR PRINCIPAL (TODO lo que va a la DERECHA del Sidebar) */
+/*CONTENEDOR PRINCIPAL */
 .main-content-wrapper {
-    /* 🔸 CLAVE: Ocupa todo el espacio restante */
+    /*Ocupa todo el espacio restante */
     flex-grow: 1;
     
-    /* Apila el Navbar y el Content-Area verticalmente */
+
     display: flex;
     flex-direction: column;
     overflow-y: auto; 
@@ -44,10 +43,10 @@ body {
  * =========================================================
  */
 .content-area {
-    flex-grow: 1; /* Ocupa el alto restante bajo el Navbar */
+    flex-grow: 1; 
     display: flex;
     flex-direction: column;
-    padding: 0; /* Mantenemos padding en el .main-layout */
+    padding: 0; 
 }
 
 
@@ -58,42 +57,42 @@ body {
  */
 
 .main-layout {
-    display: flex; /* ⬅️ CRÍTICO: Alinea la tabla y el formulario horizontalmente */
+    display: flex; /*Alinea la tabla y el formulario horizontalmente */
     gap: 20px;
-    align-items: stretch; /* Estira los hijos al mismo alto */
-    flex-grow: 1; /* Ocupa el alto restante del content-area */
+    align-items: stretch; 
+    flex-grow: 1; 
     width: 100%;
     
-    /* 📌 Añadimos el padding alrededor del layout de contenido */
+    
     padding: 20px; 
     box-sizing: border-box;
 }
 
-/* Estilo para la Tabla (Columna Izquierda: Aprox. 75%) */
+/* Estilo para la Tabla (Columna Izquierda:) */
 .main-layout > .table-component { 
-    flex: 3; /* Ocupa 3 partes (la mayor parte) del ancho disponible */
+    flex: 3; /* Ocupa 3 partes */
     min-width: 0;
     margin: 0;
     display: flex;
     flex-direction: column;
 }
 
-/* Estilo para el Formulario (Columna Derecha: Aprox. 25% y más delgado) */
+/* Estilo para el Formulario*/
 .main-layout > .form-component { 
-    flex: 1; /* Ocupa 1 parte (la menor parte) del ancho disponible */
-    min-width: 280px; /* Ancho mínimo para mantenerlo delgado */
+    flex: 1; 
+    min-width: 280px; 
     margin: 0;
     display: flex;
     flex-direction: column;
 }
 
-/* Responsive Design: Apilar en dispositivos pequeños */
+/* Apilar en dispositivos pequeños */
 @media (max-width: 900px) {
     .main-layout {
         flex-direction: column;
         flex-grow: unset;
         min-height: auto;
-        padding-bottom: 0; /* Ajuste para dispositivos pequeños */
+        padding-bottom: 0; 
     }
 
     .main-layout > .table-component,
@@ -108,7 +107,6 @@ body {
     }
 }
 
-/* ------------------------------------------------------------------------- */
 /*
  * =========================================================
  * ESTILOS DEL CARD DE CONTENIDO (TABLE COMPONENT)
@@ -124,18 +122,20 @@ body {
     flex-grow: 1; /* Ocupa el alto completo de su columna */
     display: flex;
     flex-direction: column;
+    height: calc(100vh - 120px); 
+    min-height: 0; /*Permite que funcione el scroll */
 }
 
 .content-section h2, .card-title {
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 20px;
     color: #333;
     flex-shrink: 0;
 }
 
 .table-container {
-    overflow-x: auto;
-    flex-grow: 1; /* Ocupa el alto restante dentro del card */
+     overflow-x: auto;
+    flex-grow: 1; 
 }
 
 /* Estilo para resaltar la fila seleccionada por el script */
@@ -154,12 +154,15 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 table thead {
     background-color: #f0f0f0;
     border-bottom: 2px solid #ddd;
+    position: sticky; /* Títulos fijos al hacer scroll */
+    top: 0;
+    z-index: 10;
 }
 
 table th, table td {
@@ -169,9 +172,33 @@ table th, table td {
 }
 
 table th {
+    padding: 12px 15px;
+    text-align: center; 
+    border-bottom: 1px solid #eee;
     color: #555;
     font-weight: bold;
     font-size: 14px;
+}
+/*Centrar contenido de TODAS las celdas */
+table td {
+    padding: 12px 15px;
+    text-align: center; 
+    border-bottom: 1px solid #eee;
+}
+
+/* Alineacion a izquierda solo las columnas de Asunto y Tipo de Documento */
+table td:nth-child(1), /* Primera columna: Asunto */
+table td:nth-child(2) { /* Segunda columna: Tipo de Documento */
+    text-align: left; 
+}
+
+/* Centrar el contenido de la 2da columna de la segunda tabla */
+.tabla-respuestas td:nth-child(2) {
+    text-align: center;
+}
+/* Centrar el título de la 2da columna de la segunda tabla */
+.tabla-respuestas th:nth-child(2) {
+    text-align: center;
 }
 
 table tr:hover {
@@ -194,6 +221,9 @@ table tr:hover {
     flex-grow: 1; /* Ocupa el alto completo de su columna */
     display: flex;
     flex-direction: column;
+     height: calc(100vh - 120px); /*Misma altura que la tabla */
+    min-height: 0; /*No crece con el contenido */
+    overflow-y: auto; /*Scroll interno si el contenido es mayor */
 }
 
 .card h2 {
@@ -201,6 +231,7 @@ table tr:hover {
     font-weight: 600;
     color: #222;
     margin-bottom: 15px;
+    flex-shrink: 0;
 }
 
 .file-upload-area {
@@ -211,6 +242,8 @@ table tr:hover {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+     /* flex-shrink: 0; /*Mantiene altura fija */
+
 }
 
 /* Estilo para el Iframe (el visor real) */
@@ -221,6 +254,7 @@ table tr:hover {
     border-radius: 4px;
     background-color: #fcfcfc;
     box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
 
 .form-group {
@@ -279,6 +313,7 @@ input[type="date"] {
     resize: none;
     font-size: 14px;
     box-sizing: border-box;
+    font-family: Arial, sans-serif; /*  fuentes */
 }
 
 .btn-confirmar {
@@ -299,7 +334,7 @@ input[type="date"] {
 }
 
 /* ---------------------------------------------------------------------- */
-/* AJUSTES DE ÍCONOS DE IMAGEN Y BÚSQUEDA */
+/* AJUSTES DE ÍCONOS DE IMAGEN */
 /* ---------------------------------------------------------------------- */
 
 .icon-control-img {
@@ -328,28 +363,28 @@ input[type="date"] {
     flex-shrink: 0;
 }
 
-.search-bar {
+/*.search-bar {
     display: flex;
     align-items: center;
     border: 1px solid #ccc;
     padding: 5px 10px;
     border-radius: 4px;
     background-color: #f0f0f0;
-}
+}*/
 
 .header-left-group {
     display: flex;
     align-items: center;
-    gap: 15px;
+   /* gap: 15px;*/
 }
 
-.search-bar input {
+/*.search-bar input {
     border: none;
     outline: none;
     background-color: transparent;
     padding: 3px;
     width: 150px;
-}
+}*/
 
 .user-info {
     display: flex;
@@ -360,6 +395,48 @@ input[type="date"] {
     margin-right: 15px;
     color: #333;
 }
+
+/* --- ESTILOS PARA EL INDICADOR DE NOTIFICACIÓN (BADGE ROJO) --- */
+
+.notification-dropdown-container {
+    /* posicionar el badge de forma absoluta respecto a este contenedor */
+    position: relative; 
+    cursor: pointer;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.notification-badge {
+    position: absolute;
+    /* Posicionamiento en la esquina superior derecha del contenedor */
+    top: -2px; 
+    left: 16px; 
+    
+    /* Estilos de forma y color */
+    background-color: #dc3545; /* Rojo de alerta */
+    color: white;
+    border-radius: 50%; /* Forma de círculo*/
+    padding: 0px 4px;
+    font-size: 11px;
+    font-weight: bold;
+    min-width: 14px;
+    height: 14px;
+    line-height: 14px; /* Ajuste para centrar el número verticalmente */
+    text-align: center;
+    box-shadow: 0 0 0 2px #fff; /* Pequeño borde blanco  para separarlo del fondo */
+    z-index: 1001;
+    
+    /* Ocultar inicialmente si  es 0 (manejar con JS) */
+    display: none; 
+}
+
+/* Regla para mostrar el badge si tiene contenido 0 notificaciones */
+.notification-badge[data-count]:not([data-count="0"]) {
+    display: block;
+}
+/* Fin... */
+
 
 .notification-dropdown-container, .profile-info-container {
     position: relative;
@@ -558,7 +635,7 @@ a {
 
 .sidebar.collapsed {
     width: 80px;
-    transition: width 0.25s ease, background 0.25s ease;
+    transition: width 0.25s ease, 0.25s ease;
 }
 
 .sidebar.collapsed .menu-title,
@@ -596,9 +673,202 @@ a {
 .sidebar.collapsed .nav-item .nav-link .icon-bg {
     margin-right: 0;
 }
+/*
+ * =========================================================
+ * ESTILOS PARA COLUMNA ASUNTO/NUM. DOCUMENTO
+ * =========================================================
+ */
+
+/* Estilo para el número de oficio (el texto pequeño debajo del asunto) */
+.document-number {
+    /* Ocupa su propia línea dentro de la celda */
+    display: block; 
+    font-size: 0.85em;  /* Hace el texto más pequeño */
+    color: #6c757d; 
+    margin-top: 2px; 
+    padding: 0; 
+}
+
+/* El Asunto (texto principal)  ajuste */
+.document-subject {
+    /* Asegura de ocupar su propia línea */
+    display: block; 
+    color: #333; 
+    padding: 0; 
+}
+
+/* Centrar la celda verticalmente */
+table td:nth-child(1) {
+    /* Asegura que el contenido quede alineado a la izquierda */
+    text-align: left; 
+    /* Alinea verticalmente el contenido superior/inferior si la fila es alta */
+    vertical-align: top; 
+}
+/* =========================================================
+ * ESTILOS PARA LA BARRA DE BÚSQUEDA DE TABLA (CORRECCIÓN DE ALINEACIÓN)
+ * =========================================================
+ */
+
+/* alinear el título H2 a la izquierda y la búsqueda a la derecha */
+.table-header-controls {
+    display: flex;
+    justify-content: flex-start; /* Empuja el título y la búsqueda a extremos opuestos */
+    align-items: center; /* Alineación vertical */
+    margin-bottom: 5px; /* Espacio antes de la tabla */
+    width: 100%; /* Asegura que ocupe todo el ancho de la sección */
+    gap: 15px;
+}
+
+/* Asegura que el H2 no tenga margen inferior que lo separe de la línea */
+.table-header-controls .card-title {
+    margin: 0; 
+}
+
+/* Estilos para el campo de búsqueda */
+.search-container {
+    position: relative; 
+    width: 280px; /* Ancho fijo para la caja de búsqueda */
+    flex-shrink: 0; /* Evita que se encoja si el título es muy largo */
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 10px 8px 35px; /* Más padding a la izquierda para el ícono */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    border-color: #68757e; 
+    outline: none;
+    box-shadow: 0 0 0 1px #7d8a93;
+}
+/* Estilo para la etiqueta <mark> que usará el script de búsqueda */
+mark {
+    background-color: #eada7e; /* Un color amarillo o verde brillante */
+    color: #333;               /* Asegura que el texto sea oscuro y legible */
+    padding: 1px 0;
+    border-radius: 2px;
+}
+
+/* Estilo y posicionamiento del ícono de búsqueda */
+/*.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 14px;
+    pointer-events: none;
+}*/
+
+/* ---------------- FILTRO DE ESTATUS ---------------- */
+
+.status-filter-container {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    width: 280px;
+   /*  margin-left: auto; */
+}
+
+.filter-button {
+    background-color: #f8f9fa;
+    color: #495057;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s;
+    width: 100%; /* Fuerza al botón a ocupar el ancho completo del contenedor (280px) */
+    justify-content: space-between;
+}
+
+.filter-button:hover {
+    background-color: #e9ecef;
+}
+
+.filter-icon {
+    margin-left: 8px;
+    font-size: 12px;
+}
+
+.filter-dropdown-menu {
+    position: absolute;
+    top: 100%; /* Justo debajo del botón */
+    left: 0;
+    z-index: 20; /* Asegura que esté por encima de la tabla */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    min-width: 180px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 5px 0; 
+    /* Inicialmente oculto */
+    display: none; 
+}
+
+.filter-dropdown-menu.visible {
+    display: block;
+}
+
+.filter-option {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.1s;
+}
+
+.filter-option:hover {
+    background-color: #f1f1f1;
+}
+
+.filter-option.active {
+    background-color: #3b6a8b;
+    color: white;
+}
 
 
 
+
+/* Divisor visual entre tablas */
+.divider {
+  margin: 25px 0 15px;
+  border: 0;
+  border-top: 2px solid #ddd;
+}
+
+/* Botones arriba de la segunda tabla */
+.button-group-top {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.btn-accion {
+  background-color: #4a7da1;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  font-size: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-accion:hover {
+  background-color: #3b6a8b;
+}
 
 
 

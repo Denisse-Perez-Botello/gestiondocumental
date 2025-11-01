@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Correspondencia</title>
 
-    <link rel="stylesheet" href="/styles/Dashboard.css">
+    <link rel="stylesheet" href="../styles/Dashboard.css">
+    <link rel="stylesheet" href="../styles/ModalDashboard.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -40,13 +41,6 @@
                 <a class="nav-link" href="documentos.html" >
                     <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
                     <span class="menu-title">Documentos</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-gestionamiento">
-                <a class="nav-link" href="gestionamiento.html" >
-                    <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Icono Gestionamiento" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Gestionamiento</span>
                 </a>
             </li>
 
@@ -95,8 +89,8 @@
             <div class="header-left-group">
                 <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
                  <div class="search-bar">
-                <img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
-                <input type="text" placeholder="Search products">
+                <!-- <img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
+                <input type="text" placeholder="Search products">-->
             </div>
             </div>
 
@@ -109,7 +103,7 @@
                 
                 <div class="notification-dropdown-container">
                     <img src="../imagenes/notificacion.png" alt="Notificacion" id="notification-icon" class="icon-control-img notification-icon-img">
-                    
+                    <span class="notification-badge" data-count="3">3</span>
                     <div class="dropdown-menu notification-menu">
                         <p class="dropdown-title">Notificaciones recientes</p>
                         <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
@@ -119,93 +113,259 @@
             </div>
         </header>
 <!--Fin Barra de Navegacion -->
-        
+  
+
+<!-- ========== FILTROS DE PERÍODO ============== -->
+<!-- ============================================ -->
+<div class="periodo-filtros">
+    <div class="filtro-grupo">
+        <label for="filtroAnio">
+            <i class="fas fa-calendar-alt"></i> Año:
+        </label>
+        <select id="filtroAnio" onchange="actualizarDashboard()">
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+        </select>
+    </div>
+
+    <div class="filtro-grupo">
+        <label for="filtroMes">
+            <i class="fas fa-calendar"></i> Mes:
+        </label>
+        <select id="filtroMes" onchange="actualizarDashboard()">
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3" selected>Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+    </div>
+
+    <button class="btn-actualizar" onclick="actualizarDashboard()">
+        <i class="fas fa-sync-alt"></i> Actualizar
+    </button>
+</div>
+<!-- ============================================ -->
         
         <!--Dashboard-->
         <div class="dashboard-container">
         
         <div class="card circulos-card">
             <h2>Indicadores de Desempeño</h2>
+            <p class="periodo-indicadores"> Datos de Marzo 2025</p>
             <div class="indicadores-contenedor">
                 
                 <div class="indicador">
-                    <div class="circulo-progreso progreso-85" data-porcentaje="85">
-                        <span class="valor">85%</span>
+                    <div class="circulo-progreso progreso-85">
+                        <span class="valor">120</span>
                     </div>
-                    <p class="titulo-indicador">Documentos EN TIEMPO</p>
+                    <p class="titulo-indicador">DOCUMENTOS EN TIEMPO</p>
                 </div>
                 
                 <div class="indicador">
-                    <div class="circulo-progreso progreso-50" data-porcentaje="50">
-                        <span class="valor">50%</span>
+                    <div class="circulo-progreso progreso-50" >
+                        <span class="valor">40</span>
                     </div>
-                    <p class="titulo-indicador">ATENCIÓN PRÓXIMO A VENCER</p>
+                    <p class="titulo-indicador">PRÓXIMO A VENCER</p>
                 </div>
                 
                 <div class="indicador">
-                    <div class="circulo-progreso progreso-15" data-porcentaje="15">
-                        <span class="valor">15%</span>
+                    <div class="circulo-progreso progreso-15">
+                        <span class="valor">15</span>
                     </div>
-                    <p class="titulo-indicador">URGENTE! VENCIDOS</p>
+                    <p class="titulo-indicador">DOCUMENTOS VENCIDOS</p>
                 </div>
                 </div>
         </div>
+       <!--Dashboard de barras-->       
+            <div class="card barras-card">
+             <h2>Correspondencia de Casos</h2>
+    
+    <div class="grafica-correspondencia">
+        <p class="subtitulo-grafica">Documentos por Área y Estado</p>
+        <div class="leyenda">
+            <div class="leyenda-item"><span class="leyenda-color green"></span> En tiempo</div>
+            <div class="leyenda-item"><span class="leyenda-color yellow"></span> En Proceso</div>
+            <div class="leyenda-item"><span class="leyenda-color red"></span> Vencido</div>
+        </div>
         
-        <div class="card barras-card">
-            <h2>Correspondencia de Casos</h2>
+        <div class="grafico-horizontal-contenedor">
             
-            <div class="grafica-correspondencia">
-                <p class="subtitulo-grafica">Documentos por Área y Estado</p>
-                
-                <div class="grafico-contenedor">
-                    <div class="eje-y-labels">
-                        <div>300</div>
-                        <div>60</div>
-                        <div>30</div>
-                        <div>0</div>
+            <div class="eje-y-areas">
+                <div>Recursos Humanos</div>
+                <div>Contabilidad Técnica</div>
+                <div>Presidencia</div>
+                <div>Obras Públicas</div>
+                <div>Ley de Archivo</div>
+                <div>Turismo</div>
+            </div>
+
+            <div class="grafico-principal" id="graficoPrincipal" > <!--Aquí se detectará el clic -->
+                <div class="barras-contenedor-horizontal"> 
+                    <div class="barra-area horizontal">
+                        <div class="segmento green" style="width: 50%;"></div> 
+                        <div class="segmento yellow" style="width: 20%;"></div>
+                        <div class="segmento red" style="width: 10%;"></div>
+                    </div>
+                    
+                    <div class="barra-area horizontal">
+                        <div class="segmento green" style="width: 40%;"></div>
+                        <div class="segmento yellow" style="width: 35%;"></div>
+                        <div class="segmento red" style="width: 15%;"></div>
                     </div>
 
-                    <div class="barras-contenedor">
-                        
-                        <div class="barra-area">
-                            <div class="segmento green" style="height: 50px;"></div> 
-                            <div class="segmento yellow" style="height: 20px;"></div>
-                            <div class="segmento red" style="height: 10px;"></div>
-                            <span class="etiqueta-area">Presidencia</span>
-                        </div>
-                        
-                        <div class="barra-area">
-                            <div class="segmento green" style="height: 40px;"></div>
-                            <div class="segmento yellow" style="height: 35px;"></div>
-                            <div class="segmento red" style="height: 15px;"></div>
-                            <span class="etiqueta-area">Contabilidad Técnica</span>
-                        </div>
+                    <div class="barra-area horizontal">
+                        <div class="segmento green" style="width: 55%;"></div>
+                        <div class="segmento yellow" style="width: 25%;"></div>
+                        <div class="segmento red" style="width: 20%;"></div>
+                    </div>
 
-                        <div class="barra-area">
-                            <div class="segmento green" style="height: 55px;"></div>
-                            <div class="segmento yellow" style="height: 25px;"></div>
-                            <div class="segmento red" style="height: 20px;"></div>
-                            <span class="etiqueta-area">Recursos Humanos</span>
-                        </div>
+                    <div class="barra-area horizontal">
+                        <div class="segmento green" style="width: 30%;"></div>
+                        <div class="segmento yellow" style="width: 60%;"></div>
+                        <div class="segmento red" style="width: 70%;"></div>
+                    </div>
 
-                        <div class="barra-area">
-                            <div class="segmento green" style="height: 30px;"></div>
-                            <div class="segmento yellow" style="height: 60px;"></div>
-                            <div class="segmento red" style="height: 70px;"></div>
-                            <span class="etiqueta-area">Obras Públicas</span>
-                        </div>
-                        </div>
-                </div>
-                
-                <div class="leyenda">
-                    <div class="leyenda-item"><span class="leyenda-color green"></span> Cerrado</div>
-                    <div class="leyenda-item"><span class="leyenda-color yellow"></span> En Proceso</div>
-                    <div class="leyenda-item"><span class="leyenda-color red"></span> Pendiente</div>
+                    <div class="barra-area horizontal">
+                        <div class="segmento green" style="width: 20%;"></div>
+                        <div class="segmento yellow" style="width: 40%;"></div>
+                        <div class="segmento red" style="width: 10%;"></div>
+                    </div>
+                   
+
+                    <div class="barra-area horizontal">
+                        <div class="segmento green" style="width: 20%;"></div>
+                        <div class="segmento yellow" style="width: 35%;"></div>
+                        <div class="segmento red" style="width: 10%;"></div>
+                    </div>
+                    <div class="barra-area horizontal">
+                        <div class="segmento green" style="width: 20%;"></div>
+                        <div class="segmento yellow" style="width: 35%;"></div>
+                        <div class="segmento red" style="width: 10%;"></div>
+                    </div>
+                    
+                <div class="eje-x-labels">
+                    <div>0</div> 
+                    <div>25</div>
+                    <div>50</div>
+                    <div>75</div>
+                    <div>100</div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
     </div> 
     </div>
-     <script src="/script/Dashboard.js"></script>
+
+    <!-- ========== INICIO DEL MODAL DASHBOARD ================ -->
+  
+    <div id="modalDetalles" class="modal">
+        <div class="modal-card">
+            <div class="modal-head">
+                <h3>Detalles de Documentos</h3>
+                <button class="icon-btn close-red" onclick="cerrarModal()">X</button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Filtros -->
+                <div class="filters">
+                    <select id="filtroArea" onchange="filtrarTabla()">
+                        <option value="">Todas las áreas</option>
+                        <option value="Presidencia">Presidencia</option>
+                        <option value="Recursos Humanos">Recursos Humanos</option>
+                        <option value="Contabilidad Técnica">Contabilidad Técnica</option>
+                        <option value="Obras Públicas">Obras Públicas</option>
+                        <option value="Ley de Archivo">Ley de Archivo</option>
+                        <option value="Turismo">Turismo</option>
+                    </select>
+
+                    <select id="filtroStatus" onchange="filtrarTabla()">
+                        <option value="">Todos los estatus</option>
+                        <option value="Turnado">En tiempo</option>
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Vencido">Vencido</option>
+                    </select>
+                </div>
+
+                <!-- Tabla de Detalles -->
+                <div class="table-container">
+                    <table id="tablaDetalles">
+                        <thead>
+                            <tr>
+                                <th>Área</th>
+                                <th>Tipo de Documento</th>
+                                <th>Fecha de Recepción</th>
+                                <th>Fecha de Respuesta</th>
+                                <th>Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Recursos Humanos</td>
+                                <td>Notificación de trabajos.pdf</td>
+                                <td>20-09-2025</td>
+                                <td>21-09-2025</td>
+                                <td><span class="status-label status-turnado">En tiempo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Contabilidad Técnica</td>
+                                <td>Solicitud de Viáticos.jpg</td>
+                                <td>20-09-2025</td>
+                                <td>22-09-2025</td>
+                                <td><span class="status-label status-vencido">Vencido</span></td>
+                            </tr>
+                            <tr>
+                                <td>Presidencia</td>
+                                <td>Uso de espacio público.pdf</td>
+                                <td>22-09-2025</td>
+                                <td>25-09-2025</td>
+                                <td><span class="status-label status-pendiente">Pendiente</span></td>
+                            </tr>
+                            <tr>
+                                <td>Obras Públicas</td>
+                                <td>Informe de servicios públicos.pdf</td>
+                                <td>25-09-2025</td>
+                                <td>29-09-2025</td>
+                                <td><span class="status-label status-turnado">En tiempo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Ley de Archivo</td>
+                                <td>Clasificación de expedientes.pdf</td>
+                                <td>26-09-2025</td>
+                                <td>30-09-2025</td>
+                                <td><span class="status-label status-pendiente">Pendiente</span></td>
+                            </tr>
+                            <tr>
+                                <td>Turismo</td>
+                                <td>Proyectos de promoción.pdf</td>
+                                <td>26-09-2025</td>
+                                <td>29-09-2025</td>
+                                <td><span class="status-label status-vencido">Vencido</span></td>
+                            </tr>
+                            <tr>
+                                <td>Turismo</td>
+                                <td>Informe Flujo turístico.pdf</td>
+                                <td>28-09-2025</td>
+                                <td>30-09-2025</td>
+                                <td><span class="status-label status-turnado">En tiempo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+     <script src="../script/Dashboard.js"></script>
+     <script src="../script/ModalDashboard.js"></script>
     </body>
 </html>

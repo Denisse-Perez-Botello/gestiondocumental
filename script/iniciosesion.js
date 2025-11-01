@@ -166,8 +166,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('No se encontró el elemento logo-button');
     }
-    
-    const storedIp = loadStoredIp();
+    // Verificar IP almacenada este es cuando se almacenan las ip para que despues pueda acceder
+    /*const storedIp = loadStoredIp();
     if (storedIp) {
         rhIP = storedIp;
         console.log('IP cargada:', storedIp);
@@ -177,7 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modalIP) {
             modalIP.style.display = 'flex';
         }
-    }
+    }*/
+   // (IP desactivada temporalmente)
+console.log('Verificación de IP omitida (función no usada por ahora).');
 
    
     const loginForm = document.getElementById('loginForm');
@@ -234,3 +236,58 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
+// =================================================================
+// FUNCIÓN PARA INICIO DE SESIÓN (SIMULADO)
+// =================================================================
+
+function handleSubmit(e) {
+    e.preventDefault();
+
+    const usuario = document.getElementById('usuario').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const mantenerSesion = document.getElementById('mantenerSesion').checked;
+
+    console.log("Usuario:", usuario);
+    console.log("Contraseña:", password);
+    console.log("Mantener sesión:", mantenerSesion);
+
+    // ============================
+    // DATOS SIMULADOS DE USUARIOS
+    // ============================
+    const usuariosSimulados = [
+        { usuario: 'admin', password: '1234', area: 'usuarios', destino: './vistas/Usuarios.html' },
+        { usuario: 'presi', password: 'abcd', area: 'dashboard', destino: './vistas/Dashboard.html' },
+        { usuario: 'oficialia', password: 'fin2025', area: 'dispersion', destino: './vistas/Dispersion.html' },
+        { usuario: 'area', password: 'clave', area: 'registro', destino: './vistas/documentos.html' }
+    ];
+
+    // ============================
+    // VALIDAR CREDENCIALES
+    // ============================
+    const usuarioEncontrado = usuariosSimulados.find(u =>
+        u.usuario === usuario && u.password === password
+    );
+
+    if (!usuarioEncontrado) {
+        alert("Usuario o contraseña incorrectos.");
+        return;
+    }
+
+    // ============================
+    // GUARDAR SESIÓN (OPCIONAL)
+    // ============================
+    if (mantenerSesion) {
+        localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
+        console.log("Sesión guardada:", usuarioEncontrado);
+    } else {
+        sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
+    }
+    // ============================
+    // REDIRECCIONAR SEGÚN USUARIO
+    // ============================
+    console.log(`Acceso permitido. Redirigiendo a ${usuarioEncontrado.destino}`);
+    window.location.href = usuarioEncontrado.destino;
+}

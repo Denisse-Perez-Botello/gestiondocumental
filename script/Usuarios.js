@@ -115,20 +115,60 @@ document.addEventListener('DOMContentLoaded', () => {
     /* 4. FUNCIONALIDAD DE MENÚS DESPLEGABLES NOTIFICACIONES */
     /* ========================================================= */
     
-    //Notificaciones
-    const notificationContainer = document.querySelector('.notification-dropdown-container');
-    const notificationMenu = document.querySelector('.notification-menu');
+ // Notificaciones
+const notificationContainer = document.querySelector('.notification-dropdown-container');
+const notificationMenu = document.querySelector('.notification-menu');
+// Se obtiene el elemento badge
+const notificationBadge = document.querySelector('.notification-badge');
 
-    if (notificationContainer && notificationMenu) {
-        notificationContainer.addEventListener('click', (event) => {
-            event.stopPropagation();
-            notificationMenu.classList.toggle('visible');
-        });
-        // Cierra al hacer clic en cualquier parte del cuerpo
-        document.body.addEventListener('click', () => {
-            notificationMenu.classList.remove('visible');
-        });
+
+/*
+ * Se actualiza el contador visible en el badge de notificación.
+ * @param {number} count - El número de notificaciones.
+ */
+function updateNotificationCount(count) {
+    if (!notificationBadge) return;
+
+    // Asegura que el conteo no sea negativo
+    count = Math.max(0, count);
+
+    // Actualiza el atributo data-count y el texto visible (ejemp. '99+')
+    notificationBadge.setAttribute('data-count', count);
+    notificationBadge.textContent = count > 99 ? '99+' : count.toString();
+
+    // La visibilidad se maneja con el CSS que usa el atributo data-count,
+       if (count > 0) {
+        notificationBadge.style.display = 'block';
+    } else {
+        notificationBadge.style.display = 'none';
     }
+}
+
+
+if (notificationContainer && notificationMenu) {
+    notificationContainer.addEventListener('click', (event) => {
+        event.stopPropagation();
+        notificationMenu.classList.toggle('visible');
+
+        // Al abrir el menú, las notificaciones se visualizan
+        if (notificationMenu.classList.contains('visible')) {
+            // Reinicia a cero visualmente
+            updateNotificationCount(0); 
+            //Aquí se debería llamar a la función del backend para marcar las notificaciones como leídas en la BD.
+            // Ejemplo, como marcarNotificacionesLeidas();
+        }
+    });
+
+    // Cierra al hacer clic en cualquier parte del cuerpo
+    document.body.addEventListener('click', () => {
+        notificationMenu.classList.remove('visible');
+    });
+    
+    //Simulacion de que al cargar la página hay 3 notificaciones nuevas):
+    updateNotificationCount(3); 
+}
+
+
     
     // Menús de Estado en Tabla
     const dropdownActions = document.querySelectorAll('.dropdown-action');
@@ -151,7 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeAllStatusMenus(dropdownContent);
                 dropdownContent.style.display = (dropdownContent.style.display === 'block') ? 'none' : 'block';
             });
-
+            
+            
+//--------------------------------------------------------------------------------------------------
             // Lógica para botones de Activar/Desactivar (simulación)
             dropdownContent.querySelectorAll('button').forEach(button => {
                 button.addEventListener('click', () => {

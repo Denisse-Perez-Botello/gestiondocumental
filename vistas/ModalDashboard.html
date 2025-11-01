@@ -1,0 +1,100 @@
+<!-- MODAL DE DETALLES DE GRÁFICA -->
+ <link rel="stylesheet" type="text/css" href="../styles/ModalDashboard.css">
+<button id="graficoPrincipal" style="padding: 10px 20px; margin: 20px;">
+  Abrir Modal de Prueba
+</button>
+<div id="modalDetalles" class="modal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3>Detalles de Documentos</h3>
+       <button class="icon-btn close-red" onclick="cerrarModal()">X</button>
+    </div>
+
+    <div class="modal-body" >
+      <!-- Filtros -->
+      <div class="filters" >
+        <select id="filtroArea" onchange="filtrarTabla()">
+          <option value="">Todas las áreas</option>
+          <option value="Recursos Humanos">Recursos Humanos</option>
+          <option value="Finanzas">Finanzas</option>
+          <option value="Jurídico">Jurídico</option>
+          <option value="Obras Públicas">Obras Públicas</option>
+        </select>
+
+        <select id="filtroStatus" onchange="filtrarTabla()">
+          <option value="">Todos los estatus</option>
+          <option value="Turnado">Turnado</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="Vencido">Vencido</option>
+        </select>
+      </div>
+
+      <!-- Tabla de Detalles -->
+                <div class="table-container">
+                    <table id="tablaDetalles">
+                        <thead>
+                            <tr>
+                                <th>Área</th>
+                                <th>Tipo de Documento</th>
+                                <th>Fecha de Recepción</th>
+                                <th>Fecha Límite</th>
+                                <th>Estatus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Recursos Humanos</td>
+                                <td>Notificación de trabajos.pdf</td>
+                                <td>20-09-2025</td>
+                                <td>21-09-2025</td>
+                                <td><span class="status-label status-turnado">Turnado</span></td>
+                            </tr>
+                            <tr>
+                                <td>Contabilidad Técnica</td>
+                                <td>Solicitud de Viáticos.jpg</td>
+                                <td>20-09-2025</td>
+                                <td>22-09-2025</td>
+                                <td><span class="status-label status-vencido">Vencido</span></td>
+                            </tr>
+                            <tr>
+                                <td>Presidencia</td>
+                                <td>Uso de espacio público.pdf</td>
+                                <td>22-09-2025</td>
+                                <td>25-09-2025</td>
+                                <td><span class="status-label status-pendiente">Pendiente</span></td>
+                            </tr>
+                            <tr>
+                                <td>Obras Públicas</td>
+                                <td>Informe de servicios públicos.pdf</td>
+                                <td>25-09-2025</td>
+                                <td>29-09-2025</td>
+                                <td><span class="status-label status-turnado">Turnado</span></td>
+                            </tr>
+                            <tr>
+                                <td>Ley de Archivo</td>
+                                <td>Clasificación de expedientes.pdf</td>
+                                <td>26-09-2025</td>
+                                <td>30-09-2025</td>
+                                <td><span class="status-label status-pendiente">Pendiente</span></td>
+                            </tr>
+                            <tr>
+                                <td>Turismo</td>
+                                <td>Proyectos de promoción.pdf</td>
+                                <td>26-09-2025</td>
+                                <td>29-09-2025</td>
+                                <td><span class="status-label status-vencido">Vencido</span></td>
+                            </tr>
+                            <tr>
+                                <td>Turismo</td>
+                                <td>Informe Flujo turístico.pdf</td>
+                                <td>28-09-2025</td>
+                                <td>30-09-2025</td>
+                                <td><span class="status-label status-turnado">Turnado</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="../script/ModalDashboard.js"></script>

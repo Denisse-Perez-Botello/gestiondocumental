@@ -1,0 +1,181 @@
+/* === MODAL GENERAL === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-card {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: aparecer 0.25s ease-out;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* === ENCABEZADO DEL MODAL === */
+.modal-head {
+  position: relative; /* AGREGADO para el posicionamiento del botón */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+.modal-head h3 {
+  font-size: 18px;
+  color: #4a7da1;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Botón X rojo */
+.icon-btn.close-red {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #d32f2f;
+  border: none;
+  color: white;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 0 8px 0 8px; /* Esquina redondeada */
+}
+
+.icon-btn.close-red:hover {
+  background-color: #b71c1c;
+}
+
+/* === CONTENIDO DEL MODAL === */
+.modal-body {
+  padding: 20px;
+}
+
+/* === FILTROS === */
+.filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  padding: 8px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* === CONTENEDOR DE TABLA === */
+.table-container {
+  max-height: 300px; /* Altura máxima de la tabla (ajusta según necesites) */
+  overflow-y: auto; /* Scroll vertical */
+  overflow-x: hidden; /* Sin scroll horizontal */
+  border-radius: 4px;
+}
+
+/* === TABLA === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table thead {
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ddd;
+  position: sticky; /* Mantiene el encabezado fijo al hacer scroll */
+  top: 0;
+  z-index: 10;
+}
+
+table th, table td {
+  padding: 10px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  text-align: center;
+}
+
+table th {
+  color: #555;
+  font-weight: bold;
+  white-space: nowrap; /*Forza una sola linea*/
+}
+
+table tr:hover {
+  background-color: #fafafa;
+}
+
+/* === ETIQUETAS DE ESTATUS === */
+.status-label {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  min-width: 80px;
+}
+
+.status-turnado {
+  background-color: #e6f4ea;
+  color: #2e7d32;
+  border: 1px solid #81c784;
+}
+
+.status-pendiente {
+  background-color: #fff8e1;
+  color: #f9a825;
+  border: 1px solid #fdd835;
+}
+
+.status-vencido {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef5350;
+}
+
+/* === SCROLLBAR PERSONALIZADA PARA LA TABLA  === */
+.table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

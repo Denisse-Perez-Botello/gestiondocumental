@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oficialía de Partes - Dashboard</title>
 
-   <link rel="stylesheet" href="/styles/Dispersion.css">
+   <link rel="stylesheet" href="../styles/Dispersion.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -40,13 +40,6 @@
                 <a class="nav-link" href="documentos.html" >
                     <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
                     <span class="menu-title">Documentos</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-gestionamiento">
-                <a class="nav-link" href="gestionamiento.html" >
-                    <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Icono Gestionamiento" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Gestionamiento</span>
                 </a>
             </li>
 
@@ -95,8 +88,6 @@
             <div class="header-left-group">
                 <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
                  <div class="search-bar">
-                <img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
-                <input type="text" placeholder="Search products">
             </div>
             </div>
 
@@ -109,7 +100,7 @@
                 
                 <div class="notification-dropdown-container">
                     <img src="../imagenes/notificacion.png" alt="Notificacion" id="notification-icon" class="icon-control-img notification-icon-img">
-                    
+                     <span class="notification-badge" data-count="3">3</span>
                     <div class="dropdown-menu notification-menu">
                         <p class="dropdown-title">Notificaciones recientes</p>
                         <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
@@ -123,49 +114,136 @@
         
         <main class="content-area">
           <div class="main-layout">
-                
-                <div class="content-section table-component">
-                    <h2 class="card-title">Correspondencia</h2>
+   <!--Tabla -->             
+                <!-- Tabla principal -->
+<div class="content-section table-component">
+  <h2 class="card-title">Correspondencia</h2>
 
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Tipo de Documento</th>
-                                    <th>Fecha de Recepción</th>
-                                    <th>Fecha de respuesta</th>
-                                    <th>Estatus</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Notificación de trabajos.pdf</td>
-                                    <td>20-09-2025</td>
-                                    <td>21-09-2025</td>
-                                    <td>Aprobado</td>
-                                </tr>
-                                <tr>
-                                    <td>Solicitud de Viáticos.jpg</td>
-                                    <td>20-09-2025</td>
-                                    <td>22-09-2025 </td>
-                                    <td>Rechazado</td>
-                                </tr>
-                                <tr>
-                                    <td>Solicitud de uso de espacio público.pdf</td>
-                                    <td>22-09-2025</td>
-                                    <td>25-09-2025</td>
-                                    <td>Aprobado</td>
-                                </tr>
-                                <tr>
-                                    <td>Informe de servicios públicos.pdf</td>
-                                    <td>25-09-2025</td>
-                                    <td>29-09-2025</td>
-                                    <td>Vencido</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+  <!-- Filtro de búsqueda -->
+  <div class="search-container">
+    <input type="text" id="document-search" placeholder="Buscar por Asunto o No. Oficio..." class="search-input">
+  </div>
+
+  <!-- Filtro Estatus -->
+  <div class="status-filter-container">
+    <button id="status-filter-button" class="filter-button">
+      Filtrar por Estatus <span class="filter-icon">▼</span>
+    </button>
+    <div id="status-dropdown" class="filter-dropdown-menu">
+      <a href="#" class="filter-option active" data-status="all">Mostrar Todos</a>
+      <a href="#" class="filter-option" data-status="Turnado">Turnado</a>
+      <a href="#" class="filter-option" data-status="En proceso">En proceso</a>
+      <a href="#" class="filter-option" data-status="Respondido">Respondido</a>
+      <a href="#" class="filter-option" data-status="Vencido">Vencido</a>
+    </div>
+  </div>
+
+  <!-- Primera tabla -->
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Asunto/Num. Oficio</th>
+          <th>Tipo de Documento</th>
+          <th>Fecha de Recepción</th>
+          <th>Fecha de Asignación</th>
+          <th>Fecha de respuesta</th>
+          <th>Estatus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="document-subject">Solicitud para iniciar obras en la vía pública.</div>
+            <small class="document-number">Oficio No. 001/2025/DG</small>
+          </td>
+          <td>Notificación de trabajos.pdf</td>
+          <td>20-09-2025</td>
+          <td>20-09-2025</td>
+          <td>21-09-2025</td>
+          <td>Turnado</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="document-subject">Viáticos para viaje oficial a Monterrey.</div>
+          </td>
+          <td>Solicitud de Viáticos.jpg</td>
+          <td>20-09-2025</td>
+          <td>21-09-2025</td>
+          <td>22-09-2025</td>
+          <td>En proceso</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="document-subject">Permiso para evento deportivo en plaza central.</div>
+            <small class="document-number">Oficio No. 002/2025/SG</small>
+          </td>
+          <td>Solicitud de uso de espacio público.pdf</td>
+          <td>22-09-2025</td>
+          <td>22-09-2025</td>
+          <td>25-09-2025</td>
+          <td>Respondido</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="document-subject">Revisión trimestral de gastos de agua y luz.</div>
+          </td>
+          <td>Informe de servicios públicos.pdf</td>
+          <td>25-09-2025</td>
+          <td>26-09-2025</td>
+          <td>29-09-2025</td>
+          <td>Vencido</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ====== SEGUNDA TABLA DENTRO DEL MISMO CARD ====== -->
+  <hr class="divider">
+  <h2 class="card-title">Respuestas y Entregas</h2>
+
+  <!-- Botones -->
+  <div class="button-group-top">
+    <button class="btn-accion" id="btnRecibi">Recibí Respuesta</button>
+    <button class="btn-accion" id="btnEntregue">Entregué Respuesta</button>
+  </div>
+
+  <!-- Segunda tabla -->
+  <div class="table-container">
+    <table class="tabla-respuestas">
+      <thead>
+        <tr>
+          <th>Documentos</th>
+          <th>Respuesta Recibida</th>
+          <th>Fecha de Entrega</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Informe Técnico.pdf</td>
+          <td>Recibí respuesta</td>
+          <td>29-09-2025</td>
+        </tr>
+        <tr>
+          <td>Respuesta Oficial.docx</td>
+          <td>Recibí respuesta</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>Reporte de Actividades.xls</td>
+          <td>Recibí respuesta</td>
+          <td>30-09-2025</td>
+        </tr>
+        <tr>
+          <td>Memorándum 15.pdf</td>
+          <td>Recibí respuesta</td>
+          <td>—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
                 <div class="card form-component">
                     <h2>Notificación de Trabajos sobre el<br>Derecho de Vía</h2>
 
@@ -213,20 +291,7 @@
            
         </main>
     </div>
-  <!--Alerta Modal cuando el documento fue dispersado -->  
-   <!-- <div class="custom-modal-backdrop" id="customAlertModal">
-        <div class="card card-inverse-info">
-            <div class="card-body">
-                <p class="mb-4" id="alertMessageContent">Documento dispersado con éxito.</p>
-                
-                <div class="button-group">
-                    <button class="btn btn-info" id="alertOkButton">Ok</button>
-                </div>
-                
-            </div>
-        </div>
-    </div>--> 
-    <!--Fin de Alerta Modal -->
-    <script src="/script/Dispersion.js"></script>
+ 
+    <script src="../script/Dispersion.js"></script>
 </body>
 </html>

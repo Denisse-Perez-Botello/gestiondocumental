@@ -5,87 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
 
-    <link rel="stylesheet" href="/styles/Usuarios.css">
+    <link rel="stylesheet" href="../styles/Usuarios.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <!--Menu lateral -->
-    <nav class="sidebar sidebar-off-canvas" id="sidebar">
-        <ul class="nav">
+        <nav class="sidebar sidebar-off-canvas" id="sidebar">
+            <ul class="nav">
 
-            <li class="nav-item nav-category tlahuapan-item">
-                <div class="tlahuapan-logo-text">
-                    <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
-                    <span class="tlahuapan-text">TLAHUAPAN</span>
-                </div>
-            </li>
+                <li class="nav-item nav-category tlahuapan-item">
+                    <div class="tlahuapan-logo-text">
+                        <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
+                        <span class="tlahuapan-text">TLAHUAPAN</span>
+                    </div>
+                </li>
 
-            <li class="nav-item active" id="menu-usuarios">
-                <a class="nav-link" href="Usuarios.html" >
-                    <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Icono Usuarios" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Usuarios</span>
-                </a>
-            </li>
+                <li class="nav-item active" id="menu-usuarios">
+                    <a class="nav-link" href="Usuarios.html">
+                        <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Icono Usuarios" class="sidebar-icon-img"></span>
+                        <span class="menu-title">Usuarios</span>
+                    </a>
+                </li>
 
-            <li class="nav-item" id="menu-dashboard">
-                <a class="nav-link" href="Dashboard.html" >
-                    <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Icono Dashboard" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Dashboard</span>
-                </a>
-            </li>
+                <li class="nav-item" id="menu-dashboard">
+                    <a class="nav-link" href="Dashboard.html">
+                        <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Icono Dashboard" class="sidebar-icon-img"></span>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
 
-            <li class="nav-item" id="menu-documentos" >
-                <a class="nav-link" href="documentos.html" >
-                    <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Documentos</span>
-                </a>
-            </li>
+                <li class="nav-item" id="menu-documentos">
+                    <a class="nav-link" href="documentos.html">
+                        <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
+                        <span class="menu-title">Documentos</span>
+                    </a>
+                </li>
 
-            <li class="nav-item" id="menu-gestionamiento">
-                <a class="nav-link" href="gestionamiento.html" >
-                    <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Icono Gestionamiento" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Gestionamiento</span>
-                </a>
-            </li>
+                <li class="nav-item" id="menu-organigrama">
+                    <a class="nav-link" href="organigrama.html">
+                        <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Icono Organigrama" class="sidebar-icon-img"></span>
+                        <span class="menu-title">Organigrama</span>
+                    </a>
+                </li>
 
-            <li class="nav-item" id="menu-organigrama">
-                <a class="nav-link" href="organigrama.html" >
-                    <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Icono Organigrama" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Organigrama</span>
-                </a>
-            </li>
+                <li class="nav-item" id="menu-dispersion">
+                    <a class="nav-link" href="Dispersion.html">
+                        <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Icono Dispersión" class="sidebar-icon-img"></span>
+                        <span class="menu-title">Dispersión</span>
+                    </a>
+                </li>
 
-            <li class="nav-item" id="menu-dispersion">
-                <a class="nav-link" href="Dispersion.html" >
-                    <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Icono Dispersión" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Dispersión</span>
-                </a>
-            </li>
+                <li class="nav-item" id="menu-leyarchivo">
+                    <a class="nav-link" href="leyarchivo.html">
+                        <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Icono Ley de Archivo" class="sidebar-icon-img"></span>
+                        <span class="menu-title">Ley de Archivo</span>
+                    </a>
+                </li>
 
-            <li class="nav-item" id="menu-leyarchivo">
-                <a class="nav-link" href="leyarchivo.html" >
-                    <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Icono Ley de Archivo" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Ley de Archivo</span>
-                </a>
-            </li>
+                <li class="nav-item" id="menu-clasificacion">
+                    <a class="nav-link" href="clasificacion.html">
+                        <span class="icon-bg"><img src="../imagenes/clasificaciondocumentos.png" alt="Icono Clasificación" class="sidebar-icon-img"></span>
+                        <span class="menu-title">Clasificación</span>
+                    </a>
+                </li>
 
-            <li class="nav-item" id="menu-clasificacion">
-                <a class="nav-link" href="clasificacion.html" >
-                    <span class="icon-bg"><img src="../imagenes/clasificaciondocumentos.png" alt="Icono Clasificación" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Clasificación</span>
-                </a>
-            </li>
-
-            <li class="nav-item" id="menu-cerrarsesion">
-                <a class="nav-link" href="index.html" >
-                    <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Icono Cerrar sesion" class="sidebar-icon-img"></span>
-                    <span class="menu-title">Cerrar sesión</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+                <li class="nav-item" id="menu-cerrarsesion">
+                    <a class="nav-link" href="index.html">
+                        <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Icono Cerrar sesion" class="sidebar-icon-img"></span>
+                        <span class="menu-title">Cerrar sesión</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     <!--Fin de Menu lateral -->
     
  <!--Barra de Navegacion -->
@@ -94,9 +87,9 @@
         <header class="navbar">
             <div class="header-left-group">
                 <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
-                 <div class="search-bar">
-                <img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
-                <input type="text" placeholder="Search products">
+                <div class="search-bar">
+                <!--<img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
+                <input type="text" placeholder="Search products">-->
             </div>
             </div>
 
@@ -109,7 +102,7 @@
                 
                 <div class="notification-dropdown-container">
                     <img src="../imagenes/notificacion.png" alt="Notificacion" id="notification-icon" class="icon-control-img notification-icon-img">
-                    
+                    <span class="notification-badge" data-count="3">3</span>
                     <div class="dropdown-menu notification-menu">
                         <p class="dropdown-title">Notificaciones recientes</p>
                         <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
@@ -123,119 +116,108 @@
         
         <main class="content-area">
             <!--Tabla Gestion Usuarios -->
-            <section class="content-section">
-                <h2 class="card-title">Gestión de Usuarios</h2>
+           <section class="content-section">
+    <div class="table-container">
+         <h2 class="card-title">Gestión de Usuarios</h2>
 
-                <div class="user-management-actions">
+          <div class="user-management-actions">
                     <button class="btn-add-user" data-modal-open="modalInsertarUsuario"><!--al oprimir el boton se habra el modal -->
                          Agregar Usuario
                     </button>
                 </div>
 
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Usuario</th>
-                                <th>Num. Trabajador</th>
-                                <th>Correo Electrónico</th>
-                                <th>Área</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Jacob Pérez</td>
-                                <td>Jacob</td>
-                                <td>012</td>
-                                <td>usuario@ejemplo.com</td>
-                                <td>Archivo</td>
-                                <td>
-                                    <button class="btn-action edit" title="Editar Usuario" data-modal-open="modalEditarUsuario">
-                                        Editar 
-                                    </button>
-                                    <div class="dropdown-action">
-                                        <button class="dropdown-toggle-status" title="Cambiar Estado">
-                                            Estado <i class="fas fa-chevron-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <button class="btn-action status-active"><i class="fas fa-check-circle"></i> Activar</button>
-                                            <button class="btn-action status-inactive"><i class="fas fa-times-circle"></i> Desactivar</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Messy López</td>
-                                <td>Messsy</td>
-                                <td>003</td>
-                                <td>usuario@ejemplo.com</td>
-                                <td>Obras Públicas</td>
-                                <td>
-                                    <button class="btn-action edit" title="Editar Usuario" data-modal-open="modalEditarUsuario">
-                                        Editar 
-                                    </button>
-                                    <div class="dropdown-action">
-                                        <button class="dropdown-toggle-status" title="Cambiar Estado">
-                                            Estado <i class="fas fa-chevron-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <button class="btn-action status-active"><i class="fas fa-check-circle"></i> Activar</button>
-                                            <button class="btn-action status-inactive"><i class="fas fa-times-circle"></i> Desactivar</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>John Carreon</td>
-                                <td>John</td>
-                                <td>010</td>
-                                <td>usuario@ejemplo.com</td>
-                                <td>Turismo y Cultura</td>
-                                <td>
-                                    <button class="btn-action edit" title="Editar Usuario" data-modal-open="modalEditarUsuario">
-                                        Editar 
-                                    </button>
-                                    <div class="dropdown-action">
-                                        <button class="dropdown-toggle-status" title="Cambiar Estado">
-                                            Estado <i class="fas fa-chevron-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <button class="btn-action status-active"><i class="fas fa-check-circle"></i> Activar</button>
-                                            <button class="btn-action status-inactive"><i class="fas fa-times-circle"></i> Desactivar</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>Peter Flores</td>
-                                <td>Peter</td>
-                                <td>018</td>
-                                <td>usuario@ejemplo.com</td>
-                                <td>Oficialía de Partes</td>
-                                <td>
-                                    <button class="btn-action edit" title="Editar Usuario" data-modal-open="modalEditarUsuario">
-                                        Editar 
-                                    </button>
-                                    <div class="dropdown-action">
-                                        <button class="dropdown-toggle-status" title="Cambiar Estado">
-                                            Estado <i class="fas fa-chevron-down"></i>
-                                        </button>
-                                        <div class="dropdown-content">
-                                            <button class="btn-action status-active"><i class="fas fa-check-circle"></i> Activar</button>
-                                            <button class="btn-action status-inactive"><i class="fas fa-times-circle"></i> Desactivar</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Num. Trabajador</th>
+                    <th>Correo Electrónico</th>
+                    <th>Usuario</th>
+                    <th>Adscripción</th>
+                    <th>Estatus</th> 
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jacob Pérez</td> <td class="center-content">012</td>
+                    <td class="center-content">usuario@ejemplo.com</td>
+                    <td class="center-content">Jacob</td>
+                    <td>Ley Archivo</td> <td class="status-cell">
+                        <span class="status-badge status-active" data-current-status="active">Activo</span>
+                    </td>
+                    
+                    <td class="actions-cell">
+                        <div class="actions-cell-content">
+                        <button class="btn-action edit" title="Editar Usuario" data-modal-open="modalEditarUsuario">
+                            Editar 
+                        </button>
+                        <div class="dropdown-action">
+                            <button class="dropdown-toggle-status" title="Cambiar Estado">
+                                Estado <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <button class="btn-action status-action status-active"><i class="fas fa-check-circle"></i> Activo</button>
+                                <button class="btn-action status-action status-inactive"><i class="fas fa-times-circle"></i> Inactivo</button>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Melissa López</td> <td class="center-content">003</td>
+                    <td class="center-content">usuario@ejemplo.com</td>
+                    <td class="center-content">Melissa</td>
+                    <td>Oficialía de Partes</td> <td class="status-cell">
+                        <span class="status-badge status-inactive" data-current-status="inactive">Inactivo</span>
+                    </td>
+                    
+                    <td class="actions-cell">
+                        <div class="actions-cell-content">
+                        <button class="btn-action edit" title="Editar Usuario" data-modal-open="modalEditarUsuario">
+                            Editar 
+                        </button>
+                        <div class="dropdown-action">
+                            <button class="dropdown-toggle-status" title="Cambiar Estado">
+                                Estado <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <button class="btn-action status-action status-active"><i class="fas fa-check-circle"></i> Activo</button>
+                                <button class="btn-action status-action status-inactive"><i class="fas fa-times-circle"></i> Inactivo</button>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>John Carreon</td> <td class="center-content">010</td>
+                    <td class="center-content">usuario@ejemplo.com</td>
+                    <td class="center-content">John</td>
+                    <td>Turismo y Cultura</td> <td class="status-cell">
+                        <span class="status-badge status-active" data-current-status="active">Activo</span>
+                    </td>
+                    
+                    <td class="actions-cell">
+                        <div class="actions-cell-content">
+                        <button class="btn-action edit" title="Editar Usuario" data-modal-open="modalEditarUsuario">
+                            Editar 
+                        </button>
+                        <div class="dropdown-action">
+                            <button class="dropdown-toggle-status" title="Cambiar Estado">
+                                Estado <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <button class="btn-action status-action status-active"><i class="fas fa-check-circle"></i> Activo</button>
+                                <button class="btn-action status-action status-inactive"><i class="fas fa-times-circle"></i> Inactivo</button>
+                            </div>
+                        </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
+</section>
             <!--Fin Tabla Gestion Usuarios -->
         </main>
     </div>
@@ -251,32 +233,42 @@
             <div class="modal-body">
                 <form id="form-insertar-usuario">
                     <label class="field">
-                        <input class="input" type="text" placeholder="Nombre" required />
+                        <span class="label-text">Nombre completo</span>
+                        <input class="input" type="text" placeholder="Nombre completo" required />
                     </label>
                     <label class="field">
-                        <input class="input" type="text" placeholder="Usuario" required />
-                    </label>
-                    <label class="field">
+                        <span class="label-text">Número de trabajador</span>
                         <input class="input" type="text" placeholder="Número de trabajador" required />
                     </label>
                     <label class="field">
+                        <span class="label-text">Correo electrónico</span>
                         <input class="input" type="email" placeholder="Correo electrónico" required />
                     </label>
                     <label class="field">
+                        <span class="label-text">Usuario</span>
+                        <input class="input" type="text" placeholder="Usuario" required />
+                    </label>
+                    <label class="field">
+                        <span class="label-text">Contraseña</span>
                         <input class="input" type="password" placeholder="Contraseña" required />
                     </label>
                     <label class="field">
                         <select class="input">
-                            <option value="" disabled selected>Área</option>
+                            <option value="" disabled selected>Adscripción</option>
                             <option>Presidencia municipal</option>
                             <option>Contraloria</option>
+                            <option>Ley de Archivo</option>
+                             <option>Oficialía de Partes</option>
+                             <option>Ninguno</option>
                         </select>
                     </label>
                     <label class="field">
                         <select class="input">
-                            <option value="" disabled selected>Rol</option>
+                            <option value="" disabled selected>Privilegios</option>
                             <option>Administrador</option>
-                            <option>Operador</option>
+                            <option>Editor</option>
+                            <option>Visualizador</option>
+                            <option>Ninguno</option>
                         </select>
                     </label>
                 </form>
@@ -302,46 +294,55 @@
         <div class="modal-body">
             <form id="form-editar-usuario">
                 <label class="field">
+                    <span class="label-text">Nombre completo</span>
                     <input class="input" type="text" placeholder="Nombre" value="John Carreon" required />
                 </label>
                 <label class="field">
-                    <input class="input" type="text" placeholder="Usuario" value="John" required />
+                    <span class="label-text">Número de trabajador</span>
+                    <input class="input" type="text" placeholder="Número de trabajador" value="010" required />
                 </label>
                 <label class="field">
-                    <input class="input" type="text" placeholder="Número de trabajador" value="010" />
-                </label>
-                <label class="field">
+                    <span class="label-text">Correo electrónico</span>
                     <input class="input" type="email" placeholder="Correo electrónico" value="john@ejemplo.com" required />
                 </label>
-                
                 <label class="field">
-                    <input class="input" type="password" placeholder="Dejar vacío para no cambiar contraseña" />
+                    <span class="label-text">Usuario</span>
+                    <input class="input" type="text" placeholder="Usuario" value="John" required />
                 </label>
+                
+                <!-- <label class="field">
+                    <input class="input" type="password" placeholder="Dejar vacío para no cambiar contraseña" />
+                </label>-->
 
                 <label class="field">
                     <select class="input">
-                        <option value="" disabled>Área</option>
+                        <option value="" disabled>Adscripción</option>
                         <option>Presidencia municipal</option>
-                        <option selected>Contraloria</option> 
+                        <option selected>Contraloria</option>
+                        <option>Ley de Archivo</option>
+                        <option>Oficialía de Partes</option>
+                        <option>Ninguno</option> 
                     </select>
                 </label>
                 <label class="field">
                     <select class="input">
-                        <option value="" disabled>Rol</option>
+                        <option value="" disabled>Privilegios</option>
                          <option>Administrador</option>
-                        <option selected>Operador</option> 
+                        <option>Editor</option>
+                            <option>Visualizador</option>
+                            <option>Ninguno</option>
                     </select>
                 </label>
             </form>
         </div>
 
         <footer class="modal-foot">
-            <button class="btn btn-primary" type="submit" form="form-editar-usuario">Guardar Cambios</button>
+            <button class="btn btn-primary" type="submit" form="form-editar-usuario">Guardar</button>
             <button class="btn btn-secondary" data-modal-close>Cancelar</button>
         </footer>
     </div>
 </div>
     <!--Fin-->
-    <script src="/script/Usuarios.js"></script>
+    <script src="../script/Usuarios.js"></script>
 </body>
 </html>
