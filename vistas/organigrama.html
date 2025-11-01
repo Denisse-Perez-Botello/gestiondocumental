@@ -1,245 +1,294 @@
-<!-- ESTE ARCHIVO SE TIENE QUE CORREGIR -->
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TLAHUAPAN — Gestión Documental</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TLAHUAPAN — Gestión Documental</title>
-  <link rel="stylesheet" href="../styles/styles.css" />
-</head>
+  <body>
+    <nav class="sidebar" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-category tlahuapan-item">
+          <div class="tlahuapan-logo-text">
+            <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
+            <span class="tlahuapan-text">TLAHUAPAN</span>
+          </div>
+        </li>
 
-<body>
-  <!-- Sidebar -->
-  <nav class="sidebar" id="sidebar">
-    <ul class="nav">
-      <li class="nav-item nav-category tlahuapan-item">
-        <div class="tlahuapan-logo-text">
-          <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
-          <span class="tlahuapan-text">TLAHUAPAN</span>
+        <li class="nav-item">
+          <a class="nav-link" href="Usuarios.html">
+            <span class="icon-bg"><img src="../imagenes/usuarios.png"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Usuarios</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="Dashboard.html">
+            <span class="icon-bg"><img src="../imagenes/dashboard.png"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="documentos.html">
+            <span class="icon-bg"><img src="../imagenes/documentos.png"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Documentos</span>
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a class="nav-link" href="organigrama.html">
+            <span class="icon-bg"><img src="../imagenes/organigrama.png"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Organigrama</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="Dispersion.html">
+            <span class="icon-bg"><img src="../imagenes/enviodocumentos.png"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Dispersión</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="leyarchivo.html">
+            <span class="icon-bg"><img src="../imagenes/leyarchivo.png"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Ley de Archivo</span>
+          </a>
+        </li>
+        
+        <li class="nav-item cerrar-sesion">
+          <a class="nav-link" href="../index.html" id="cerrarSesionLink">
+            <span class="icon-bg"><img src="../imagenes/cerrarsesion.png"
+                class="sidebar-icon-img"></span>
+            <span class="menu-title">Cerrar sesión</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="main-content-wrapper">
+      <header class="navbar">
+        <div class="header-left-group">
+          <img src="../imagenes/menu.png" id="menu-toggler"
+            class="icon-control-img">
         </div>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Usuarios.html">
-          <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Usuarios" class="sidebar-icon-img"></span>
-          <span class="menu-title">Usuarios</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Dashboard.html">
-          <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Dashboard" class="sidebar-icon-img"></span>
-          <span class="menu-title">Dashboard</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="documentos.html">
-          <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Documentos" class="sidebar-icon-img"></span>
-          <span class="menu-title">Documentos</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="gestionamiento.html">
-          <span class="icon-bg"><img src="../imagenes/gestionorganizacional.png" alt="Gestión"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Gestionamiento</span>
-        </a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" href="organigrama.html">
-          <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Organigrama"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Organigrama</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="Dispersion.html">
-          <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Dispersión"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Dispersión</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="leyarchivo.html">
-          <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Ley de Archivo"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Ley de Archivo</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="clasificacion.html">
-          <span class="icon-bg"><img src="../imagenes/clasificaciondocumentos.png" alt="Clasificación"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Clasificación</span>
-        </a>
-      </li>
-
-      <li class="nav-item cerrar-sesion">
-        <a class="nav-link" href="index.html" id="cerrarSesionLink">
-          <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Cerrar sesión"
-              class="sidebar-icon-img"></span>
-          <span class="menu-title">Cerrar sesión</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Contenedor principal -->
-  <div class="main-content-wrapper">
-    <!-- Barra superior -->
-    <header class="navbar">
-      <div class="header-left-group">
-        <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
-      </div>
-      <div class="user-info">
-        <div class="profile-info-container">
-          <img src="../imagenes/usuario.png" alt="Usuario" class="icon-control-img">
-          <span class="user-name">Oficialía de partes</span>
-        </div>
-        <div class="notification-dropdown-container">
-          <img src="../imagenes/notificacion.png" alt="Notificación" class="icon-control-img notification-icon-img">
-          <div class="dropdown-menu notification-menu">
-            <p class="dropdown-title">Notificaciones recientes</p>
-            <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
-            <a href="#" class="dropdown-item view-all">Ver todas las notificaciones</a>
+        <div class="user-info">
+          <div class="profile-info-container">
+            <img src="../imagenes/usuario.png" class="icon-control-img">
+            <span class="user-name">Recursos humanos</span>
+          </div>
+          <div class="notification-dropdown-container">
+            <img src="../imagenes/notificacion.png" alt="Notificación"
+              id="notification-icon"
+              class="icon-control-img notification-icon-img">
+            <span class="notification-badge" data-count="3">3</span>
+            <div class="dropdown-menu notification-menu">
+              <p class="dropdown-title">Notificaciones recientes</p>
+              <a href="#" class="dropdown-item">Tienes 1 nuevo documento de
+                Presidencia.</a>
+              <a href="#" class="dropdown-item view-all">Ver todas las
+                notificaciones</a>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- Área de contenido -->
-    <main class="content-area">
-      <section id="organigrama" class="content-section content-view active">
-        <h2>Organigrama y Versiones</h2>
-        <div class="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Fecha de actualización</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Organigrama 2023</td>
-                <td>20-10-2023</td>
-                <td><button class="btn-action edit" data-modal-open="modalOrganigrama2023">Ver</button></td>
-              </tr>
-              <tr>
-                <td>Organigrama 2024</td>
-                <td>15-09-2024</td>
-                <td><button class="btn-action edit" data-modal-open="modalOrganigrama2024">Ver</button></td>
-              </tr>
-              <tr>
-                <td>Organigrama 2024-2027</td>
-                <td>15-10-2025</td>
-                <td><button class="btn-action edit" data-modal-open="modalOrganigrama2025">Ver</button></td>
-              </tr>
-            </tbody>
-          </table>
+      <main class="content-area">
+        <!-- Sección Organigrama -->
+        <section id="organigrama" class="content-section content-view active">
+          <h2>Organigrama</h2>
+
+          <div class="organigrama-actions">
+            <button class="btn-action edit"
+              data-modal-open="modalCrearOrganigrama">Crear</button>
+            <button class="btn-action edit" id="btnAutorizar"
+              data-modal-open="modalAutorizarOrganigrama">Autorizar </button>
+          </div>
+
+          <div class="table-container">
+            <table id="tablaOrganigramas">
+              <thead>
+                <tr>
+                  <th>Título del organigrama</th>
+                  <th>Fecha de autorización</th>
+                  <th>Fecha de caducidad</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Organigrama 2024–2027</td>
+                  <td>Pendiente</td>
+                  <td>Pendiente</td>
+                  <td><button
+                      class="btn-action edit btn-editar">Editar</button></td>
+                </tr>
+                <tr>
+                  <td>Organigrama 2021–2024</td>
+                  <td>10-08-2021</td>
+                  <td>10-08-2024</td>
+                  <td><button class="btn-action status-active btn-ver"
+                      data-modal-open="modalVerOrganigrama">Ver</button></td>
+                </tr>
+                <tr>
+                  <td>Organigrama 2018–2021</td>
+                  <td>15-07-2018</td>
+                  <td>15-07-2021</td>
+                  <td><button class="btn-action status-active btn-ver"
+                      data-modal-open="modalVerOrganigrama">Ver</button></td>
+                </tr>
+                <tr>
+                  <td>Organigrama 2015–2018</td>
+                  <td>01-07-2015</td>
+                  <td>01-07-2018</td>
+                  <td><button class="btn-action status-active btn-ver"
+                      data-modal-open="modalVerOrganigrama">Ver</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Sección Gestión Organizacional -->
+        <section id="gestion" class="content-section content-view"
+          style="display:none;">
+          <h2>Gestión Organizacional</h2>
+
+          <div class="organigrama-actions">
+            <button class="btn-action edit"
+              data-modal-open="modalInsertarArea">Agregar áreas</button>
+            <button class="btn-action ghost" id="btnRegresar">Regresar</button>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Área</th>
+                  <th>Nivel</th>
+                  <th>Área superior</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Presidencia Municipal</td><td>1</td><td>-</td></tr>
+                <tr><td>H. Cabildo</td><td>1</td><td>Presidencia
+                    Municipal</td></tr>
+                <tr><td>Contraloría Municipal</td><td>2</td><td>Presidencia
+                    Municipal</td></tr>
+                <tr><td>Tesorería Municipal</td><td>2</td><td>Presidencia
+                    Municipal</td></tr>
+                <tr><td>Secretaría del
+                    Ayuntamiento</td><td>2</td><td>Presidencia
+                    Municipal</td></tr>
+                <tr><td>Secretaría Técnica</td><td>2</td><td>Presidencia
+                    Municipal</td></tr>
+                <tr><td>Dirección de Obras Públicas</td><td>3</td><td>Secretaría
+                    Técnica</td></tr>
+                <tr><td>Dirección de Desarrollo
+                    Urbano</td><td>3</td><td>Secretaría Técnica</td></tr>
+                <tr><td>Dirección de Cultura y
+                    Deporte</td><td>3</td><td>Secretaría del
+                    Ayuntamiento</td></tr>
+                <tr><td>Dirección de Desarrollo
+                    Social</td><td>3</td><td>Secretaría Técnica</td></tr>
+                <tr><td>Dirección de Protección
+                    Civil</td><td>3</td><td>Secretaría Técnica</td></tr>
+                <tr><td>Jefatura de Archivo y Control
+                    Documental</td><td>4</td><td>Secretaría del
+                    Ayuntamiento</td></tr>
+                <tr><td>Jefatura de Informática y
+                    Sistemas</td><td>4</td><td>Secretaría Técnica</td></tr>
+                <tr><td>Coordinación de Igualdad de
+                    Género</td><td>4</td><td>Secretaría Técnica</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- MODALES -->
+    <div class="modal" id="modalCrearOrganigrama" aria-hidden="true">
+      <div class="modal-card">
+        <header class="modal-head">
+          <h3>Nueva versión de organigrama</h3>
+          <button class="icon-btn" data-modal-close>&times;</button>
+        </header>
+        <div class="modal-body">
+          <label class="field"><span>Título del organigrama</span><input
+              class="input" type="text"
+              placeholder="Ej. Organigrama 2025–2028" /></label>
         </div>
-      </section>
-    </main>
-  </div>
-
-  <!-- Modal 2023 -->
-  <div class="modal" id="modalOrganigrama2023" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-head">
-        <h3>Organigrama 2023</h3>
-        <button class="icon-btn" data-modal-close>&times;</button>
+        <footer class="modal-foot"><button class="btn"
+            data-modal-close>Crear</button></footer>
       </div>
-      <div class="modal-body">
-        <table>
-          <thead>
-            <tr><th>Área</th><th>Nivel</th><th>Área Superior</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Presidencia Municipal</td><td>1</td><td>-</td></tr>
-            <tr><td>Recursos Humanos</td><td>2</td><td>Presidencia</td></tr>
-            <tr><td>Finanzas</td><td>2</td><td>Presidencia</td></tr>
-            <tr><td>Comunicación Social</td><td>3</td><td>Recursos Humanos</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-foot"><button class="btn ghost" data-modal-close>Cerrar</button></div>
     </div>
-  </div>
 
-  <!-- Modal 2024 -->
-  <div class="modal" id="modalOrganigrama2024" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-head">
-        <h3>Organigrama 2024</h3>
-        <button class="icon-btn" data-modal-close>&times;</button>
+    <div class="modal" id="modalAutorizarOrganigrama" aria-hidden="true">
+      <div class="modal-card">
+        <header class="modal-head">
+          <h3>Autorizar organigrama</h3>
+          <button class="icon-btn" data-modal-close>&times;</button>
+        </header>
+        <div class="modal-body"><p>¿Desea solicitar la autorizacion del
+            organigrama
+            actual?</p></div>
+        <footer class="modal-foot between">
+          <button class="btn ghost" data-modal-close>Cancelar</button>
+          <button class="btn status-active"
+            id="btnConfirmarAutorizar">Solicitar</button>
+        </footer>
       </div>
-      <div class="modal-body">
-        <table>
-          <thead>
-            <tr><th>Área</th><th>Nivel</th><th>Área Superior</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Presidencia Municipal</td><td>1</td><td>-</td></tr>
-            <tr><td>Planeación</td><td>2</td><td>Presidencia</td></tr>
-            <tr><td>Educación</td><td>3</td><td>Planeación</td></tr>
-            <tr><td>Cultura y Deporte</td><td>3</td><td>Planeación</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-foot"><button class="btn ghost" data-modal-close>Cerrar</button></div>
     </div>
-  </div>
 
-  <!-- Modal 2024-2027 -->
-  <div class="modal" id="modalOrganigrama2025" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-head">
-        <h3>Organigrama 2024-2027</h3>
-        <button class="icon-btn" data-modal-close>&times;</button>
+    <div class="modal" id="modalVerOrganigrama" aria-hidden="true">
+      <div class="modal-card modal-xl">
+        <header class="modal-head">
+          <h3>Organigrama autorizado</h3>
+          <button class="icon-btn" data-modal-close>&times;</button>
+        </header>
+        <div class="modal-body modal-body-scroll">
+          <div id="contenedorOrganigrama" class="organigrama-contenedor"></div>
+        </div>
+        <footer class="modal-foot">
+          <button class="btn ghost" data-modal-close>Cerrar</button>
+        </footer>
       </div>
-      <div class="modal-body">
-        <table>
-          <thead>
-            <tr><th>Área</th><th>Nivel</th><th>Área Superior</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Presidencia Municipal</td><td>1</td><td>-</td></tr>
-            <tr><td>H. Cabildo</td><td>1</td><td>Presidencia Municipal</td></tr>
-            <tr><td>Tesorería Municipal</td><td>2</td><td>Presidencia Municipal</td></tr>
-            <tr><td>Contraloría Municipal</td><td>2</td><td>Presidencia Municipal</td></tr>
-            <tr><td>Secretaría del Ayuntamiento</td><td>2</td><td>Presidencia Municipal</td></tr>
-            <tr><td>Secretaría Particular</td><td>2</td><td>Presidencia Municipal</td></tr>
-            <tr><td>Secretaría Técnica</td><td>2</td><td>Presidencia Municipal</td></tr>
-            <tr><td>Dirección de Obras Públicas</td><td>3</td><td>Secretaría Técnica</td></tr>
-            <tr><td>Dirección de Desarrollo Urbano</td><td>3</td><td>Secretaría Técnica</td></tr>
-            <tr><td>Dirección de Educación</td><td>3</td><td>Secretaría del Ayuntamiento</td></tr>
-            <tr><td>Dirección de Cultura y Deporte</td><td>3</td><td>Secretaría del Ayuntamiento</td></tr>
-            <tr><td>Dirección de Desarrollo Social</td><td>3</td><td>Secretaría Técnica</td></tr>
-            <tr><td>Dirección de Protección Civil</td><td>3</td><td>Secretaría Técnica</td></tr>
-            <tr><td>Coordinación de Comunicación Social</td><td>3</td><td>Secretaría Particular</td></tr>
-            <tr><td>Comisaría de Seguridad Pública</td><td>3</td><td>Presidencia Municipal</td></tr>
-            <tr><td>Jefatura de Recursos Humanos</td><td>4</td><td>Tesorería Municipal</td></tr>
-            <tr><td>Jefatura de Contabilidad</td><td>4</td><td>Tesorería Municipal</td></tr>
-            <tr><td>Jefatura de Archivo y Control Documental</td><td>4</td><td>Secretaría del Ayuntamiento</td></tr>
-            <tr><td>Jefatura de Informática y Sistemas</td><td>4</td><td>Secretaría Técnica</td></tr>
-            <tr><td>Coordinación de Igualdad de Género</td><td>4</td><td>Secretaría Técnica</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-foot"><button class="btn ghost" data-modal-close>Cerrar</button></div>
     </div>
-  </div>
-  
-  <!-- Script -->
-  <script src="../script1.js"></script>
-</body>
 
+    <div class="modal" id="modalInsertarArea" aria-hidden="true">
+      <div class="modal-card">
+        <header class="modal-head">
+          <h3>Agregar área</h3>
+          <button class="icon-btn" data-modal-close>&times;</button>
+        </header>
+        <div class="modal-body">
+          <div class="grid two">
+            <label class="field"><span>Nombre del área</span><input
+                class="input" type="text" /></label>
+            <label class="field"><span>Nivel</span><select
+                class="input"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+            <label class="field"><span>Área superior</span><select
+                class="input"><option>Presidencia
+                  Municipal</option><option>Secretaría
+                  Técnica</option><option>Secretaría del
+                  Ayuntamiento</option></select></label>
+          </div>
+        </div>
+        <footer class="modal-foot"><button class="btn"
+            data-modal-close>Agregar</button></footer>
+      </div>
+    </div>
+
+    <script src="../script1.js"></script>
+  </body>
 </html>

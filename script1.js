@@ -1,135 +1,134 @@
-<<<<<<< HEAD
 // Variables globales
 let rhIP = null;
 
 // Simulación de storage
-const STORAGE_KEY = 'rh_server_ip';
+const STORAGE_KEY = "rh_server_ip";
 
 // Funciones de persistencia
 function loadStoredIp() {
-    // return '192.168.1.100'; // Descomenta para simular IP guardada
-    return localStorage.getItem(STORAGE_KEY);
+  // return '192.168.1.100'; // Descomenta para simular IP guardada
+  return localStorage.getItem(STORAGE_KEY);
 }
 
 function saveIpToStorage(ip) {
-    localStorage.setItem(STORAGE_KEY, ip);
-    console.log(`[PERSISTENCIA] IP de RH guardada: ${ip}`);
+  localStorage.setItem(STORAGE_KEY, ip);
+  console.log(`[PERSISTENCIA] IP de RH guardada: ${ip}`);
 }
 
 // Funciones del modal de clave
 function abrirModalClave() {
-    console.log('Función abrirModalClave ejecutada'); // Debug
-    const modal = document.getElementById('modalClave');
-    if (modal) {
-        modal.style.display = 'flex';
-        const claveInput = document.getElementById('claveInput');
-        if (claveInput) {
-            claveInput.focus();
-        }
-        console.log('Modal de clave mostrado'); // Debug
-    } else {
-        console.error('No se encontró el elemento modalClave');
+  console.log("Función abrirModalClave ejecutada"); // Debug
+  const modal = document.getElementById("modalClave");
+  if (modal) {
+    modal.style.display = "flex";
+    const claveInput = document.getElementById("claveInput");
+    if (claveInput) {
+      claveInput.focus();
     }
+    console.log("Modal de clave mostrado"); // Debug
+  } else {
+    console.error("No se encontró el elemento modalClave");
+  }
 }
 
 function cerrarModalClave() {
-    console.log('Cerrando modal de clave'); // Debug
-    const modal = document.getElementById('modalClave');
-    if (modal) {
-        modal.style.display = 'none';
-        const claveInput = document.getElementById('claveInput');
-        if (claveInput) {
-            claveInput.value = '';
-        }
+  console.log("Cerrando modal de clave"); // Debug
+  const modal = document.getElementById("modalClave");
+  if (modal) {
+    modal.style.display = "none";
+    const claveInput = document.getElementById("claveInput");
+    if (claveInput) {
+      claveInput.value = "";
     }
+  }
 }
 
 function confirmarClave() {
-    const clave = document.getElementById('claveInput').value;
-    if (clave.trim() !== '') {
-        console.log('Clave introducida:', clave);
-        alert('¡Clave especial verificada!');
-        cerrarModalClave();
-    } else {
-        alert('Por favor, introduce una clave.');
-    }
+  const clave = document.getElementById("claveInput").value;
+  if (clave.trim() !== "") {
+    console.log("Clave introducida:", clave);
+    alert("¡Clave especial verificada!");
+    cerrarModalClave();
+  } else {
+    alert("Por favor, introduce una clave.");
+  }
 }
 
 // Funciones del modal de IP
 function guardarIP() {
-    const ip = document.getElementById('ipInput').value;
-    const ipRegex = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
-    
-    if (ipRegex.test(ip)) {
-        saveIpToStorage(ip);
-        rhIP = ip;
-        document.getElementById('modalIP').style.display = 'none';
-        alert(`¡IP ${ip} guardada! Ya puedes iniciar sesión.`);
-    } else {
-        alert('Por favor, introduce una dirección IP válida (ej: 192.168.1.1).');
-    }
+  const ip = document.getElementById("ipInput").value;
+  const ipRegex = /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/;
+
+  if (ipRegex.test(ip)) {
+    saveIpToStorage(ip);
+    rhIP = ip;
+    document.getElementById("modalIP").style.display = "none";
+    alert(`¡IP ${ip} guardada! Ya puedes iniciar sesión.`);
+  } else {
+    alert("Por favor, introduce una dirección IP válida (ej: 192.168.1.1).");
+  }
 }
 
 // Función para manejar el submit del formulario
 function handleSubmit(e) {
-    e.preventDefault();
-    const usuario = document.getElementById('usuario').value;
-    const password = document.getElementById('password').value;
-    const mantenerSesion = document.getElementById('mantenerSesion').checked;
-    
-    console.log("Usuario:", usuario);
-    console.log("Contraseña:", password);
-    console.log("Mantener sesión:", mantenerSesion);
+  e.preventDefault();
+  const usuario = document.getElementById("usuario").value;
+  const password = document.getElementById("password").value;
+  const mantenerSesion = document.getElementById("mantenerSesion").checked;
+
+  console.log("Usuario:", usuario);
+  console.log("Contraseña:", password);
+  console.log("Mantener sesión:", mantenerSesion);
 }
 
 // Inicialización cuando se carga la página
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM cargado'); // Debug
-    
-    // Verificar si el modal de clave existe
-    const modalClave = document.getElementById('modalClave');
-    console.log('Modal clave encontrado:', modalClave); // Debug
-    
-    // Agregar event listener al logo
-    const logoButton = document.querySelector('.logo-button');
-    if (logoButton) {
-        logoButton.addEventListener('click', function() {
-            console.log('Logo clickeado'); // Debug
-            abrirModalClave();
-        });
-        console.log('Event listener agregado al logo'); // Debug
-    } else {
-        console.error('No se encontró el elemento logo-button');
-    }
-    
-    const storedIp = loadStoredIp();
-    if (storedIp) {
-        rhIP = storedIp;
-        console.log('IP cargada:', storedIp);
-    } else {
-        // Mostrar modal de IP si no hay IP guardada
-        const modalIP = document.getElementById('modalIP');
-        if (modalIP) {
-            modalIP.style.display = 'flex';
-        }
-    }
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM cargado"); // Debug
 
-    // Event listener para el formulario
-    const loginForm = document.getElementById('loginForm');
-    if (loginForm) {
-        loginForm.addEventListener('submit', handleSubmit);
+  // Verificar si el modal de clave existe
+  const modalClave = document.getElementById("modalClave");
+  console.log("Modal clave encontrado:", modalClave); // Debug
+
+  // Agregar event listener al logo
+  const logoButton = document.querySelector(".logo-button");
+  if (logoButton) {
+    logoButton.addEventListener("click", function () {
+      console.log("Logo clickeado"); // Debug
+      abrirModalClave();
+    });
+    console.log("Event listener agregado al logo"); // Debug
+  } else {
+    console.error("No se encontró el elemento logo-button");
+  }
+
+  const storedIp = loadStoredIp();
+  if (storedIp) {
+    rhIP = storedIp;
+    console.log("IP cargada:", storedIp);
+  } else {
+    // Mostrar modal de IP si no hay IP guardada
+    const modalIP = document.getElementById("modalIP");
+    if (modalIP) {
+      modalIP.style.display = "flex";
     }
+  }
+
+  // Event listener para el formulario
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", handleSubmit);
+  }
 });
 
 // Cerrar modales al hacer clic fuera
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal-overlay')) {
-        if (e.target.id === 'modalClave') {
-            cerrarModalClave();
-        }
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("modal-overlay")) {
+    if (e.target.id === "modalClave") {
+      cerrarModalClave();
     }
+  }
 });
-=======
+
 document.addEventListener("DOMContentLoaded", () => {
   /* ========================================================= */
   /* 1. FUNCIONALIDAD PRINCIPAL: NAVEGACIÓN LATERAL (VISTAS) */
@@ -226,56 +225,206 @@ document.addEventListener("DOMContentLoaded", () => {
   // Cierra menús de estado al hacer clic en el cuerpo
   document.body.addEventListener("click", closeAllStatusMenus);
 
-  // Modals
-  const openers = document.querySelectorAll("[data-modal-open]");
-  const closers = document.querySelectorAll("[data-modal-close]");
-  openers.forEach((op) =>
-    op.addEventListener("click", () => {
-      const modal = document.getElementById(op.getAttribute("data-modal-open"));
-      modal?.classList.add("show");
-      modal?.setAttribute("aria-hidden", "false");
-    })
-  );
-  closers.forEach((cl) =>
-    cl.addEventListener("click", () => {
-      const modal = cl.closest(".modal");
-      modal?.classList.remove("show");
-      modal?.setAttribute("aria-hidden", "true");
-    })
-  );
-  document.addEventListener("click", (e) => {
-    if (e.target instanceof Element && e.target.classList.contains("modal")) {
-      e.target.classList.remove("show");
-      e.target.setAttribute("aria-hidden", "true");
-    }
-  });
-});
+  // Modals M --------------------------------------------------------------------------------------------------------------------------------------
+    const openers = document.querySelectorAll("[data-modal-open]");
+    const closers = document.querySelectorAll("[data-modal-close]");
 
-//PRUEBA DE SCRIPT PARA VISUALIZAR DOCUMENTOS
-document.addEventListener("DOMContentLoaded", () => {
-  // Asignar evento a todos los botones "Ver"
-  const botonesVer = document.querySelectorAll(
-    'button[data-modal-open="modalVer"]'
-  );
-  botonesVer.forEach((boton, index) => {
-    boton.addEventListener("click", () => {
-      const titulo = boton
-        .closest("tr")
-        .querySelector("td:nth-child(2)")
-        .textContent.trim();
-      const iframe = document.getElementById("vistaDocumento");
-      const tituloElemento = document.getElementById("tituloDocumento");
-      tituloElemento.textContent = titulo;
+    openers.forEach((op) =>
+      op.addEventListener("click", () => {
+        const modal = document.getElementById(op.getAttribute("data-modal-open"));
+        modal?.classList.add("show");
+        modal?.setAttribute("aria-hidden", "false");
+      })
+    );
 
-      // Asigna la ruta del documento según su título
-      if (titulo === "Acta constitutiva") {
-        iframe.src = "../documentos/Reticula ISC.pdf";
-      } else if (titulo === "Reporte 2024") {
-        iframe.src = "../documentos/Reticula ISC.pdf";
-      } else {
-        iframe.src = "";
+    closers.forEach((cl) =>
+      cl.addEventListener("click", () => {
+        const modal = cl.closest(".modal");
+        modal?.classList.remove("show");
+        modal?.setAttribute("aria-hidden", "true");
+      })
+    );
+
+    document.addEventListener("click", (e) => {
+      if (e.target instanceof Element && e.target.classList.contains("modal")) {
+        e.target.classList.remove("show");
+        e.target.setAttribute("aria-hidden", "true");
       }
     });
   });
-});
->>>>>>> 7e75d8ff9beb982d6ac8c69523556195ee99fdf8
+
+
+  /* MODAL VER DOCUMENTOS */
+  document.addEventListener("DOMContentLoaded", () => {
+    const botonesVer = document.querySelectorAll('button[data-modal-open="modalVer"]');
+
+    botonesVer.forEach((boton) => {
+      boton.addEventListener("click", () => {
+        const titulo = boton.closest("tr").querySelector("td:nth-child(2)")?.textContent.trim();
+        const iframe = document.getElementById("vistaDocumento");
+        const tituloElemento = document.getElementById("tituloDocumento");
+
+        if (!iframe || !tituloElemento) return;
+
+        tituloElemento.textContent = titulo;
+        switch (titulo) {
+          case "Acta constitutiva":
+          case "Reporte 2024":
+            iframe.src = "../documentos/Reticula ISC.pdf";
+            break;
+          default:
+            iframe.src = "";
+        }
+      });
+    });
+  });
+
+
+  /* Organigrama*/
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabla = document.getElementById("tablaOrganigramas");
+    const gestion = document.getElementById("gestion");
+    const seccionOrg = document.getElementById("organigrama");
+    const btnRegresar = document.getElementById("btnRegresar");
+    const btnAutorizar = document.getElementById("btnConfirmarAutorizar");
+
+    if (!tabla || !gestion || !seccionOrg) return;
+
+    // Cambio de vistas (organigrama y gestión)
+    tabla.addEventListener("click", (e) => {
+      if (e.target.classList.contains("btn-editar")) {
+        seccionOrg.style.display = "none";
+        gestion.style.display = "block";
+      }
+    });
+
+    btnRegresar?.addEventListener("click", () => {
+      gestion.style.display = "none";
+      seccionOrg.style.display = "block";
+    });
+
+    btnAutorizar?.addEventListener("click", () => {
+      const modal = document.getElementById("modalAutorizarOrganigrama");
+      if (modal) {
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    tabla.addEventListener("click", (e) => {
+      if (e.target.classList.contains("btn-ver")) {
+        const modal = document.getElementById("modalVerOrganigrama");
+        modal?.classList.add("show");
+        modal?.setAttribute("aria-hidden", "false");
+      }
+    });
+  });
+
+
+  /* DIAGRAMA ORGANIGRAMA  */
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabla = document.getElementById("tablaOrganigramas");
+    const modal = document.getElementById("modalVerOrganigrama");
+    const contenedor = document.getElementById("contenedorOrganigrama");
+
+    if (!tabla || !modal || !contenedor) return;
+
+    const registrosSimulados = [
+      { area: "Presidencia Municipal", nivel: 1, superior: null },
+      { area: "H. Cabildo", nivel: 1, superior: "Presidencia Municipal" },
+      { area: "Contraloría Municipal", nivel: 2, superior: "Presidencia Municipal" },
+      { area: "Tesorería Municipal", nivel: 2, superior: "Presidencia Municipal" },
+      { area: "Secretaría del Ayuntamiento", nivel: 2, superior: "Presidencia Municipal" },
+      { area: "Secretaría Técnica", nivel: 2, superior: "Presidencia Municipal" },
+      { area: "Dirección de Obras Públicas", nivel: 3, superior: "Secretaría Técnica" },
+      { area: "Dirección de Desarrollo Urbano", nivel: 3, superior: "Secretaría Técnica" },
+      { area: "Dirección de Cultura y Deporte", nivel: 3, superior: "Secretaría del Ayuntamiento" },
+      { area: "Dirección de Desarrollo Social", nivel: 3, superior: "Secretaría Técnica" },
+      { area: "Dirección de Protección Civil", nivel: 3, superior: "Secretaría Técnica" },
+      { area: "Jefatura de Archivo y Control Documental", nivel: 4, superior: "Secretaría del Ayuntamiento" },
+      { area: "Jefatura de Informática y Sistemas", nivel: 4, superior: "Secretaría Técnica" },
+      { area: "Coordinación de Igualdad de Género", nivel: 4, superior: "Secretaría Técnica" },
+    ];
+
+    function construirArbol(registros, superior = null) {
+      return registros
+        .filter((r) => r.superior === superior)
+        .map((r) => ({ ...r, subareas: construirArbol(registros, r.area) }));
+    }
+
+    function renderOrganigrama(arbol) {
+      if (!arbol || arbol.length === 0) return "";
+      let html = "<ul>";
+      for (const nodo of arbol) {
+        html += `<li><div class='nodo'>${nodo.area}</div>`;
+        if (nodo.subareas.length > 0) html += renderOrganigrama(nodo.subareas);
+        html += "</li>";
+      }
+      html += "</ul>";
+      return html;
+    }
+
+    tabla.addEventListener("click", (e) => {
+      if (e.target.classList.contains("btn-ver")) {
+        const jerarquia = construirArbol(registrosSimulados);
+        const organigramaHTML = renderOrganigrama(jerarquia);
+        contenedor.innerHTML = `<div class="organigrama">${organigramaHTML}</div>`;
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    });
+  });
+
+
+  /* Tiempo de respuesta - SEMAFORO */
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabla = document.querySelector("#tablaDocumentos");
+    if (!tabla) return;
+
+    const hoy = new Date();
+
+    tabla.querySelectorAll("tbody tr").forEach((fila) => {
+      const limiteStr = fila.getAttribute("data-fecha-limite");
+      const circulo = fila.querySelector(".status-circle");
+      const texto = fila.querySelector(".tiempo-texto");
+      if (!limiteStr || !circulo || !texto) return;
+
+      const limite = new Date(limiteStr);
+      const diff = Math.ceil((limite - hoy) / (1000 * 60 * 60 * 24));
+
+      circulo.classList.remove("green", "yellow", "red");
+
+      if (diff > 3) {
+        circulo.classList.add("green");
+        texto.textContent = `Faltan ${diff} días`;
+      } else if (diff > 0) {
+        circulo.classList.add("yellow");
+        texto.textContent = `Faltan ${diff} días`;
+      } else {
+        circulo.classList.add("red");
+        texto.textContent = `Vencido hace ${Math.abs(diff)} días`;
+      }
+    });
+  });
+
+
+  /* Fecha de respuesta*/
+  document.addEventListener("DOMContentLoaded", () => {
+    const botonesRespuesta = document.querySelectorAll('button[data-modal-open="modalRespuesta"]');
+    const fechaEnvio = document.getElementById("fechaEnvio");
+    const btnEnviar = document.getElementById("btnEnviarRespuesta");
+
+    if (!botonesRespuesta.length || !fechaEnvio) return;
+
+    botonesRespuesta.forEach((boton) => {
+      boton.addEventListener("click", () => {
+        const hoy = new Date();
+        const opciones = { year: "numeric", month: "2-digit", day: "2-digit" };
+        fechaEnvio.textContent = hoy.toLocaleDateString("es-MX", opciones);
+      });
+    });
+
+    btnEnviar?.addEventListener("click", () => {
+      alert("✅ Respuesta entregada el " + fechaEnvio.textContent);
+    });
+  });
