@@ -1,40 +1,40 @@
 /* 1. LAYOUT PRINCIPAL: BODY */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f7f6;
 
-    /* 🔸 CLAVE: Flexbox para alinear Sidebar y Contenido Principal */
-    display: flex;
-    min-height: 100vh;
+  /* 🔸 CLAVE: Flexbox para alinear Sidebar y Contenido Principal */
+  display: flex;
+  min-height: 100vh;
 }
 
 /* 2. BARRA LATERAL (SIDEBAR) */
 .sidebar {
-    min-height: 100vh;
-    background: #C2B998;
-    /* Color de fondo mantenido */
-    padding: 0;
-    width: 270px;
-    /* Ancho fijo del Sidebar */
-    z-index: 11;
-    transition: width 0.25s ease, background 0.25s ease;
-    flex-shrink: 0;
-    /* 🔸 CLAVE: Evita que el sidebar se encoja */
+  min-height: 100vh;
+  background: #C2B998;
+  /* Color de fondo mantenido */
+  padding: 0;
+  width: 270px;
+  /* Ancho fijo del Sidebar */
+  z-index: 11;
+  transition: width 0.25s ease, background 0.25s ease;
+  flex-shrink: 0;
+  /* 🔸 CLAVE: Evita que el sidebar se encoja */
 }
 
 /* 3. CONTENEDOR PRINCIPAL (TODO lo que va a la DERECHA del Sidebar) */
 .main-content-wrapper {
-    /* 🔸 CLAVE: Ocupa todo el espacio restante (el ancho deseado para Navbar/Contenido) */
-    flex-grow: 1;
+  /* 🔸 CLAVE: Ocupa todo el espacio restante (el ancho deseado para Navbar/Contenido) */
+  flex-grow: 1;
 
-    /* Apila el Navbar y el Content-Area verticalmente */
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    /*Permite scroll en el contenido si es largo */
-    min-height: 100vh;
+  /* Apila el Navbar y el Content-Area verticalmente */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  /*Permite scroll en el contenido si es largo */
+  min-height: 100vh;
 }
 
 
@@ -44,271 +44,295 @@ body {
 
 /* Estilo Base para TODAS las imágenes de control (Menu, Notificación, Usuario) */
 .icon-control-img {
-    width: 20px;
-    /* Tamaño base más pequeño (MANTENIDO) */
-    height: 20px;
-    object-fit: contain;
-    cursor: pointer;
-    margin: 0 5px;
-    vertical-align: middle;
+  width: 20px;
+  /* Tamaño base más pequeño (MANTENIDO) */
+  height: 20px;
+  object-fit: contain;
+  cursor: pointer;
+  margin: 0 5px;
+  vertical-align: middle;
 }
 
 
 /*
  * =========================================================
- * BARRA SUPERIOR (NAVBAR)
- * 🔸 ESTE COMPONENTE AHORA SOLO ABARCA EL ANCHO DE .main-content-wrapper
+ * BARRA SUPERIOR (NAVBAR) (MANTENIDOS)
  * =========================================================
  */
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    /* Ya no necesita ancho 100% explícito, se ajusta automáticamente 
-       al 100% del contenedor padre (.main-content-wrapper) */
-    flex-shrink: 0;
-}
-
-/* Barra de Búsqueda */
-.search-bar {
-    display: flex;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    border-radius: 4px;
-    background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  flex-shrink: 0;
 }
 
 .header-left-group {
-    display: flex;
-    /* Activa Flexbox */
-    align-items: center;
-    /* Alineación vertical centrada */
-    gap: 15px;
-    /* Agrega un pequeño espacio entre el menú y la búsqueda */
+  display: flex;
+  align-items: center;
+  /*gap: 15px;*/
 }
 
-.search-bar input {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    padding: 3px;
-    width: 150px;
-}
 
 /* Estilos de Usuario y Notificaciones */
 .user-info {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .user-name {
-    margin-right: 15px;
-    color: #333;
+  margin-right: 15px;
+  color: #333;
 }
+
+/* --- ESTILOS PARA EL INDICADOR DE NOTIFICACIÓN (BADGE ROJO) --- */
+
+.notification-dropdown-container {
+  /* Posicionar el badge de forma absoluta respecto a este contenedor */
+  position: relative;
+  /* El resto de estilos para .notification-dropdown-container se mantienen */
+  cursor: pointer;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.notification-badge {
+  position: absolute;
+  /* Posicionamiento en la esquina superior derecha del contenedor */
+  top: -2px;
+  left: 16px;
+
+  /* Estilos de forma y color */
+  background-color: #dc3545;
+  /* Rojo de alerta */
+  color: white;
+  border-radius: 50%;
+  /* Forma de círculo*/
+  padding: 0px 4px;
+  font-size: 11px;
+  font-weight: bold;
+  min-width: 14px;
+  height: 14px;
+  line-height: 14px;
+  /* Ajuste para centrar el número verticalmente */
+  text-align: center;
+  box-shadow: 0 0 0 2px #fff;
+  /* Pequeño borde blanco para separarlo del fondo */
+  z-index: 1001;
+
+  /* Ocultar inicialmente si el data-count es 0 (manejar con JS) */
+  display: none;
+}
+
+/* Regla para mostrar el badge si tiene contenido (notificaciones) */
+.notification-badge[data-count]:not([data-count="0"]) {
+  display: block;
+}
+
+/* Fin... */
 
 /* Contenedores de Despliegue */
 .notification-dropdown-container,
 .profile-info-container {
-    position: relative;
-    cursor: pointer;
-    margin-left: 15px;
-    display: flex;
-    align-items: center;
+  position: relative;
+  cursor: pointer;
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
 }
 
 /* Estilos para el Menú Desplegable de Notificaciones */
 .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 300px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    z-index: 1000;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-    padding: 10px 0;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 300px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  padding: 10px 0;
 }
 
 .dropdown-menu.visible {
-    display: block;
-    opacity: 1;
+  display: block;
+  opacity: 1;
 }
 
 .dropdown-title {
-    font-weight: bold;
-    color: #444;
-    padding: 5px 15px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 5px;
+  font-weight: bold;
+  color: #444;
+  padding: 5px 15px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 5px;
 }
 
 .dropdown-item {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #555;
-    font-size: 14px;
-    white-space: normal;
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+  white-space: normal;
 }
 
 .dropdown-item:hover {
-    background-color: #f4f7f6;
-    color: #333;
+  background-color: #f4f7f6;
+  color: #333;
 }
 
 .dropdown-item.view-all {
-    text-align: center;
-    font-weight: bold;
-    color: #007bff;
-    border-top: 1px solid #eee;
-    margin-top: 5px;
+  text-align: center;
+  font-weight: bold;
+  color: #007bff;
+  border-top: 1px solid #eee;
+  margin-top: 5px;
 }
 
 /* Quitar subrayado de los enlaces (General) */
 a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 /* Contenedor flex para logo + texto (TLAHUAPAN) */
 .tlahuapan-item .tlahuapan-logo-text {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 /* Tamaño del logo */
 .tlahuapan-logo {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
 }
 
 /* Texto a la derecha */
 .tlahuapan-text {
-    font-weight: bold;
-    font-size: 1.3rem;
-    color: #394757;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #394757;
 }
 
 /* Listado de navegación */
 .sidebar .nav {
-    overflow: hidden;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    margin-bottom: 60px;
-    list-style-type: none !important;
-    padding-left: 0;
-    margin: 0;
+  overflow: hidden;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin-bottom: 60px;
+  list-style-type: none !important;
+  padding-left: 0;
+  margin: 0;
 }
 
 .sidebar .nav .nav-item {
-    padding: 0 2.375rem;
-    transition-duration: 0.25s;
-    transition-property: background;
-    position: relative;
+  padding: 0 2.375rem;
+  transition-duration: 0.25s;
+  transition-property: background;
+  position: relative;
 }
 
 /* Estilo para el título "TLAHUAPAN" (nav-category) */
 .sidebar .nav .nav-item.nav-category {
-    color: #394757;
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 16px;
-    margin: 25px 0px 10px 0px;
-    font-family: "nunito-bold", sans-serif;
-    gap: 12px;
-    padding-left: 1rem;
+  color: #394757;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 16px;
+  margin: 25px 0px 10px 0px;
+  font-family: "nunito-bold", sans-serif;
+  gap: 12px;
+  padding-left: 1rem;
 }
 
 .sidebar .nav .nav-item .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    white-space: normal;
-    height: auto;
-    padding: 0.625rem 0 0.625rem 0;
-    color: #424748;
-    transition-duration: 0.45s;
-    transition-property: color;
-    text-overflow: ellipsis;
-    text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: normal;
+  height: auto;
+  padding: 0.625rem 0 0.625rem 0;
+  color: #424748;
+  transition-duration: 0.45s;
+  transition-property: color;
+  text-overflow: ellipsis;
+  text-decoration: none !important;
 }
 
 .sidebar .nav .nav-item .nav-link .icon-bg {
-    margin-right: 0.875rem;
-    background: rgba(194, 244, 219, 0.12);
-    height: 32px;
-    width: 32px;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 3px;
-    text-align: center;
+  margin-right: 0.875rem;
+  background: rgba(194, 244, 219, 0.12);
+  height: 32px;
+  width: 32px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  text-align: center;
 }
 
 /* Estilo para la imagen del ícono*/
 .sidebar .nav .nav-item .nav-link .icon-bg .sidebar-icon-img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .sidebar .nav .nav-item .nav-link .menu-title {
-    color: inherit;
-    display: block;
-    font-size: 1.1rem;
-    font-weight: bold;
-    line-height: 2.5;
+  color: inherit;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  line-height: 2.5;
 }
 
 /* Estado Activo */
 .sidebar .nav .nav-item.active {
-    background: transparent;
+  background: transparent;
 }
 
 .sidebar .nav .nav-item.active>.nav-link:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: .5rem;
-    bottom: 0;
-    background: #9F6E38;
-    height: 24px;
-    width: 4px;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .5rem;
+  bottom: 0;
+  background: #9F6E38;
+  height: 24px;
+  width: 4px;
 }
 
 .sidebar .nav .nav-item.active>.nav-link .menu-title {
-    color: #9F6E38;
-    font-family: "nunito-medium", sans-serif;
+  color: #9F6E38;
+  font-family: "nunito-medium", sans-serif;
 }
 
 .sidebar .nav .nav-item.active>.nav-link i {
-    color: #9F6E38;
+  color: #9F6E38;
 }
 
 /* Hover */
 .sidebar .nav .nav-item:hover {
-    background: #AEA481;
+  background: #AEA481;
 }
 
 .sidebar .nav:not(.sub-menu)>.nav-item:hover:not(.nav-category):not(.nav-profile)>.nav-link {
-    color: #9F6E38;
+  color: #9F6E38;
 }
 
 /* Estilo para "Cerrar sesión" */
 .sidebar .nav .nav-item.cerrar-sesion {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 /* =========================================================
@@ -317,61 +341,61 @@ a {
 
 /* 1. Reducir el ancho y quitar padding base */
 .sidebar.collapsed {
-    width: 80px;
-    /* Ancho reducido fijo para solo mostrar íconos */
-    /* Asegura una transición suave al colapsar/expandir */
-    transition: width 0.25s ease, background 0.25s ease;
+  width: 80px;
+  /* Ancho reducido fijo para solo mostrar íconos */
+  /* Asegura una transición suave al colapsar/expandir */
+  transition: width 0.25s ease, background 0.25s ease;
 }
 
 /* 2. Ocultar todos los elementos de texto */
 .sidebar.collapsed .menu-title,
 .sidebar.collapsed .tlahuapan-text,
 .sidebar.collapsed .menu-arrow {
-    display: none !important;
-    /* Usar !important si hay conflicto */
-    width: 0;
-    /* Aseguramos que no ocupe ancho */
-    overflow: hidden;
+  display: none !important;
+  /* Usar !important si hay conflicto */
+  width: 0;
+  /* Aseguramos que no ocupe ancho */
+  overflow: hidden;
 }
 
 /* 3. Ajustar el logo y el texto de TLAHUAPAN para centrar solo el logo */
 .sidebar.collapsed .tlahuapan-item {
-    padding: 0;
-    /* Ajusta el padding superior/inferior del logo/título */
+  padding: 0;
+  /* Ajusta el padding superior/inferior del logo/título */
 }
 
 .sidebar.collapsed .tlahuapan-item .tlahuapan-logo-text {
-    justify-content: center;
-    /* Centra horizontalmente el logo dentro del ancho de 80px */
-    padding: 10px 0;
-    /* Reducimos el padding, centramos verticalmente */
+  justify-content: center;
+  /* Centra horizontalmente el logo dentro del ancho de 80px */
+  padding: 10px 0;
+  /* Reducimos el padding, centramos verticalmente */
 }
 
 .sidebar.collapsed .tlahuapan-logo {
-    width: 40px;
-    /* Tamaño del logo reducido */
-    height: 40px;
+  width: 40px;
+  /* Tamaño del logo reducido */
+  height: 40px;
 }
 
 /* 4. Ajustar los elementos de navegación para centrar los íconos */
 .sidebar.collapsed .nav-item {
-    padding: 0;
-    /* Quita el padding horizontal grande para usar todo el ancho de 80px */
+  padding: 0;
+  /* Quita el padding horizontal grande para usar todo el ancho de 80px */
 }
 
 .sidebar.collapsed .nav-item .nav-link {
-    justify-content: center;
-    /* Centra el ícono dentro de los 80px */
-    padding: 0.625rem 0;
-    /* Ajusta el padding vertical */
-    width: 100%;
-    /* Asegura que tome el 100% de los 80px */
+  justify-content: center;
+  /* Centra el ícono dentro de los 80px */
+  padding: 0.625rem 0;
+  /* Ajusta el padding vertical */
+  width: 100%;
+  /* Asegura que tome el 100% de los 80px */
 }
 
 /* 5. Quitar el margen derecho del contenedor del ícono */
 .sidebar.collapsed .nav-item .nav-link .icon-bg {
-    margin-right: 0;
-    /* Elimina el espacio que separaba el ícono del texto oculto */
+  margin-right: 0;
+  /* Elimina el espacio que separaba el ícono del texto oculto */
 }
 
 /* ---------------------------------------------------------------------- */
@@ -380,207 +404,207 @@ a {
 
 /* Contenedor que alberga el contenido principal (a la derecha del sidebar) */
 .content-area {
-    /* Ya no necesita 'flex-grow: 1' aquí porque su padre, 
+  /* Ya no necesita 'flex-grow: 1' aquí porque su padre, 
        .main-content-wrapper, ya lo define verticalmente */
-    flex-grow: 1;
-    padding: 0;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    /* Apila las vistas de contenido */
+  flex-grow: 1;
+  padding: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  /* Apila las vistas de contenido */
 }
 
 .content-section {
-    flex-grow: 1;
-    /* Esto asegura que la card de la tabla ocupe el espacio */
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    background-color: #fff;
-    margin: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  flex-grow: 1;
+  /* Esto asegura que la card de la tabla ocupe el espacio */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #fff;
+  margin: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .content-section h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 /* Acciones de Gestión */
 .user-management-actions {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* Botón Agregar Usuario */
 .btn-add-user {
-    background-color: #3587ab;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+  background-color: #3587ab;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 .btn-add-user:hover {
-    background-color: #12a0cc;
+  background-color: #12a0cc;
 }
 
 .btn-add-user i {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 /* ESTILOS DE TABLA Y BOTONES DE ACCIÓN */
 .table-container {
-    flex-grow: 1;
-    overflow-x: auto;
+  flex-grow: 1;
+  overflow-x: auto;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
 }
 
 table thead {
-    background-color: #f0f0f0;
-    border-bottom: 2px solid #ddd;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #ddd;
 }
 
 table th,
 table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
 }
 
 table th {
-    color: #555;
-    font-weight: bold;
-    font-size: 14px;
+  color: #555;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 table tr:hover {
-    background-color: #fafafa;
+  background-color: #fafafa;
 }
 
 /* Botones de Acción en la Tabla (Base) */
 .btn-action {
-    border: none;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    font-size: 12px;
-    margin-right: 5px;
-    cursor: pointer;
-    border-radius: 4px;
-    color: white;
-    transition: background-color 0.3s;
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: white;
+  transition: background-color 0.3s;
 }
 
 .btn-action i {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 /* Color: Botón Editar (Azul) */
 .btn-action.edit {
-    background-color: #498FAE;
+  background-color: #498FAE;
 }
 
 .btn-action.edit:hover {
-    background-color: #12a0cc;
+  background-color: #12a0cc;
 }
 
 /* Color: Activo (Verde) */
 .btn-action.status-active {
-    background-color: #28a745;
-    margin-right: 0;
+  background-color: #28a745;
+  margin-right: 0;
 }
 
 .btn-action.status-active:hover {
-    background-color: #1e7e34;
+  background-color: #1e7e34;
 }
 
 /* Color: Inactivo (Rojo) */
 .btn-action.status-inactive {
-    background-color: #dc3545;
-    margin-right: 0;
+  background-color: #dc3545;
+  margin-right: 0;
 }
 
 .btn-action.status-inactive:hover {
-    background-color: #bd2130;
+  background-color: #bd2130;
 }
 
 /* Estilos para el Dropdown de Estado */
 .dropdown-action {
-    position: relative;
-    display: inline-block;
-    margin-left: 5px;
+  position: relative;
+  display: inline-block;
+  margin-left: 5px;
 }
 
 .dropdown-toggle-status {
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-    transition: background-color 0.3s;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s;
 }
 
 .dropdown-toggle-status:hover {
-    background-color: #5a6268;
+  background-color: #5a6268;
 }
 
 .dropdown-toggle-status i {
-    margin-left: 5px;
-    font-size: 10px;
-    margin-right: 0;
+  margin-left: 5px;
+  font-size: 10px;
+  margin-right: 0;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 120px;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    border-radius: 4px;
-    overflow: hidden;
-    right: 0;
-    margin-top: 5px;
-    border: 1px solid #ddd;
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 120px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-radius: 4px;
+  overflow: hidden;
+  right: 0;
+  margin-top: 5px;
+  border: 1px solid #ddd;
 }
 
 .dropdown-content button {
-    padding: 8px 10px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
-    color: white;
-    border-radius: 0;
-    margin-right: 0;
+  padding: 8px 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+  border-radius: 0;
+  margin-right: 0;
 }
 
 .dropdown-content button i {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 /* =========================================================
@@ -595,7 +619,7 @@ table tr:hover {
 
 /* 2. Muestra solo la sección de contenido que tiene la clase 'active' */
 .content-area .content-view.active {
-    display: block;
+  display: block;
 
 }
 
@@ -705,8 +729,8 @@ table tr:hover {
 .field select:focus,
 .field textarea:focus {
   outline: none;
-  border-color: #498FAE;
-  box-shadow: 0 0 4px rgba(73, 143, 174, 0.4);
+  border-color: #000;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 .field.switch {
@@ -828,7 +852,9 @@ table tr:hover {
 }
 
 /* BOTONES */
-.btn, .btn-action, .btn-add-user {
+.btn,
+.btn-action,
+.btn-add-user {
   background-color: #498FAE;
   color: #fff;
   border: none;
@@ -844,7 +870,9 @@ table tr:hover {
   justify-content: center;
 }
 
-.btn:hover, .btn-action:hover, .btn-add-user:hover {
+.btn:hover,
+.btn-action:hover,
+.btn-add-user:hover {
   background-color: #3a7997;
 }
 
@@ -866,9 +894,17 @@ table tr:hover {
   border-radius: 50%;
 }
 
-.status-circle.green { background-color: #28a745; }
-.status-circle.yellow { background-color: #ffc107; }
-.status-circle.red { background-color: #dc3545; }
+.status-circle.green {
+  background-color: #28a745;
+}
+
+.status-circle.yellow {
+  background-color: #ffc107;
+}
+
+.status-circle.red {
+  background-color: #dc3545;
+}
 
 td:nth-child(4) {
   display: table-cell;
@@ -889,7 +925,12 @@ td:nth-child(4) .status-circle {
   vertical-align: middle;
 }
 
-body, table, button, input, select, textarea {
+body,
+table,
+button,
+input,
+select,
+textarea {
   font-family: Arial, sans-serif !important;
   font-size: 14px;
   color: #333;

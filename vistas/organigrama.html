@@ -64,7 +64,7 @@
             <span class="menu-title">Ley de Archivo</span>
           </a>
         </li>
-        
+
         <li class="nav-item cerrar-sesion">
           <a class="nav-link" href="../index.html" id="cerrarSesionLink">
             <span class="icon-bg"><img src="../imagenes/cerrarsesion.png"
@@ -75,19 +75,28 @@
       </ul>
     </nav>
 
+    <!--Barra de Navegacion -->
     <div class="main-content-wrapper">
+
       <header class="navbar">
         <div class="header-left-group">
-          <img src="../imagenes/menu.png" id="menu-toggler"
+          <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler"
             class="icon-control-img">
+          <div class="search-bar">
+            <!-- <img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
+                <input type="text" placeholder="Search products">-->
+          </div>
         </div>
+
         <div class="user-info">
           <div class="profile-info-container">
-            <img src="../imagenes/usuario.png" class="icon-control-img">
-            <span class="user-name">Recursos humanos</span>
+            <img src="../imagenes/usuario.png" alt="Usuario"
+              class="icon-control-img">
+            <span class="user-name">Recursos Humanos</span>
           </div>
+
           <div class="notification-dropdown-container">
-            <img src="../imagenes/notificacion.png" alt="Notificación"
+            <img src="../imagenes/notificacion.png" alt="Notificacion"
               id="notification-icon"
               class="icon-control-img notification-icon-img">
             <span class="notification-badge" data-count="3">3</span>
@@ -101,6 +110,7 @@
           </div>
         </div>
       </header>
+      <!--Fin Barra de Navegacion -->
 
       <main class="content-area">
         <!-- Sección Organigrama -->
@@ -110,8 +120,6 @@
           <div class="organigrama-actions">
             <button class="btn-action edit"
               data-modal-open="modalCrearOrganigrama">Crear</button>
-            <button class="btn-action edit" id="btnAutorizar"
-              data-modal-open="modalAutorizarOrganigrama">Autorizar </button>
           </div>
 
           <div class="table-container">
@@ -166,6 +174,8 @@
           <div class="organigrama-actions">
             <button class="btn-action edit"
               data-modal-open="modalInsertarArea">Agregar áreas</button>
+            <button class="btn-action edit" id="btnAutorizar"
+              data-modal-open="modalAutorizarOrganigrama">Autorizar </button>
             <button class="btn-action ghost" id="btnRegresar">Regresar</button>
           </div>
 

@@ -226,205 +226,312 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener("click", closeAllStatusMenus);
 
   // Modals M --------------------------------------------------------------------------------------------------------------------------------------
-    const openers = document.querySelectorAll("[data-modal-open]");
-    const closers = document.querySelectorAll("[data-modal-close]");
+  const openers = document.querySelectorAll("[data-modal-open]");
+  const closers = document.querySelectorAll("[data-modal-close]");
 
-    openers.forEach((op) =>
-      op.addEventListener("click", () => {
-        const modal = document.getElementById(op.getAttribute("data-modal-open"));
-        modal?.classList.add("show");
-        modal?.setAttribute("aria-hidden", "false");
-      })
-    );
+  openers.forEach((op) =>
+    op.addEventListener("click", () => {
+      const modal = document.getElementById(op.getAttribute("data-modal-open"));
+      modal?.classList.add("show");
+      modal?.setAttribute("aria-hidden", "false");
+    })
+  );
 
-    closers.forEach((cl) =>
-      cl.addEventListener("click", () => {
-        const modal = cl.closest(".modal");
-        modal?.classList.remove("show");
-        modal?.setAttribute("aria-hidden", "true");
-      })
-    );
+  closers.forEach((cl) =>
+    cl.addEventListener("click", () => {
+      const modal = cl.closest(".modal");
+      modal?.classList.remove("show");
+      modal?.setAttribute("aria-hidden", "true");
+    })
+  );
 
-    document.addEventListener("click", (e) => {
-      if (e.target instanceof Element && e.target.classList.contains("modal")) {
-        e.target.classList.remove("show");
-        e.target.setAttribute("aria-hidden", "true");
-      }
-    });
-  });
-
-
-  /* MODAL VER DOCUMENTOS */
-  document.addEventListener("DOMContentLoaded", () => {
-    const botonesVer = document.querySelectorAll('button[data-modal-open="modalVer"]');
-
-    botonesVer.forEach((boton) => {
-      boton.addEventListener("click", () => {
-        const titulo = boton.closest("tr").querySelector("td:nth-child(2)")?.textContent.trim();
-        const iframe = document.getElementById("vistaDocumento");
-        const tituloElemento = document.getElementById("tituloDocumento");
-
-        if (!iframe || !tituloElemento) return;
-
-        tituloElemento.textContent = titulo;
-        switch (titulo) {
-          case "Acta constitutiva":
-          case "Reporte 2024":
-            iframe.src = "../documentos/Reticula ISC.pdf";
-            break;
-          default:
-            iframe.src = "";
-        }
-      });
-    });
-  });
-
-
-  /* Organigrama*/
-  document.addEventListener("DOMContentLoaded", () => {
-    const tabla = document.getElementById("tablaOrganigramas");
-    const gestion = document.getElementById("gestion");
-    const seccionOrg = document.getElementById("organigrama");
-    const btnRegresar = document.getElementById("btnRegresar");
-    const btnAutorizar = document.getElementById("btnConfirmarAutorizar");
-
-    if (!tabla || !gestion || !seccionOrg) return;
-
-    // Cambio de vistas (organigrama y gestión)
-    tabla.addEventListener("click", (e) => {
-      if (e.target.classList.contains("btn-editar")) {
-        seccionOrg.style.display = "none";
-        gestion.style.display = "block";
-      }
-    });
-
-    btnRegresar?.addEventListener("click", () => {
-      gestion.style.display = "none";
-      seccionOrg.style.display = "block";
-    });
-
-    btnAutorizar?.addEventListener("click", () => {
-      const modal = document.getElementById("modalAutorizarOrganigrama");
-      if (modal) {
-        modal.classList.remove("show");
-        modal.setAttribute("aria-hidden", "true");
-      }
-    });
-
-    tabla.addEventListener("click", (e) => {
-      if (e.target.classList.contains("btn-ver")) {
-        const modal = document.getElementById("modalVerOrganigrama");
-        modal?.classList.add("show");
-        modal?.setAttribute("aria-hidden", "false");
-      }
-    });
-  });
-
-
-  /* DIAGRAMA ORGANIGRAMA  */
-  document.addEventListener("DOMContentLoaded", () => {
-    const tabla = document.getElementById("tablaOrganigramas");
-    const modal = document.getElementById("modalVerOrganigrama");
-    const contenedor = document.getElementById("contenedorOrganigrama");
-
-    if (!tabla || !modal || !contenedor) return;
-
-    const registrosSimulados = [
-      { area: "Presidencia Municipal", nivel: 1, superior: null },
-      { area: "H. Cabildo", nivel: 1, superior: "Presidencia Municipal" },
-      { area: "Contraloría Municipal", nivel: 2, superior: "Presidencia Municipal" },
-      { area: "Tesorería Municipal", nivel: 2, superior: "Presidencia Municipal" },
-      { area: "Secretaría del Ayuntamiento", nivel: 2, superior: "Presidencia Municipal" },
-      { area: "Secretaría Técnica", nivel: 2, superior: "Presidencia Municipal" },
-      { area: "Dirección de Obras Públicas", nivel: 3, superior: "Secretaría Técnica" },
-      { area: "Dirección de Desarrollo Urbano", nivel: 3, superior: "Secretaría Técnica" },
-      { area: "Dirección de Cultura y Deporte", nivel: 3, superior: "Secretaría del Ayuntamiento" },
-      { area: "Dirección de Desarrollo Social", nivel: 3, superior: "Secretaría Técnica" },
-      { area: "Dirección de Protección Civil", nivel: 3, superior: "Secretaría Técnica" },
-      { area: "Jefatura de Archivo y Control Documental", nivel: 4, superior: "Secretaría del Ayuntamiento" },
-      { area: "Jefatura de Informática y Sistemas", nivel: 4, superior: "Secretaría Técnica" },
-      { area: "Coordinación de Igualdad de Género", nivel: 4, superior: "Secretaría Técnica" },
-    ];
-
-    function construirArbol(registros, superior = null) {
-      return registros
-        .filter((r) => r.superior === superior)
-        .map((r) => ({ ...r, subareas: construirArbol(registros, r.area) }));
+  document.addEventListener("click", (e) => {
+    if (e.target instanceof Element && e.target.classList.contains("modal")) {
+      e.target.classList.remove("show");
+      e.target.setAttribute("aria-hidden", "true");
     }
+  });
+});
 
-    function renderOrganigrama(arbol) {
-      if (!arbol || arbol.length === 0) return "";
-      let html = "<ul>";
-      for (const nodo of arbol) {
-        html += `<li><div class='nodo'>${nodo.area}</div>`;
-        if (nodo.subareas.length > 0) html += renderOrganigrama(nodo.subareas);
-        html += "</li>";
+/* MODAL VER DOCUMENTOS */
+document.addEventListener("DOMContentLoaded", () => {
+  const botonesVer = document.querySelectorAll(
+    'button[data-modal-open="modalVer"]'
+  );
+
+  botonesVer.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      const titulo = boton
+        .closest("tr")
+        .querySelector("td:nth-child(2)")
+        ?.textContent.trim();
+      const iframe = document.getElementById("vistaDocumento");
+      const tituloElemento = document.getElementById("tituloDocumento");
+
+      if (!iframe || !tituloElemento) return;
+
+      tituloElemento.textContent = titulo;
+      const imagen = document.getElementById("vistaDocumento");
+
+      switch (titulo) {
+        case "Acta constitutiva":
+          imagen.src = "imagenes/Reticula ISC.jpg";
+        case "Reporte 2024":
+          imagen.src = "imagenes/Reticula ISC.jpg";
+          break;
+        default:
+          imagen.src = "";
       }
-      html += "</ul>";
-      return html;
+    });
+  });
+});
+
+/* Organigrama*/
+document.addEventListener("DOMContentLoaded", () => {
+  const tabla = document.getElementById("tablaOrganigramas");
+  const gestion = document.getElementById("gestion");
+  const seccionOrg = document.getElementById("organigrama");
+  const btnRegresar = document.getElementById("btnRegresar");
+  const btnAutorizar = document.getElementById("btnConfirmarAutorizar");
+
+  if (!tabla || !gestion || !seccionOrg) return;
+
+  // Cambio de vistas (organigrama y gestión)
+  tabla.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-editar")) {
+      seccionOrg.style.display = "none";
+      gestion.style.display = "block";
     }
+  });
 
-    tabla.addEventListener("click", (e) => {
-      if (e.target.classList.contains("btn-ver")) {
-        const jerarquia = construirArbol(registrosSimulados);
-        const organigramaHTML = renderOrganigrama(jerarquia);
-        contenedor.innerHTML = `<div class="organigrama">${organigramaHTML}</div>`;
-        modal.classList.add("show");
-        modal.setAttribute("aria-hidden", "false");
-      }
+  btnRegresar?.addEventListener("click", () => {
+    gestion.style.display = "none";
+    seccionOrg.style.display = "block";
+  });
+
+  btnAutorizar?.addEventListener("click", () => {
+    const modal = document.getElementById("modalAutorizarOrganigrama");
+    if (modal) {
+      modal.classList.remove("show");
+      modal.setAttribute("aria-hidden", "true");
+    }
+  });
+
+  tabla.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-ver")) {
+      const modal = document.getElementById("modalVerOrganigrama");
+      modal?.classList.add("show");
+      modal?.setAttribute("aria-hidden", "false");
+    }
+  });
+});
+
+/* DIAGRAMA ORGANIGRAMA  */
+document.addEventListener("DOMContentLoaded", () => {
+  const tabla = document.getElementById("tablaOrganigramas");
+  const modal = document.getElementById("modalVerOrganigrama");
+  const contenedor = document.getElementById("contenedorOrganigrama");
+
+  if (!tabla || !modal || !contenedor) return;
+
+  const registrosSimulados = [
+    { area: "Presidencia Municipal", nivel: 1, superior: null },
+    { area: "H. Cabildo", nivel: 1, superior: "Presidencia Municipal" },
+    {
+      area: "Contraloría Municipal",
+      nivel: 2,
+      superior: "Presidencia Municipal",
+    },
+    {
+      area: "Tesorería Municipal",
+      nivel: 2,
+      superior: "Presidencia Municipal",
+    },
+    {
+      area: "Secretaría del Ayuntamiento",
+      nivel: 2,
+      superior: "Presidencia Municipal",
+    },
+    { area: "Secretaría Técnica", nivel: 2, superior: "Presidencia Municipal" },
+    {
+      area: "Dirección de Obras Públicas",
+      nivel: 3,
+      superior: "Secretaría Técnica",
+    },
+    {
+      area: "Dirección de Desarrollo Urbano",
+      nivel: 3,
+      superior: "Secretaría Técnica",
+    },
+    {
+      area: "Dirección de Cultura y Deporte",
+      nivel: 3,
+      superior: "Secretaría del Ayuntamiento",
+    },
+    {
+      area: "Dirección de Desarrollo Social",
+      nivel: 3,
+      superior: "Secretaría Técnica",
+    },
+    {
+      area: "Dirección de Protección Civil",
+      nivel: 3,
+      superior: "Secretaría Técnica",
+    },
+    {
+      area: "Jefatura de Archivo y Control Documental",
+      nivel: 4,
+      superior: "Secretaría del Ayuntamiento",
+    },
+    {
+      area: "Jefatura de Informática y Sistemas",
+      nivel: 4,
+      superior: "Secretaría Técnica",
+    },
+    {
+      area: "Coordinación de Igualdad de Género",
+      nivel: 4,
+      superior: "Secretaría Técnica",
+    },
+  ];
+
+  function construirArbol(registros, superior = null) {
+    return registros
+      .filter((r) => r.superior === superior)
+      .map((r) => ({ ...r, subareas: construirArbol(registros, r.area) }));
+  }
+
+  function renderOrganigrama(arbol) {
+    if (!arbol || arbol.length === 0) return "";
+    let html = "<ul>";
+    for (const nodo of arbol) {
+      html += `<li><div class='nodo'>${nodo.area}</div>`;
+      if (nodo.subareas.length > 0) html += renderOrganigrama(nodo.subareas);
+      html += "</li>";
+    }
+    html += "</ul>";
+    return html;
+  }
+
+  tabla.addEventListener("click", (e) => {
+    if (e.target.classList.contains("btn-ver")) {
+      const jerarquia = construirArbol(registrosSimulados);
+      const organigramaHTML = renderOrganigrama(jerarquia);
+      contenedor.innerHTML = `<div class="organigrama">${organigramaHTML}</div>`;
+      modal.classList.add("show");
+      modal.setAttribute("aria-hidden", "false");
+    }
+  });
+});
+
+/* Tiempo de respuesta - SEMAFORO */
+document.addEventListener("DOMContentLoaded", () => {
+  const tabla = document.querySelector("#tablaDocumentos");
+  if (!tabla) return;
+
+  const hoy = new Date();
+
+  tabla.querySelectorAll("tbody tr").forEach((fila) => {
+    const limiteStr = fila.getAttribute("data-fecha-limite");
+    const circulo = fila.querySelector(".status-circle");
+    const texto = fila.querySelector(".tiempo-texto");
+    if (!limiteStr || !circulo || !texto) return;
+
+    const limite = new Date(limiteStr);
+    const diff = Math.ceil((limite - hoy) / (1000 * 60 * 60 * 24));
+
+    circulo.classList.remove("green", "yellow", "red");
+
+    if (diff > 3) {
+      circulo.classList.add("green");
+      texto.textContent = `Faltan ${diff} días`;
+    } else if (diff > 0) {
+      circulo.classList.add("yellow");
+      texto.textContent = `Faltan ${diff} días`;
+    } else {
+      circulo.classList.add("red");
+      texto.textContent = `Vencido hace ${Math.abs(diff)} días`;
+    }
+  });
+});
+
+/* Fecha de respuesta*/
+document.addEventListener("DOMContentLoaded", () => {
+  const botonesRespuesta = document.querySelectorAll(
+    'button[data-modal-open="modalRespuesta"]'
+  );
+  const fechaEnvio = document.getElementById("fechaEnvio");
+  const btnEnviar = document.getElementById("btnEnviarRespuesta");
+
+  if (!botonesRespuesta.length || !fechaEnvio) return;
+
+  botonesRespuesta.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      const hoy = new Date();
+      const opciones = { year: "numeric", month: "2-digit", day: "2-digit" };
+      fechaEnvio.textContent = hoy.toLocaleDateString("es-MX", opciones);
     });
   });
 
+  btnEnviar?.addEventListener("click", () => {
+    alert(" Respuesta entregada el " + fechaEnvio.textContent);
+  });
+});
 
-  /* Tiempo de respuesta - SEMAFORO */
-  document.addEventListener("DOMContentLoaded", () => {
-    const tabla = document.querySelector("#tablaDocumentos");
-    if (!tabla) return;
+/*SCRIPT PARA LEY DE ARCHIVO*/
+document.addEventListener("DOMContentLoaded", () => {
+  const botonesGuardar = document.querySelectorAll(
+    '[data-modal-open="modalConfirmar"]'
+  );
+  const modalConfirmar = document.getElementById("modalConfirmar");
+  const mensaje = document.getElementById("mensajeConfirmacion");
+  const confirmar = document.getElementById("confirmarUbicacion");
+  const cambiarUbicacion = document.getElementById("cambiarUbicacion");
+  const modalCambiar = document.getElementById("modalCambiarUbicacion");
+  const selectNueva = document.getElementById("nuevaClasificacion");
+  const guardarNueva = document.getElementById("guardarNuevaUbicacion");
 
-    const hoy = new Date();
+  let filaSeleccionada = null;
 
-    tabla.querySelectorAll("tbody tr").forEach((fila) => {
-      const limiteStr = fila.getAttribute("data-fecha-limite");
-      const circulo = fila.querySelector(".status-circle");
-      const texto = fila.querySelector(".tiempo-texto");
-      if (!limiteStr || !circulo || !texto) return;
+  botonesGuardar.forEach((boton) => {
+    boton.addEventListener("click", () => {
+      filaSeleccionada = boton.closest("tr");
+      const titulo = filaSeleccionada.children[1].textContent;
+      const area = filaSeleccionada.children[2].textContent;
+      const clasif = filaSeleccionada.children[3].textContent;
+      const carpeta = filaSeleccionada.children[4].textContent;
 
-      const limite = new Date(limiteStr);
-      const diff = Math.ceil((limite - hoy) / (1000 * 60 * 60 * 24));
-
-      circulo.classList.remove("green", "yellow", "red");
-
-      if (diff > 3) {
-        circulo.classList.add("green");
-        texto.textContent = `Faltan ${diff} días`;
-      } else if (diff > 0) {
-        circulo.classList.add("yellow");
-        texto.textContent = `Faltan ${diff} días`;
-      } else {
-        circulo.classList.add("red");
-        texto.textContent = `Vencido hace ${Math.abs(diff)} días`;
-      }
+      mensaje.innerHTML = `
+            El documento <b>${titulo}</b> del área <b>${area}</b><br>
+            se guardará en <b>${carpeta}</b><br>
+            con la clasificación <b>${clasif}</b>.
+          `;
     });
   });
 
-
-  /* Fecha de respuesta*/
-  document.addEventListener("DOMContentLoaded", () => {
-    const botonesRespuesta = document.querySelectorAll('button[data-modal-open="modalRespuesta"]');
-    const fechaEnvio = document.getElementById("fechaEnvio");
-    const btnEnviar = document.getElementById("btnEnviarRespuesta");
-
-    if (!botonesRespuesta.length || !fechaEnvio) return;
-
-    botonesRespuesta.forEach((boton) => {
-      boton.addEventListener("click", () => {
-        const hoy = new Date();
-        const opciones = { year: "numeric", month: "2-digit", day: "2-digit" };
-        fechaEnvio.textContent = hoy.toLocaleDateString("es-MX", opciones);
-      });
-    });
-
-    btnEnviar?.addEventListener("click", () => {
-      alert("✅ Respuesta entregada el " + fechaEnvio.textContent);
-    });
+  confirmar.addEventListener("click", () => {
+    if (filaSeleccionada) {
+      filaSeleccionada.classList.add("archivado");
+      filaSeleccionada.querySelector("td:last-child").innerHTML =
+        "<span class='badge success'>Archivado</span>";
+      alert("Documento archivado correctamente.");
+    }
+    modalConfirmar.classList.remove("show");
   });
+
+  cambiarUbicacion.addEventListener("click", () => {
+    modalConfirmar.classList.remove("show");
+    modalCambiar.classList.add("show");
+  });
+
+  guardarNueva.addEventListener("click", () => {
+    if (filaSeleccionada && selectNueva.value) {
+      filaSeleccionada.children[3].textContent = selectNueva.value;
+      filaSeleccionada.children[4].textContent = "Archivador actualizado";
+      alert("Clasificación actualizada correctamente.");
+      modalCambiar.classList.remove("show");
+    } else {
+      alert("Selecciona una nueva clasificación antes de guardar.");
+    }
+  });
+});

@@ -68,7 +68,7 @@
             <span class="menu-title">Ley de Archivo</span>
           </a>
         </li>
-        
+
         <li class="nav-item cerrar-sesion">
           <a class="nav-link" href="../index.html" id="cerrarSesionLink">
             <span class="icon-bg"><img src="../imagenes/cerrarsesion.png"
@@ -80,21 +80,28 @@
       </ul>
     </nav>
 
-    <!-- Contenedor principal -->
+    <!--Barra de Navegacion -->
     <div class="main-content-wrapper">
+
       <header class="navbar">
         <div class="header-left-group">
           <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler"
             class="icon-control-img">
+          <div class="search-bar">
+            <!-- <img src="../imagenes/busqueda.png" alt="Busqueda" class="icon-control-img">
+                <input type="text" placeholder="Search products">-->
+          </div>
         </div>
+
         <div class="user-info">
           <div class="profile-info-container">
             <img src="../imagenes/usuario.png" alt="Usuario"
               class="icon-control-img">
-            <span class="user-name">Usuario</span>
+            <span class="user-name">Responsable de area </span>
           </div>
+
           <div class="notification-dropdown-container">
-            <img src="../imagenes/notificacion.png" alt="Notificación"
+            <img src="../imagenes/notificacion.png" alt="Notificacion"
               id="notification-icon"
               class="icon-control-img notification-icon-img">
             <span class="notification-badge" data-count="3">3</span>
@@ -108,6 +115,7 @@
           </div>
         </div>
       </header>
+      <!--Fin Barra de Navegacion -->
 
       <main class="content-area">
         <!-- Gestión Documental -->
@@ -208,10 +216,10 @@
               <button class="icon-btn" data-modal-close>&times;</button>
             </header>
             <div class="modal-body">
+              <p>Fecha de envío: <strong id="fechaEnvio"></strong></p>
               <label for="comentario">Comentario (opcional):</label>
               <textarea id="comentario" rows="3"
                 placeholder="Agrega un comentario..."></textarea>
-              <p>Fecha de envío: <strong id="fechaEnvio"></strong></p>
             </div>
             <footer class="modal-foot">
               <button class="btn" id="btnEnviarRespuesta">Enviar</button>
@@ -228,9 +236,10 @@
               <button class="icon-btn" data-modal-close>&times;</button>
             </header>
             <div class="modal-body">
-              <iframe id="vistaDocumento" src="../documentos/Reticula ISC.pdf"
-                width="100%" height="500px"
-                style="border:none; border-radius:8px;"></iframe>
+              <img id="vistaDocumento" src="../imagenes/Reticula ISC.jpg"
+                alt="Vista del documento"
+                style="width:100%; max-height:500px; border-radius:8px; object-fit:contain;">
+
             </div>
             <footer class="modal-foot">
               <button class="btn" data-modal-close>Cerrar</button>
