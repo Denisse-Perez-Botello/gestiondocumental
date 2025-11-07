@@ -4,7 +4,7 @@
    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Tlahuapan</title>
-    <link rel="stylesheet" type="text/css" href="styles/iniciosesion.css">
+    <link rel="stylesheet" type="text/css" href="./styles/iniciosesion.css">
 </head>
 <body>
     <div class="login-principal">
@@ -37,7 +37,7 @@
   <div class="modal-content">
     <h2>Ingresa la Clave Especial</h2>
 
-    <!-- 🔹 Usa la clase correcta -->
+    <!--  Usa la clase correcta -->
     <input 
       type="password" 
       id="claveInput" 
@@ -45,10 +45,10 @@
       placeholder="Escribe la clave" 
     />
 
-    <!-- 🔹 Mensaje de error -->
+    <!-- Mensaje de error -->
     <p id="mensajeClave" class="mensaje-error"></p>
 
-    <!-- 🔹 Botones con las clases que tu CSS sí reconoce -->
+    <!-- Botones con las clases que tu CSS sí reconoce -->
     <div class="modal-buttons">
       <button class="modal-btn confirmar" onclick="confirmarClave()">Confirmar</button>
       <button class="modal-btn cancelar" onclick="cerrarModalClave()">Cancelar</button>
@@ -56,7 +56,7 @@
   </div>
 </div>
     <!-- Modal de IP -->
-    <div id="modalIP" class="modal-overlay" style="display: none;">
+  <div id="modalIP" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <h3>Configuración del Servidor</h3>
             <p>Introduce la IP del servidor de Recursos Humanos.</p>
@@ -103,6 +103,6 @@
         </div>
     </div>
 
-    <script src="script/iniciosesion.js"></script>
+    <script src="./script/iniciosesion.js"></script>
 </body>
 </html>

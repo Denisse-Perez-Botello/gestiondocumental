@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Notificaciones</title>
+    <link rel="stylesheet" href="../styles/Configuracion.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="sidebar sidebar-off-canvas" id="sidebar">
+        <ul class="nav">
+            <li class="nav-item nav-category tlahuapan-item">
+                <div class="tlahuapan-logo-text">
+                    <img src="../imagenes/logo.png" alt="Logo" class="tlahuapan-logo">
+                    <span class="tlahuapan-text">TLAHUAPAN</span>
+                </div>
+            </li>
+
+            <li class="nav-item" id="menu-usuarios">
+                <a class="nav-link" href="Usuarios.html">
+                    <span class="icon-bg"><img src="../imagenes/usuarios.png" alt="Icono Usuarios" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Usuarios</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-dashboard">
+                <a class="nav-link" href="Dashboard.html">
+                    <span class="icon-bg"><img src="../imagenes/dashboard.png" alt="Icono Dashboard" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-documentos">
+                <a class="nav-link" href="documentos.html">
+                    <span class="icon-bg"><img src="../imagenes/documentos.png" alt="Icono Documentos" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Documentos</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-organigrama">
+                <a class="nav-link" href="organigrama.html">
+                    <span class="icon-bg"><img src="../imagenes/organigrama.png" alt="Icono Organigrama" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Organigrama</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-dispersion">
+                <a class="nav-link" href="Dispersion.html">
+                    <span class="icon-bg"><img src="../imagenes/enviodocumentos.png" alt="Icono Dispersión" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Dispersión</span>
+                </a>
+            </li>
+
+            <li class="nav-item" id="menu-leyarchivo">
+                <a class="nav-link" href="leyarchivo.html">
+                    <span class="icon-bg"><img src="../imagenes/leyarchivo.png" alt="Icono Ley de Archivo" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Ley de Archivo</span>
+                </a>
+            </li>
+             <li class="nav-item active" id="menu-configuracion"> <a class="nav-link" href="Configuracion.html">
+                    <span class="icon-bg"><img src="../imagenes/configuracion.png" alt="Icono de Configuracion" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Configuración</span>
+                </a>
+            </li>
+            <li class="nav-item" id="menu-cerrarsesion">
+                <a class="nav-link" href="../index.html">
+                    <span class="icon-bg"><img src="../imagenes/cerrarsesion.png" alt="Icono Cerrar sesion" class="sidebar-icon-img"></span>
+                    <span class="menu-title">Cerrar sesión</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="main-content-wrapper">
+
+        <header class="navbar">
+            <div class="header-left-group">
+                <img src="../imagenes/menu.png" alt="Menú" id="menu-toggler" class="icon-control-img">
+                <div class="search-bar">
+                    </div>
+            </div>
+
+            <div class="user-info">
+                <div class="profile-info-container">
+                    <img src="../imagenes/usuario.png" alt="Usuario" class="icon-control-img">
+                    <span class="user-name">Recursos Humanos</span>
+                </div>
+                
+                <div class="notification-dropdown-container">
+                    <img src="../imagenes/notificacion.png" alt="Notificacion" id="notification-icon" class="icon-control-img notification-icon-img">
+                    <span class="notification-badge" data-count="3">3</span>
+                    <div class="dropdown-menu notification-menu">
+                        <p class="dropdown-title">Notificaciones recientes</p>
+                        <a href="#" class="dropdown-item">Tienes 1 nuevo documento de Presidencia.</a>
+                        <a href="#" class="dropdown-item view-all">Ver todas las notificaciones</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+      <div class="content-area">
+    <div class="container">
+        <h2>Configuración de Notificaciones del Sistema Documental</h2>
+
+        <div class="top-grid"> 
+            
+            <div class="section">
+                <h3>General</h3>
+                <label><input type="checkbox" id="activarCorreo"> Activar notificaciones por correo</label>
+                <label>Intervalo de revisión</label>
+                <select id="intervalo">
+                    <option>Cada 30 minutos</option>
+                    <option>Cada hora</option>
+                    <option>Cada día</option>
+                </select>
+                <label>Correo remitente del sistema</label>
+                <input type="email" id="correoRemitente" placeholder="notificaciones@gmail.com">
+                <label>Servidor SMTP</label>
+                <input type="text" id="servidorSmtp" placeholder="smtp.gmail.com">
+                <label>Puerto</label>
+                <input type="text" id="puerto" placeholder="587">
+                <label>Tipo de seguridad</label>
+                <select id="seguridad">
+                    <option>TLS</option>
+                    <option>SSL</option>
+                    <option>Ninguno</option>
+                </select>
+                <label>Contraseña o token</label>
+                <input type="password" id="password" placeholder="••••••••">
+                <button onclick="enviar()">Enviar</button>
+            </div>
+
+            <div class="section">
+                <h3>Tipos de Notificación</h3>
+                <p class="nota">Todos los usuarios recibirán todos los tipos de notificación, excepto los desmarcados.</p>
+                <label><input type="checkbox" class="tipoNotif" checked> Nuevo documento asignado</label>
+                <label><input type="checkbox" class="tipoNotif" checked> Documento próximo a vencer</label>
+                <label><input type="checkbox" class="tipoNotif" checked> Documento vencido</label>
+                <label><input type="checkbox" class="tipoNotif" checked> Documento concluido o cerrado</label>
+                <label><input type="checkbox" class="tipoNotif" checked> Comentarios u observaciones agregadas</label>
+                <label><input type="checkbox" class="tipoNotif" checked> Recordatorio de revisión pendiente</label>
+                <label><input type="checkbox" class="tipoNotif" checked> Aprobación o rechazo de documento</label>
+            </div>
+
+            <div class="section">
+                <h3>Plantillas de Correo</h3>
+                <label>Tipo de notificación</label>
+                <select id="tipoPlantilla">
+                    <option>Nuevo documento</option>
+                    <option>Próximo a vencer</option>
+                    <option>Vencido</option>
+                </select>
+                <label>Asunto</label>
+                <input type="text" id="asuntoCorreo" placeholder="Aviso de nuevo documento">
+                <label>Cuerpo</label>
+                <textarea id="cuerpoCorreo" placeholder="Estimado {nombre_usuario}, tiene un nuevo documento: {folio_documento}"></textarea>
+                <div class="row">
+                    <button onclick="guardarPlantilla()">Guardar</button>
+                    <button onclick="enviarPlantilla()">Enviar prueba</button>
+                </div>
+            </div>
+
+        </div> </div>
+</div>
+    <script src="../script/Configuracion.js"></script>
+</body>
+</html>

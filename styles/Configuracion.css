@@ -1,0 +1,531 @@
+/*
+ * =========================================================
+ * REINICIO Y ESTRUCTURA PRINCIPAL DEL LAYOUT
+ * =========================================================
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* El body ahora es el contenedor FLEX principal para el Sidebar y el Contenido */
+body {
+    /* Eliminamos las propiedades de centrado global */
+    /* background-color: #f4f7f6; /* Usar el color de fondo deseado */
+    background-color: #f4f6f9; /* Color de fondo original del body */
+    color: #333;
+    padding: 0; /* Quitamos el padding del body para que el layout ocupe el 100% */
+    display: flex; /* Activa el layout principal (Sidebar + Main Content) */
+    justify-content: flex-start; /* Alinea el sidebar a la izquierda */
+    align-items: stretch; /* Asegura que el Sidebar y el Wrapper tengan altura completa */
+    min-height: 100vh;
+}
+
+/* 1. BARRA LATERAL (SIDEBAR) */
+.sidebar {
+    min-height: 100vh;
+    background: #C2B998;
+    padding: 0;
+    width: 270px;
+    z-index: 11;
+    transition: width 0.25s ease, 0.25s ease;
+    flex-shrink: 0; /*Evita que el sidebar se encoja */
+}
+
+/* 3. CONTENEDOR PRINCIPAL (TODO lo que va a la DERECHA del Sidebar) (MANTENIDOS) */
+.main-content-wrapper {
+    /* Ocupa todo el espacio restante (el ancho deseado para Navbar/Contenido) */
+    flex-grow: 1; 
+    
+    /* Apila el Navbar y el Content-Area verticalmente */
+    display: flex;
+    flex-direction: column; 
+    overflow-y: auto; /* Permite scroll en el contenido si es largo */
+    min-height: 100vh;
+}
+
+/* ---------------------------------------------------------------------- */
+/* AJUSTES DE ÍCONOS DE IMAGEN Y BÚSQUEDA (MANTENIDOS) */
+/* ---------------------------------------------------------------------- */
+
+/* Estilo Base para TODAS las imágenes de control (Menu, Notificación, Usuario) */
+.icon-control-img {
+    width: 20px; /* Tamaño base más pequeño (MANTENIDO) */
+    height: 20px;
+    object-fit: contain;
+    cursor: pointer;
+    margin: 0 5px;
+    vertical-align: middle; 
+}
+
+
+/*
+ * =========================================================
+ * BARRA SUPERIOR (NAVBAR) (MANTENIDOS)
+ * =========================================================
+ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    flex-shrink: 0; 
+}
+
+/* Barra de Búsqueda */
+/*.search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+}*/
+
+.header-left-group {
+    display: flex; /* Activa Flexbox */
+    align-items: center; /* Alineación vertical centrada */
+    /*gap: 15px;*/ 
+}
+
+/*.search-bar input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 3px;
+    width: 150px;
+}*/
+
+/* Estilos de Usuario y Notificaciones */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    margin-right: 15px;
+    color: #333;
+}
+
+/* --- ESTILOS PARA EL INDICADOR DE NOTIFICACIÓN (BADGE ROJO) --- */
+
+.notification-dropdown-container {
+    /* Posicionar el badge de forma absoluta respecto a este contenedor */
+    position: relative; 
+    /* El resto de estilos para .notification-dropdown-container se mantienen */
+    cursor: pointer;
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.notification-badge {
+    position: absolute;
+    /* Posicionamiento en la esquina superior derecha del contenedor */
+    top: -2px; 
+    left: 16px; 
+    
+    /* Estilos de forma y color */
+    background-color: #dc3545; /* Rojo de alerta */
+    color: white;
+    border-radius: 50%; /* Forma de círculo*/
+    padding: 0px 4px;
+    font-size: 11px;
+    font-weight: bold;
+    min-width: 14px;
+    height: 14px;
+    line-height: 14px; /* Ajuste para centrar el número verticalmente */
+    text-align: center;
+    box-shadow: 0 0 0 2px #fff; /* Pequeño borde blanco para separarlo del fondo */
+    z-index: 1001;
+    
+    /* Ocultar inicialmente si el data-count es 0 (manejar con JS) */
+    display: none; 
+}
+
+/* Regla para mostrar el badge si tiene contenido (notificaciones) */
+.notification-badge[data-count]:not([data-count="0"]) {
+    display: block;
+}
+/* Fin... */
+
+
+/* Contenedores de Despliegue */
+.notification-dropdown-container, .profile-info-container {
+    position: relative; 
+    cursor: pointer;
+    margin-left: 15px; 
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para el Menú Desplegable de Notificaciones */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; 
+    right: 0; 
+    width: 300px; 
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000; 
+    display: none; 
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    padding: 10px 0;
+}
+
+.dropdown-menu.visible {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-title {
+    font-weight: bold;
+    color: #444;
+    padding: 5px 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #555;
+    font-size: 14px;
+    white-space: normal; 
+}
+
+.dropdown-item:hover {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.dropdown-item.view-all {
+    text-align: center;
+    font-weight: bold;
+    color: #007bff;
+    border-top: 1px solid #eee;
+    margin-top: 5px;
+}
+/* Quitar subrayado de los enlaces (General) */
+a {
+    text-decoration: none !important;
+}
+
+
+/*
+ * =========================================================
+ * ESTILOS DE LA BARRA LATERAL (SIDEBAR) (MANTENIDOS)
+ * =========================================================
+ */
+
+/* Contenedor flex para logo + texto (TLAHUAPAN) */
+.tlahuapan-item .tlahuapan-logo-text {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Tamaño del logo */
+.tlahuapan-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+/* Texto a la derecha */
+.tlahuapan-text {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #394757;
+}
+
+/* Listado de navegación */
+.sidebar .nav {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    margin-bottom: 60px;
+    list-style-type: none !important;
+    padding-left: 0;
+    margin: 0;
+}
+
+.sidebar .nav .nav-item {
+    padding: 0 2.375rem;
+    transition-duration: 0.25s;
+    transition-property: background;
+    position: relative;
+}
+
+/* Estilo para el título "TLAHUAPAN" (nav-category) */
+.sidebar .nav .nav-item.nav-category {
+    color: #394757;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 16px;
+    margin: 25px 0px 10px 0px;
+    font-family: "nunito-bold", sans-serif; 
+    gap: 12px;
+    padding-left: 1rem;
+}
+
+.sidebar .nav .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: normal;
+    height: auto;
+    padding: 0.625rem 0 0.625rem 0;
+    color: #424748;
+    transition-duration: 0.45s;
+    transition-property: color;
+    text-overflow: ellipsis;
+    text-decoration: none !important;
+}
+
+.sidebar .nav .nav-item .nav-link .icon-bg {
+    margin-right: 0.875rem;
+    background: rgba(194, 244, 219, 0.12);
+    height: 32px;
+    width: 32px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    text-align: center;
+}
+
+/* Estilo para la imagen del ícono*/
+.sidebar .nav .nav-item .nav-link .icon-bg .sidebar-icon-img {
+    width: 20px; 
+    height: 20px; 
+    object-fit: contain; 
+}
+
+.sidebar .nav .nav-item .nav-link .menu-title {
+    color: inherit; 
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 2.5;
+}
+
+/* Estado Activo */
+.sidebar .nav .nav-item.active {
+    background: transparent; 
+}
+.sidebar .nav .nav-item.active > .nav-link:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .5rem;
+    bottom: 0;
+    background: #9F6E38;
+    height: 24px;
+    width: 4px; 
+}
+.sidebar .nav .nav-item.active > .nav-link .menu-title {
+    color: #9F6E38;
+    font-family: "nunito-medium", sans-serif; 
+}
+.sidebar .nav .nav-item.active > .nav-link i {
+    color: #9F6E38;
+}
+
+/* Hover */
+.sidebar .nav .nav-item:hover {
+    background: #AEA481;
+}
+.sidebar .nav:not(.sub-menu) > .nav-item:hover:not(.nav-category):not(.nav-profile) > .nav-link {
+    color: #9F6E38; 
+}
+
+/* Estilo para "Cerrar sesión" */
+.sidebar .nav .nav-item.cerrar-sesion {
+    margin-top: auto;
+}
+
+/*
+ * =========================================================
+ * SIDEBAR COLAPSADO (.sidebar.collapsed) (MANTENIDOS)
+ * =========================================================
+ */
+
+/* 1. Reducir el ancho y quitar padding base */
+.sidebar.collapsed {
+    width: 80px; /* Ancho reducido fijo para solo mostrar íconos */
+    /* Transición suave al colapsar/expandir */
+    transition: width 0.25s ease, 0.25s ease;
+}
+
+/* 2. Ocultar todos los elementos de texto */
+.sidebar.collapsed .menu-title,
+.sidebar.collapsed .tlahuapan-text,
+.sidebar.collapsed .menu-arrow {
+    display: none !important; 
+    width: 0; 
+    overflow: hidden;
+}
+
+/* 3. Ajuste del logo y el texto de TLAHUAPAN para centrar solo el logo */
+.sidebar.collapsed .tlahuapan-item {
+    padding: 0; 
+}
+
+.sidebar.collapsed .tlahuapan-item .tlahuapan-logo-text {
+    justify-content: center;
+    padding: 10px 0; 
+}
+
+.sidebar.collapsed .tlahuapan-logo {
+    width: 40px; /* Tamaño del logo reducido */
+    height: 40px;
+}
+
+/* 4. Ajustar los elementos de navegación para centrar los íconos */
+.sidebar.collapsed .nav-item {
+    padding: 0; 
+}
+
+.sidebar.collapsed .nav-item .nav-link {
+    justify-content: center;
+    padding: 0.625rem 0; /* Ajusta el padding vertical */
+    width: 100%; /* Asegura que tome el 100% de los 80px */
+}
+
+/* 5. Quitar el margen derecho del contenedor del ícono */
+.sidebar.collapsed .nav-item .nav-link .icon-bg {
+    margin-right: 0; 
+}
+
+/*
+ * =========================================================
+ * ESTILOS DE LA VENTANA DE CONFIGURACIÓN (ADAPTADOS)
+ * =========================================================
+ */
+
+.content-area {
+    padding: 20px; 
+    flex-grow: 1;
+}
+
+/* * DISENIO DE CONFIGURACION */
+.container {
+    background: transparent; 
+    padding: 0; 
+    border-radius: 0; 
+    box-shadow: none; 
+    width: 100%;
+    max-width: 1200px; /* Máximo ancho de tu diseño */
+    margin: 0 auto; /* Centrar el contenido de configuración horizontalmente */
+    /* Se elimina flex-direction: column y gap: 20px ya que el historial ya no existe */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px; 
+    color: #2c3e50;
+    font-size: 18px; 
+    padding-top: 5px; 
+}
+
+/* Contenedor principal de las 3 secciones */
+.top-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+/* Estilos de las "cards" (General, Tipos, Plantillas) */
+.section {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    min-height: 450px; /* alargar los card */
+}
+
+h3 {
+    color: #2c3e50;
+    margin-bottom: 8px;
+    border-bottom: 2px solid #4a7da1;
+    padding-bottom: 4px;
+    font-size: 16px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 3px;
+    font-size: 13px;
+}
+input[type="text"], input[type="email"], input[type="password"], select, textarea {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+input[type="checkbox"] {
+    margin-right: 5px;
+    background-color: #4a7da1;
+}
+button {
+    background-color: #4a7da1;
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 13px;
+}
+button:hover {
+    background-color: #3d6d8d;
+}
+
+.row {
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones Guardar/Enviar a la derecha */
+    gap: 10px;
+    margin-top: 15px; /* Margen para separar de los campos de texto */
+}
+
+.section textarea {
+    height: 80px;
+    resize: vertical; /* Permitir redimensionar solo verticalmente */
+}
+
+.nota {
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: #666; 
+}
+
+/* Media Queries para la adaptabilidad (se mantienen) */
+@media (max-width: 900px) {
+    .top-grid {
+        /* Pasa de 3 a 2 columnas en pantallas medianas */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .top-grid {
+        /* Pasa a 1 columna en pantallas pequeñas */
+        grid-template-columns: 1fr;
+    }
+}

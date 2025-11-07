@@ -1,5 +1,5 @@
 // Variables globales
-/*let rhIP = null;
+let rhIP = null;
 
 const STORAGE_KEY = 'rh_server_ip';
 
@@ -11,7 +11,7 @@ function loadStoredIp() {
 function saveIpToStorage(ip) {
     localStorage.setItem(STORAGE_KEY, ip);
     console.log(`[PERSISTENCIA] IP de RH guardada: ${ip}`);
-}*/
+}
 
 // =================================================================
 //  FUNCIONES MODAL DE CLAVE 
