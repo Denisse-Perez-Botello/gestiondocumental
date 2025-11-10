@@ -466,6 +466,10 @@ a {
   flex-grow: 1;
   overflow-x: auto;
 }
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
 table {
   width: 100%;
@@ -650,6 +654,14 @@ table tr:hover {
   flex-direction: column;
   max-height: 90vh;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.modal-card.modal-xl {
+  width: 90vw;
+  max-width: 1200px;
+  max-height: 85vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .modal-head {
@@ -936,3 +948,35 @@ textarea {
   color: #333;
 }
 
+/* ===== ESTILOS DE NOTIFICACIONES (REUTILIZANDO MODAL) ===== */
+.notifications-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.notification-item {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: background-color 0.2s ease;
+}
+
+.notification-item.unread {
+  background-color: #eef6ff;
+  border-left: 4px solid #498FAE;
+  font-weight: bold;
+}
+
+.notification-item:hover {
+  background-color: #f1f1f1;
+}
+
+.notification-time {
+  font-size: 12px;
+  color: #777;
+  margin-top: 4px;
+  display: block;
+}
