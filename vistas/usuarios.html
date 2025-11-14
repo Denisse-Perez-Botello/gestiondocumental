@@ -121,8 +121,16 @@
                     <button class="btn-add-user" data-modal-open="modalInsertarUsuario"><!--al oprimir el boton se habra el modal -->
                          Agregar Usuario
                     </button>
-                </div>
 
+                    <button class="btn-add-user btn-privileges-override" data-modal-open="modalOtorgarPrivilegios">
+                    Otorgar Privilegios
+                    </button>
+                </div>
+                   <div class="user-management-actions">
+    <div class="search-container">
+        <input type="text" id="user-search-input" placeholder="Buscar usuario por nombre..." class="search-input">
+        </div>
+  </div>
         <table>
             <thead>
                 <tr>
@@ -258,16 +266,6 @@
                              <option>Oficialía de Partes</option>
                              <option>Ninguno</option>
                         </select>
-                    </label>
-                    <label class="field">
-                        <select class="input">
-                            <option value="" disabled selected>Privilegios</option>
-                            <option>Administrador</option>
-                            <option>Editor</option>
-                            <option>Visualizador</option>
-                            <option>Ninguno</option>
-                        </select>
-                    </label>
                 </form>
             </div>
 
@@ -278,6 +276,40 @@
         </div>
          </div>
     <!--Fin -->
+
+    <!--Modal Otorgar privilegios-->
+    <div class="modal" id="modalOtorgarPrivilegios" aria-hidden="true">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title-privilegios">
+            
+            <header class="modal-head">
+                <h3 id="modal-title-privilegios">Otorgar Privilegios</h3>
+                <button class="icon-btn close-red" data-modal-close aria-label="Cerrar">X</button>
+            </header>
+
+            <div class="modal-body">
+                <form id="form-otorgar-privilegios">
+                    <label class="field">
+                        <span class="label-text">Seleccionar Privilegio</span>
+                        <select class="input" required>
+                            <option value="" disabled selected>Selecciona un nivel de privilegio</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Editor">Editor</option>
+                            <option value="Visualizador">Visualizador</option>
+                            <option value="Ninguno">Ninguno</option>
+                        </select>
+                    </label>
+                    
+                    <p class="note">Esta acción aplicará el privilegio al seleccionar el usuario de la tabla. </p>
+                </form>
+            </div>
+
+            <footer class="modal-foot">
+                <button class="btn btn-primary" type="submit" form="form-otorgar-privilegios">Aplicar</button>
+                <button class="btn btn-secondary" data-modal-close>Cancelar</button>
+            </footer>
+        </div>
+    </div>
+    <!--Fin-->
     
      <!--Modal editar Usuario-->
     <div class="modal" id="modalEditarUsuario" aria-hidden="true">
@@ -319,15 +351,6 @@
                         <option>Ley de Archivo</option>
                         <option>Oficialía de Partes</option>
                         <option>Ninguno</option> 
-                    </select>
-                </label>
-                <label class="field">
-                    <select class="input">
-                        <option value="" disabled>Privilegios</option>
-                         <option>Administrador</option>
-                        <option>Editor</option>
-                            <option>Visualizador</option>
-                            <option>Ninguno</option>
                     </select>
                 </label>
             </form>

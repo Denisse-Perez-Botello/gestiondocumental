@@ -105,60 +105,41 @@
         <div class="top-grid"> 
             
             <div class="section">
-                <h3>General</h3>
-                <label><input type="checkbox" id="activarCorreo"> Activar notificaciones por correo</label>
-                <label>Intervalo de revisión</label>
-                <select id="intervalo">
-                    <option>Cada 30 minutos</option>
-                    <option>Cada hora</option>
-                    <option>Cada día</option>
-                </select>
+                <h3>Envío por correo</h3>
+                
                 <label>Correo remitente del sistema</label>
                 <input type="email" id="correoRemitente" placeholder="notificaciones@gmail.com">
+                <label>Contraseña</label>
+                <input type="password" id="password" placeholder="••••••••">
                 <label>Servidor SMTP</label>
                 <input type="text" id="servidorSmtp" placeholder="smtp.gmail.com">
                 <label>Puerto</label>
                 <input type="text" id="puerto" placeholder="587">
-                <label>Tipo de seguridad</label>
-                <select id="seguridad">
-                    <option>TLS</option>
-                    <option>SSL</option>
-                    <option>Ninguno</option>
-                </select>
-                <label>Contraseña o token</label>
-                <input type="password" id="password" placeholder="••••••••">
                 <button onclick="enviar()">Enviar</button>
             </div>
 
-            <div class="section">
-                <h3>Tipos de Notificación</h3>
-                <p class="nota">Todos los usuarios recibirán todos los tipos de notificación, excepto los desmarcados.</p>
-                <label><input type="checkbox" class="tipoNotif" checked> Nuevo documento asignado</label>
-                <label><input type="checkbox" class="tipoNotif" checked> Documento próximo a vencer</label>
-                <label><input type="checkbox" class="tipoNotif" checked> Documento vencido</label>
-                <label><input type="checkbox" class="tipoNotif" checked> Documento concluido o cerrado</label>
-                <label><input type="checkbox" class="tipoNotif" checked> Comentarios u observaciones agregadas</label>
-                <label><input type="checkbox" class="tipoNotif" checked> Recordatorio de revisión pendiente</label>
-                <label><input type="checkbox" class="tipoNotif" checked> Aprobación o rechazo de documento</label>
-            </div>
 
-            <div class="section">
-                <h3>Plantillas de Correo</h3>
-                <label>Tipo de notificación</label>
-                <select id="tipoPlantilla">
-                    <option>Nuevo documento</option>
-                    <option>Próximo a vencer</option>
-                    <option>Vencido</option>
-                </select>
-                <label>Asunto</label>
-                <input type="text" id="asuntoCorreo" placeholder="Aviso de nuevo documento">
-                <label>Cuerpo</label>
-                <textarea id="cuerpoCorreo" placeholder="Estimado {nombre_usuario}, tiene un nuevo documento: {folio_documento}"></textarea>
-                <div class="row">
-                    <button onclick="guardarPlantilla()">Guardar</button>
-                    <button onclick="enviarPlantilla()">Enviar prueba</button>
-                </div>
-            </div>
+          <div class="section">
+    <h3>Conexión a Base de Datos</h3>
+
+    <label for="dominio">Dominio</label>
+    <input type="text" id="dominio" placeholder="midominio.com">
+
+    <label for="servicio">Servicio</label>
+    <input type="text" id="servicio" placeholder="MySQL">
+
+    <label for="basedatos">Base de Datos</label>
+    <input type="text" id="basedatos" placeholder="nombre_base_de_datos">
+
+    <label for="usuario">Usuario</label>
+    <input type="text" id="usuario" placeholder="admin">
+
+    <label for="contrasena">Contraseña</label>
+    <input type="password" id="contrasena" placeholder="••••••••">
+
+    <button onclick="Aceptar()">Aceptar</button>
+</div>
+
 
         </div> </div>
 </div>

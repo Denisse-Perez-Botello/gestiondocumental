@@ -469,6 +469,39 @@ a {
     margin-right: 5px;
 }
 
+/* 2. Estilos para el nuevo botón Otorgar Privilegios */
+.btn-privileges {
+    /* Estilo base, similar a btn-add-user para mantener la consistencia en padding */
+    padding: 8px 15px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s;
+
+    /* Color distinto para la acción de privilegios (ej. un tono más neutro/gris-azulado) */
+    background-color: #5A8F7B; 
+    color: white;
+}
+
+.btn-privileges:hover {
+    background-color: #4c7b69; /* Oscurecer al pasar el ratón */
+}
+
+.btn-privileges i {
+    margin-right: 5px; /* Espacio para el icono (asumiendo que usas 'fas fa-key') */
+}
+
+/* ESTILO PARA RESALTAR LA FILA SELECCIONADA */
+table tr.selected-user {
+    background-color: #e3d6c0 !important; /* Un azul claro suave */
+   border-left: 5px solid #a17a4a; /* Borde para mayor visibilidad */
+    cursor: default; /* Indica que ya no es necesario hacer clic de nuevo */
+}
+
 /* ESTILOS DE TABLA Y BOTONES DE ACCIÓN */
 .table-container {
     flex-grow: 1;
@@ -853,3 +886,34 @@ table tr:hover {
  * FIN DEL CSS PARA MODALES
  * =========================================================
  */
+
+ /* Estilos para el campo de búsqueda */
+.search-container {
+    position: relative; 
+    width: 280px; /* Ancho fijo para la caja de búsqueda */
+    flex-shrink: 0; /* Evita que se encoja si el título es muy largo */
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 10px 8px 35px; /* Más padding a la izquierda para el ícono */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.search-input:focus {
+    border-color: #68757e; 
+    outline: none;
+    box-shadow: 0 0 0 1px #7d8a93;
+}
+/* Estilo para la etiqueta <mark> que usará el script de búsqueda */
+mark {
+    background-color: #eada7e; /* Un color amarillo o verde brillante */
+    color: #333;               /* Asegura que el texto sea oscuro y legible */
+    padding: 1px 0;
+    border-radius: 2px;
+}
+
