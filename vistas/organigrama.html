@@ -172,6 +172,7 @@
             </table>
           </div>
         </section>
+        
 
         <!-- Sección Gestión Organizacional -->
         <section id="gestion" class="content-section content-view"
@@ -305,6 +306,53 @@
             data-modal-close>Agregar</button></footer>
       </div>
     </div>
+
+    <!-- Modal Centro de Notificaciones -->
+<div class="modal" id="modalNotificaciones" aria-hidden="true">
+  <div class="modal-card modal-xl" role="dialog" aria-modal="true" aria-labelledby="modal-title-notificaciones">
+
+    <header class="modal-head">
+      <h3 id="modal-title-notificaciones">Centro de Notificaciones</h3>
+      <button class="icon-btn close-red" data-modal-close aria-label="Cerrar">X</button>
+    </header>
+
+    <div class="modal-body">
+      <div class="notifications-container">
+
+        <!-- Notificación RH a Presidencia -->
+        <div class="notification-item unread">
+          <p><strong>Recursos Humanos:</strong> Solicita autorización del nuevo organigrama 2025–2028.</p>
+          <div class="notification-actions">
+            <button class="btn btn-small status-active" onclick="abrirOrganigrama()">Ver</button>
+          </div>
+          <span class="notification-time">Hace 10 minutos</span>
+        </div>
+
+        <div class="notification-item unread">
+          <p><strong>Presidencia:</strong> Tienes un nuevo documento asignado.</p>
+          <span class="notification-time">Hace 5 minutos</span>
+        </div>
+
+        <div class="notification-item unread">
+          <p><strong>Ley de Archivo:</strong> Se actualizó una clasificación documental.</p>
+          <span class="notification-time">Hace 1 hora</span>
+        </div>
+
+        <div class="notification-item">
+          <p><strong>Contraloría:</strong> Se ha autorizado el organigrama 2024-2027.</p>
+          <span class="notification-time">Ayer</span>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="modal-foot">
+      <button class="btn btn-secondary" data-modal-close>Cerrar</button>
+    </footer>
+  </div>
+</div>
+<!-- Fin Modal Centro de Notificaciones -->
+
 
     <script src="../script/script1.js"></script>
   </body>

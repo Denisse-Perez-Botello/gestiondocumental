@@ -535,3 +535,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const verTodas = document.querySelector(".dropdown-item.view-all");
+  const modalNotif = document.getElementById("modalNotificaciones");
+
+  if (verTodas && modalNotif) {
+    verTodas.addEventListener("click", (e) => {
+      e.preventDefault();
+      modalNotif.classList.add("show");
+      modalNotif.setAttribute("aria-hidden", "false");
+
+      // Cierra el menú desplegable de la campanita
+      const dropdown = document.querySelector(".notification-menu");
+      if (dropdown) dropdown.classList.remove("visible");
+    });
+  }
+
+  // Marcar como leídas al hacer clic
+  const notificaciones = document.querySelectorAll(".notification-item.unread");
+  notificaciones.forEach((item) => {
+    item.addEventListener("click", () => {
+      item.classList.remove("unread");
+    });
+  });
+});
+
+function abrirOrganigrama() {
+  // Cierra el modal de notificaciones
+  document.getElementById('modalNotificaciones').setAttribute('aria-hidden', 'true');
+
+  // Muestra la sección de Organigrama
+  const organigramaSection = document.getElementById('organigrama');
+  if (organigramaSection) {
+    organigramaSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // (Más adelante aquí se podrá abrir directamente la vista de autorización)
+}
+
